@@ -905,7 +905,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addChannelButton" destination="TUA-aO-Vig" id="1tj-zL-S0Z"/>
+                        <outlet property="channelsLabel" destination="vd9-aE-20U" id="dMl-c9-lf5"/>
                         <outlet property="channelsTableView" destination="q4p-T7-etJ" id="qWc-d3-BZR"/>
+                        <outlet property="usernameLabel" destination="J6e-qJ-fLT" id="u6d-61-2Qh"/>
                     </connections>
                 </viewController>
                 <customObject id="IPP-Ft-voh" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
