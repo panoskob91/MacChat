@@ -29,6 +29,10 @@ extension NSButton
         }
         
         return tColor
-        
+    }
+    
+    func setFont(_ font: NSFont)
+    {
+        self.font = NSFont(name: font.fontName, size: font.pointSize)
     }
 }

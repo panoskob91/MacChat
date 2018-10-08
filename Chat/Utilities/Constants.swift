@@ -18,3 +18,5 @@ let grayTextColor = NSColor.createColor(red: 204, green: 204, blue: 204, alpha: 
 let avenirFont = "Avenir Next Regular"
 let loginFontSize: CGFloat = 15.0
 let channelFontSize: CGFloat = 13.0
+let channelFont = NSFont(name: avenirFont, size: channelFontSize)!
+let loginFont = NSFont(name: avenirFont, size: loginFontSize)!

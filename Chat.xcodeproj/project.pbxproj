@@ -17,6 +17,7 @@
 		BA183E8D216B1D8400DA32ED /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA183E8C216B1D8400DA32ED /* Constants.swift */; };
 		BA183E90216B1DE900DA32ED /* NSColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA183E8F216B1DE900DA32ED /* NSColor.swift */; };
 		BAA83BCA216BE84F00435F32 /* NSButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA83BC9216BE84F00435F32 /* NSButton.swift */; };
+		BAA83BCC216BEDA500435F32 /* NSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA83BCB216BEDA500435F32 /* NSTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		BA183E8C216B1D8400DA32ED /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BA183E8F216B1DE900DA32ED /* NSColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSColor.swift; sourceTree = "<group>"; };
 		BAA83BC9216BE84F00435F32 /* NSButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSButton.swift; sourceTree = "<group>"; };
+		BAA83BCB216BEDA500435F32 /* NSTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 			children = (
 				BA183E8F216B1DE900DA32ED /* NSColor.swift */,
 				BAA83BC9216BE84F00435F32 /* NSButton.swift */,
+				BAA83BCB216BEDA500435F32 /* NSTextField.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 				BA0D1CFD216489BA00A9BBD7 /* AppDelegate.swift in Sources */,
 				BA183E90216B1DE900DA32ED /* NSColor.swift in Sources */,
 				BA183E8A216B1C9000DA32ED /* MainWindowController.swift in Sources */,
+				BAA83BCC216BEDA500435F32 /* NSTextField.swift in Sources */,
 				BAA83BCA216BE84F00435F32 /* NSButton.swift in Sources */,
 				BA183E8D216B1D8400DA32ED /* Constants.swift in Sources */,
 			);

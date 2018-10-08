@@ -18,38 +18,24 @@ class ChannelVC: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.addChannelButton.isBordered = false
         drawView()
         
     }
     //MARK:- Helper functions
-    func setupTableViewStyle()
-    {
-        self.channelsTableView.backgroundColor = channelColor
-    }
-    
-    func setupChannelsLabelStyle()
-    {
-        self.channelsLabel.textColor = grayTextColor
-        self.channelsLabel.font = NSFont(name: avenirFont, size: channelFontSize)
-        
-    }
-    
-    func setupAddButtonStyle()
-    {
-        self.addChannelButton.font = NSFont(name: avenirFont, size: channelFontSize)
-        self.addChannelButton.isBordered = false
-        
-        self.addChannelButton.setTitleColor(color: grayTextColor)
-    }
-    
     func drawView()
     {
         self.view.wantsLayer = true
         self.view.layer?.backgroundColor = channelColor.cgColor
+        //labels
+        self.channelsLabel.setFont(channelFont, textColor: grayTextColor)
+        self.usernameLabel.setFont(channelFont, textColor: grayTextColor)
+        //Buttons
+        self.addChannelButton.setFont(channelFont)
+        self.addChannelButton.setTitleColor(color: grayTextColor)
+        //TableView
+        self.channelsTableView.backgroundColor = channelColor
         
-        setupChannelsLabelStyle()
-        setupTableViewStyle()
-        setupAddButtonStyle()
     }
     
 }
