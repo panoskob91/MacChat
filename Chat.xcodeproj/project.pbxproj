@@ -13,6 +13,8 @@
 		BA183E82216B1B7900DA32ED /* ToolbarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA183E81216B1B7900DA32ED /* ToolbarVC.swift */; };
 		BA183E85216B1B8900DA32ED /* ChannelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA183E83216B1B8900DA32ED /* ChannelVC.swift */; };
 		BA183E88216B1BA000DA32ED /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA183E87216B1BA000DA32ED /* ChatVC.swift */; };
+		BA183E8A216B1C9000DA32ED /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA183E89216B1C9000DA32ED /* MainWindowController.swift */; };
+		BA183E8D216B1D8400DA32ED /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA183E8C216B1D8400DA32ED /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		BA183E81216B1B7900DA32ED /* ToolbarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarVC.swift; sourceTree = "<group>"; };
 		BA183E83216B1B8900DA32ED /* ChannelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelVC.swift; sourceTree = "<group>"; };
 		BA183E87216B1BA000DA32ED /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
+		BA183E89216B1C9000DA32ED /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
+		BA183E8C216B1D8400DA32ED /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,7 @@
 		BA0D1CFB216489BA00A9BBD7 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				BA183E8B216B1D6100DA32ED /* Utilities */,
 				BA183E80216B1B5800DA32ED /* Model */,
 				BA183E7F216B1B5200DA32ED /* View */,
 				BA183E7E216B1B4A00DA32ED /* Controller */,
@@ -75,6 +80,7 @@
 				BA183E81216B1B7900DA32ED /* ToolbarVC.swift */,
 				BA183E83216B1B8900DA32ED /* ChannelVC.swift */,
 				BA183E87216B1BA000DA32ED /* ChatVC.swift */,
+				BA183E89216B1C9000DA32ED /* MainWindowController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -91,6 +97,14 @@
 			children = (
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		BA183E8B216B1D6100DA32ED /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				BA183E8C216B1D8400DA32ED /* Constants.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,6 +181,8 @@
 				BA183E82216B1B7900DA32ED /* ToolbarVC.swift in Sources */,
 				BA183E85216B1B8900DA32ED /* ChannelVC.swift in Sources */,
 				BA0D1CFD216489BA00A9BBD7 /* AppDelegate.swift in Sources */,
+				BA183E8A216B1C9000DA32ED /* MainWindowController.swift in Sources */,
+				BA183E8D216B1D8400DA32ED /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
