@@ -24,7 +24,7 @@ class ToolbarVC: NSViewController {
     func setupLoginLabel()
     {
         self.loginLabel.textColor = loginLabelColor
-        self.loginLabel.font = NSFont(name: "Avenir Next Regular", size: 15)
+        self.loginLabel.font = NSFont(name: loginlabelFontName, size: loginlabelFontSize)
     }
     
 }
