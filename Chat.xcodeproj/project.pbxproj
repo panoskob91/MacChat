@@ -15,6 +15,7 @@
 		BA183E88216B1BA000DA32ED /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA183E87216B1BA000DA32ED /* ChatVC.swift */; };
 		BA183E8A216B1C9000DA32ED /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA183E89216B1C9000DA32ED /* MainWindowController.swift */; };
 		BA183E8D216B1D8400DA32ED /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA183E8C216B1D8400DA32ED /* Constants.swift */; };
+		BA183E90216B1DE900DA32ED /* NSColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA183E8F216B1DE900DA32ED /* NSColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		BA183E87216B1BA000DA32ED /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		BA183E89216B1C9000DA32ED /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		BA183E8C216B1D8400DA32ED /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		BA183E8F216B1DE900DA32ED /* NSColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,9 +104,18 @@
 		BA183E8B216B1D6100DA32ED /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				BA183E8E216B1DD600DA32ED /* Extensions */,
 				BA183E8C216B1D8400DA32ED /* Constants.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		BA183E8E216B1DD600DA32ED /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BA183E8F216B1DE900DA32ED /* NSColor.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,6 +192,7 @@
 				BA183E82216B1B7900DA32ED /* ToolbarVC.swift in Sources */,
 				BA183E85216B1B8900DA32ED /* ChannelVC.swift in Sources */,
 				BA0D1CFD216489BA00A9BBD7 /* AppDelegate.swift in Sources */,
+				BA183E90216B1DE900DA32ED /* NSColor.swift in Sources */,
 				BA183E8A216B1C9000DA32ED /* MainWindowController.swift in Sources */,
 				BA183E8D216B1D8400DA32ED /* Constants.swift in Sources */,
 			);

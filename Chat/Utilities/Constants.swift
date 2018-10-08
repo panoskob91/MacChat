@@ -9,4 +9,4 @@
 import Cocoa
 
 //Colors
-
+let toolbarColor = NSColor(calibratedRed: <#T##CGFloat#>, green: <#T##CGFloat#>, blue: <#T##CGFloat#>, alpha: <#T##CGFloat#>)
