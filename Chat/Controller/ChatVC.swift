@@ -10,10 +10,13 @@ import Cocoa
 
 class ChatVC: NSViewController {
 
+    @IBOutlet var chatTableView: NSTableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.wantsLayer = true
         self.view.layer?.backgroundColor = chatColor.cgColor
+        self.chatTableView.backgroundColor = chatColor
     }
     
 }
