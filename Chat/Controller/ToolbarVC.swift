@@ -13,6 +13,7 @@ class ToolbarVC: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.wantsLayer = true
+        self.view.layer?.backgroundColor = toolbarColor.cgColor
     }
     
 }

@@ -12,7 +12,8 @@ class ChatVC: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
+        self.view.wantsLayer = true
+        self.view.layer?.backgroundColor = chatColor.cgColor
     }
     
 }
