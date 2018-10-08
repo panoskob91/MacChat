@@ -3,6 +3,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -715,14 +716,49 @@
                                     <segue destination="2Ri-sZ-d8O" kind="embed" id="f7p-Qw-iZg"/>
                                 </connections>
                             </containerView>
+                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x5d-rc-QR8">
+                                <rect key="frame" x="402" y="230" width="62" height="24"/>
+                                <subviews>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eZY-As-meA">
+                                        <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="1HB-IF-L99"/>
+                                            <constraint firstAttribute="width" constant="24" id="WWD-v9-Nz8"/>
+                                        </constraints>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="profileDefault" id="WFW-an-w68"/>
+                                    </imageView>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ew1-Hb-00Q">
+                                        <rect key="frame" x="30" y="4" width="34" height="17"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="login" id="PrF-1u-xOV">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="C0J-mQ-opY" firstAttribute="top" secondItem="x5d-rc-QR8" secondAttribute="bottom" constant="10" id="8sN-dg-dHd"/>
                             <constraint firstItem="C0J-mQ-opY" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="50" id="HgS-ZP-KLG"/>
                             <constraint firstAttribute="trailing" secondItem="C0J-mQ-opY" secondAttribute="trailing" id="THr-wq-Gbw"/>
                             <constraint firstItem="C0J-mQ-opY" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="nfa-i9-2C4"/>
                             <constraint firstAttribute="bottom" secondItem="C0J-mQ-opY" secondAttribute="bottom" id="uB4-ag-qSL"/>
+                            <constraint firstAttribute="trailing" secondItem="x5d-rc-QR8" secondAttribute="trailing" constant="16" id="xfO-iD-zFU"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="loginLabel" destination="Ew1-Hb-00Q" id="TtD-7d-Q7x"/>
+                        <outlet property="userAvatar" destination="eZY-As-meA" id="ky1-Ce-pba"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -780,4 +816,7 @@
             <point key="canvasLocation" x="750" y="1211"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="profileDefault" width="100" height="100"/>
+    </resources>
 </document>
