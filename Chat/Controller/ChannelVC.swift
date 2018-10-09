@@ -38,5 +38,11 @@ class ChannelVC: NSViewController {
         self.channelsTableView.backgroundColor = channelColor
         
     }
+
+    @IBAction func addChanelButtonClicked(_ sender: NSButton)
+    {
+        
+    }
+    
     
 }

@@ -823,6 +823,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="addChanelButtonClicked:" target="Xbl-ZI-08Q" id="bFA-Kz-87J"/>
+                                </connections>
                             </button>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pea-Ui-BPb">
                                 <rect key="frame" x="0.0" y="0.0" width="200" height="198"/>
