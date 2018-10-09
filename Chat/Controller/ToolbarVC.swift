@@ -10,21 +10,32 @@ import Cocoa
 
 class ToolbarVC: NSViewController {
 
-    
+    //MARK:- IBOutlets
     @IBOutlet var userAvatar: NSImageView!
     @IBOutlet var loginLabel: NSTextField!
+    @IBOutlet var loginStackView: NSStackView!
     
+    
+    //MARK:- ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.wantsLayer = true
-        self.view.layer?.backgroundColor = toolbarColor.cgColor
-        setupLoginLabel()
+        setupViews()
     }
 
-    func setupLoginLabel()
+    func setupViews()
     {
-        self.loginLabel.textColor = grayTextColor
-        self.loginLabel.font = NSFont(name: avenirFont, size: loginFontSize)
+        self.view.wantsLayer = true
+        self.view.layer?.backgroundColor = toolbarColor.cgColor
+        self.loginLabel.setFont(loginFont, textColor: grayTextColor)
+        
+        self.loginStackView.gestureRecognizers.removeAll()
+        let profilePage = NSClickGestureRecognizer(target: self, action: #selector(ToolbarVC.openProfilePage))
+        self.loginStackView.addGestureRecognizer(profilePage)
+    }
+    
+    @objc func openProfilePage(_ recogniser: NSClickGestureRecognizer)
+    {
+        print("Open profile page")
     }
     
 }

@@ -33,6 +33,12 @@ extension NSButton
     
     func setFont(_ font: NSFont)
     {
-        self.font = NSFont(name: font.fontName, size: font.pointSize)
+        let font = NSFont(name: font.fontName, size: font.pointSize)!
+        let attributedTitle = NSMutableAttributedString(attributedString: self.attributedTitle)
+        let titleLength = attributedTitle.length
+        let range = NSMakeRange(0, titleLength)
+        attributedTitle.addAttributes([NSAttributedStringKey.font : font], range: range)
+        self.attributedTitle = attributedTitle
+        
     }
 }

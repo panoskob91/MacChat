@@ -10,20 +10,21 @@ import Cocoa
 
 class ChannelVC: NSViewController {
 
-    
+    //MARK:- IBOutlets
     @IBOutlet var channelsTableView: NSTableView!
     @IBOutlet var channelsLabel: NSTextField!
     @IBOutlet var usernameLabel: NSTextField!
     @IBOutlet var addChannelButton: NSButton!
     
+    //MARK:- ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addChannelButton.isBordered = false
-        drawView()
+        setupView()
         
     }
     //MARK:- Helper functions
-    func drawView()
+    func setupView()
     {
         self.view.wantsLayer = true
         self.view.layer?.backgroundColor = channelColor.cgColor
