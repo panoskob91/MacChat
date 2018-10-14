@@ -22,7 +22,7 @@ class ToolbarVC: NSViewController {
     
     //MARK:- Variables
     var modalBGView: ClickBlockingView!
-    
+    var modalView: NSView!
     
     //MARK:- ViewController lifecycle
     override func viewDidLoad() {
@@ -56,6 +56,9 @@ class ToolbarVC: NSViewController {
     
     @objc func presentModal(_ notif: Notification)
     {
+        var modalWidth = 0
+        var modalHeight = 0
+        
         if (self.modalBGView == nil)
         {
             self.modalBGView = ClickBlockingView()
@@ -70,10 +73,60 @@ class ToolbarVC: NSViewController {
             
             self.view.addConstraints([topConstraint, leftConstraint, rightConstraint, bottomConstraint])
             self.modalBGView.layer?.backgroundColor = CGColor.black
-            self.modalBGView.alphaValue = 1.0
+            self.modalBGView.alphaValue = 0.0
             
+            let closeBackgroundClick = NSClickGestureRecognizer(target: self, action: #selector(ToolbarVC.closeModalClick(_:)))
+            self.modalBGView.addGestureRecognizer(closeBackgroundClick)
+            
+            //Instantiate xib
+            guard let modalType = notif.userInfo?[USER_INFO_MODAL] as? ModalType else {
+                return
+            }
+            switch modalType {
+            case ModalType.login:
+                self.modalView = ModalLogin()
+                modalWidth = 475
+                modalHeight = 300
+            }
+            
+            modalView.wantsLayer = true
+            modalView.translatesAutoresizingMaskIntoConstraints = false
+            modalView.alphaValue = 0.0
+            self.view.addSubview(modalView, positioned: .above, relativeTo: self.modalBGView)
+            let horizontalConstraint = modalView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+            let verticalContstraint = modalView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+            let widthConstraint = self.modalView.widthAnchor.constraint(equalToConstant: CGFloat(modalWidth))
+            let heightConstraint = self.modalView.heightAnchor.constraint(equalToConstant: CGFloat(modalHeight))
+            
+            NSLayoutConstraint.activate([horizontalConstraint, verticalContstraint, widthConstraint, heightConstraint])
         }
+        NSAnimationContext.runAnimationGroup({ (context) in
+            context.duration = 0.5
+            self.modalBGView.animator().alphaValue = 0.6
+            self.modalView.animator().alphaValue = 1.0
+            self.view.layoutSubtreeIfNeeded()
+        }, completionHandler: nil)
         
+    }
+    
+    @objc func closeModalClick(_ recogniser: NSGestureRecognizer)
+    {
+        closeModal()
+    }
+    
+    func closeModal()
+    {
+        NSAnimationContext.runAnimationGroup({ (context) in
+            context.duration = 0.5
+            self.modalBGView.animator().alphaValue = 0.0
+            self.view.layoutSubtreeIfNeeded()
+        }) {
+            if (self.modalBGView != nil)
+            {
+                self.modalBGView.removeFromSuperview()
+                self.modalBGView = nil
+            }
+        }
     }
     
 }

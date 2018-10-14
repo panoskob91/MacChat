@@ -16,6 +16,8 @@
 		BA183E8A216B1C9000DA32ED /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA183E89216B1C9000DA32ED /* MainWindowController.swift */; };
 		BA183E8D216B1D8400DA32ED /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA183E8C216B1D8400DA32ED /* Constants.swift */; };
 		BA183E90216B1DE900DA32ED /* NSColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA183E8F216B1DE900DA32ED /* NSColor.swift */; };
+		BA39DE0A21734CCA00271CA3 /* ModalLogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA39DE0921734CCA00271CA3 /* ModalLogin.xib */; };
+		BA39DE0C21734D3A00271CA3 /* ModalLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA39DE0B21734D3A00271CA3 /* ModalLogin.swift */; };
 		BAA83BCA216BE84F00435F32 /* NSButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA83BC9216BE84F00435F32 /* NSButton.swift */; };
 		BAA83BCC216BEDA500435F32 /* NSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA83BCB216BEDA500435F32 /* NSTextField.swift */; };
 		BAF1728C216D2FAE0002688A /* ClickBlockingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF1728B216D2FAE0002688A /* ClickBlockingView.swift */; };
@@ -34,6 +36,8 @@
 		BA183E89216B1C9000DA32ED /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		BA183E8C216B1D8400DA32ED /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BA183E8F216B1DE900DA32ED /* NSColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSColor.swift; sourceTree = "<group>"; };
+		BA39DE0921734CCA00271CA3 /* ModalLogin.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModalLogin.xib; sourceTree = "<group>"; };
+		BA39DE0B21734D3A00271CA3 /* ModalLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalLogin.swift; sourceTree = "<group>"; };
 		BAA83BC9216BE84F00435F32 /* NSButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSButton.swift; sourceTree = "<group>"; };
 		BAA83BCB216BEDA500435F32 /* NSTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTextField.swift; sourceTree = "<group>"; };
 		BAF1728B216D2FAE0002688A /* ClickBlockingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickBlockingView.swift; sourceTree = "<group>"; };
@@ -69,6 +73,7 @@
 		BA0D1CFB216489BA00A9BBD7 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				BA39DE0821734CB100271CA3 /* XIBs */,
 				BA183E8B216B1D6100DA32ED /* Utilities */,
 				BA183E80216B1B5800DA32ED /* Model */,
 				BA183E7F216B1B5200DA32ED /* View */,
@@ -97,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				BAF1728B216D2FAE0002688A /* ClickBlockingView.swift */,
+				BA39DE0B21734D3A00271CA3 /* ModalLogin.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -125,6 +131,14 @@
 				BAA83BCB216BEDA500435F32 /* NSTextField.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BA39DE0821734CB100271CA3 /* XIBs */ = {
+			isa = PBXGroup;
+			children = (
+				BA39DE0921734CCA00271CA3 /* ModalLogin.xib */,
+			);
+			path = XIBs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,6 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA0D1D01216489BB00A9BBD7 /* Assets.xcassets in Resources */,
+				BA39DE0A21734CCA00271CA3 /* ModalLogin.xib in Resources */,
 				BA0D1D04216489BB00A9BBD7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -200,6 +215,7 @@
 				BA183E88216B1BA000DA32ED /* ChatVC.swift in Sources */,
 				BA183E82216B1B7900DA32ED /* ToolbarVC.swift in Sources */,
 				BA183E85216B1B8900DA32ED /* ChannelVC.swift in Sources */,
+				BA39DE0C21734D3A00271CA3 /* ModalLogin.swift in Sources */,
 				BA0D1CFD216489BA00A9BBD7 /* AppDelegate.swift in Sources */,
 				BA183E90216B1DE900DA32ED /* NSColor.swift in Sources */,
 				BA183E8A216B1C9000DA32ED /* MainWindowController.swift in Sources */,
