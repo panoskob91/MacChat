@@ -27,3 +27,5 @@ let loginFont = NSFont(name: AVENIR_REGULAR, size: loginFontSize)!
 let USER_INFO_MODAL = "modalUserInfo"
 //let NOTIF_PRESENT_MODAL = Notification.Name["presentModal"]
 let NOTIF_PRESENT_MODAL = Notification.Name(rawValue: "presentModal")
+let NOTIF_CLOSE_MODAL = Notification.Name(rawValue: "closeModal")
+let USER_INFO_REMOVE_IMMEDIATELY = "modalRemoveImmediately"

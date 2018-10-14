@@ -45,6 +45,7 @@ class ToolbarVC: NSViewController {
     func startObservingForNotifications()
     {
         NotificationCenter.default.addObserver(self, selector: #selector(ToolbarVC.presentModal(_:)), name: NOTIF_PRESENT_MODAL, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ToolbarVC.closeModalNotif(_:)), name: NOTIF_CLOSE_MODAL, object: nil)
     }
     
     @objc func openProfilePage(_ recogniser: NSClickGestureRecognizer)
@@ -114,24 +115,43 @@ class ToolbarVC: NSViewController {
         closeModal()
     }
     
-    func closeModal()
+    func closeModal(_ removeImediately: Bool = false)
     {
-        NSAnimationContext.runAnimationGroup({ (context) in
-            context.duration = 0.5
-            self.modalBGView.animator().alphaValue = 0.0
-            self.modalView.animator().alphaValue = 0.0
-            self.view.layoutSubtreeIfNeeded()
-        }) {
-            if (self.modalBGView != nil)
-            {
-                self.modalBGView.removeFromSuperview()
-                self.modalBGView = nil
+        if (removeImediately)
+        {
+            self.modalView.removeFromSuperview()
+        }
+        else
+        {
+            NSAnimationContext.runAnimationGroup({ (context) in
+                context.duration = 0.5
+                self.modalBGView.animator().alphaValue = 0.0
+                self.modalView.animator().alphaValue = 0.0
+                self.view.layoutSubtreeIfNeeded()
+            }) {
+                if (self.modalBGView != nil)
+                {
+                    self.modalBGView.removeFromSuperview()
+                    self.modalBGView = nil
+                }
+                if (self.modalView != nil)
+                {
+                    self.modalView.removeFromSuperview()
+                    self.modalView = nil
+                }
             }
-            if (self.modalView != nil)
-            {
-                self.modalView.removeFromSuperview()
-                self.modalView = nil
-            }
+            
+        }
+    }
+    
+    @objc func closeModalNotif(_ notification: Notification)
+    {
+        if let removeImediately = notification.userInfo?[USER_INFO_REMOVE_IMMEDIATELY] as? Bool {
+            closeModal(removeImediately)
+        }
+        else
+        {
+            closeModal()
         }
     }
     

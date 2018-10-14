@@ -48,11 +48,15 @@ class ModalLogin: NSView {
         self.emailTextField.layer?.cornerRadius = 5
         self.emailTextField.textColor = NSColor.darkGray
         self.emailTextField.isBordered = false
+        self.emailTextField.focusRingType = NSFocusRingType.none
+        self.emailTextField.nextKeyView = self.passwordTextField
         
         self.passwordTextField.placeholderString = "Password"
         self.passwordTextField.layer?.cornerRadius = 5
         self.passwordTextField.textColor = NSColor.darkGray
         self.passwordTextField.isBordered = false
+        self.passwordTextField.focusRingType = NSFocusRingType.none
+        self.passwordTextField.nextKeyView = self.emailTextField
         
         let modalGreen = NSColor.createColor(red: 0, green: 153, blue: 51, alpha: 1.0)
         self.loginButton.layer?.backgroundColor = modalGreen.cgColor
@@ -71,11 +75,13 @@ class ModalLogin: NSView {
     //MARK:- IBActions
     @IBAction func closeModalClicked(_ sender: NSButton)
     {
+        NotificationCenter.default.post(name: NOTIF_CLOSE_MODAL, object: nil)
         
     }
     @IBAction func createAccountButtonClicked(_ sender: NSButton)
     {
-        
+        let closeImediatelyDictionary: [String: Bool] = [USER_INFO_REMOVE_IMMEDIATELY: true]
+        NotificationCenter.default.post(name: NOTIF_CLOSE_MODAL, object: nil, userInfo: closeImediatelyDictionary)
     }
     
     
