@@ -82,6 +82,9 @@ class ModalLogin: NSView {
     {
         let closeImediatelyDictionary: [String: Bool] = [USER_INFO_REMOVE_IMMEDIATELY: true]
         NotificationCenter.default.post(name: NOTIF_CLOSE_MODAL, object: nil, userInfo: closeImediatelyDictionary)
+        let createAccountDictionary: [String: ModalType] = [USER_INFO_MODAL: ModalType.CreateAccount]
+        NotificationCenter.default.post(name: NOTIF_PRESENT_MODAL, object: nil, userInfo: createAccountDictionary)
+        
     }
     
     
