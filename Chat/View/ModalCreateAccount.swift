@@ -89,7 +89,7 @@ class ModalCreateAccount: NSView {
     //MARK:- IBActions
     @IBAction func closeModalButtonClicked(_ sender: NSButton)
     {
-        
+        NotificationCenter.default.post(name: NOTIF_CLOSE_MODAL, object: nil)
     }
     @IBAction func createAccountButtonClicked(_ sender: NSButton)
     {
