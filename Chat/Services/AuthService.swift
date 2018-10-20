@@ -56,7 +56,9 @@ class AuthService
 //        request.allHTTPHeaderFields = DEFAULT_HEADERS
 //        request.httpBody = bodyData
         
-        let request = URLRequest.request(withURLString: REGISTER_URL, method: "POST", headers: DEFAULT_HEADERS, cachePolicy: nil, httpBody: bodyData)
+//        let request = URLRequest.request(withURLString: REGISTER_URL, method: "POST", headers: DEFAULT_HEADERS, cachePolicy: nil, httpBody: bodyData)
+        
+        let request = URLRequest.request(withURLString: LOCAL_REGISTER_URL, method: "POST", headers: DEFAULT_HEADERS, cachePolicy: nil, httpBody: bodyData)
         
         let dataTask = URLSession.shared.dataTask(with: request) { (responseData, response, error) in
             guard let data = responseData else {
