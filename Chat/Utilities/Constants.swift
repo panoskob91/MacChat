@@ -46,3 +46,7 @@ let LOGIN_URL = "\(BASE_URL)account/login"
 
 //Networking constants
 let TIMEOUT_TIME: Double = 120.0
+
+
+//Headers
+let DEFAULT_HEADERS = ["Content-Type" : "application/json; charset=utf-8"]

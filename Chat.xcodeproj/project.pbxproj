@@ -16,6 +16,7 @@
 		BA183E8A216B1C9000DA32ED /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA183E89216B1C9000DA32ED /* MainWindowController.swift */; };
 		BA183E8D216B1D8400DA32ED /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA183E8C216B1D8400DA32ED /* Constants.swift */; };
 		BA183E90216B1DE900DA32ED /* NSColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA183E8F216B1DE900DA32ED /* NSColor.swift */; };
+		BA2BEB1C217B8DC500DA2C8F /* URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2BEB1B217B8DC500DA2C8F /* URLRequest.swift */; };
 		BA39DE0A21734CCA00271CA3 /* ModalLogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA39DE0921734CCA00271CA3 /* ModalLogin.xib */; };
 		BA39DE0C21734D3A00271CA3 /* ModalLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA39DE0B21734D3A00271CA3 /* ModalLogin.swift */; };
 		BA52F9BC21738CE7006BD637 /* ModalCreateAccount.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA52F9BB21738CE7006BD637 /* ModalCreateAccount.xib */; };
@@ -42,6 +43,7 @@
 		BA183E89216B1C9000DA32ED /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		BA183E8C216B1D8400DA32ED /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BA183E8F216B1DE900DA32ED /* NSColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSColor.swift; sourceTree = "<group>"; };
+		BA2BEB1B217B8DC500DA2C8F /* URLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequest.swift; sourceTree = "<group>"; };
 		BA39DE0921734CCA00271CA3 /* ModalLogin.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModalLogin.xib; sourceTree = "<group>"; };
 		BA39DE0B21734D3A00271CA3 /* ModalLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalLogin.swift; sourceTree = "<group>"; };
 		BA52F9BB21738CE7006BD637 /* ModalCreateAccount.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModalCreateAccount.xib; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				BA183E8F216B1DE900DA32ED /* NSColor.swift */,
 				BAA83BC9216BE84F00435F32 /* NSButton.swift */,
 				BAA83BCB216BEDA500435F32 /* NSTextField.swift */,
+				BA2BEB1B217B8DC500DA2C8F /* URLRequest.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA183E88216B1BA000DA32ED /* ChatVC.swift in Sources */,
+				BA2BEB1C217B8DC500DA2C8F /* URLRequest.swift in Sources */,
 				BA183E82216B1B7900DA32ED /* ToolbarVC.swift in Sources */,
 				BA183E85216B1B8900DA32ED /* ChannelVC.swift in Sources */,
 				BA39DE0C21734D3A00271CA3 /* ModalLogin.swift in Sources */,
