@@ -93,7 +93,9 @@ class ModalCreateAccount: NSView {
     }
     @IBAction func createAccountButtonClicked(_ sender: NSButton)
     {
-        
+        AuthService.sharedInstance.registerUser(email: "Test", password: "Test1") {
+            
+        }
     }
     @IBAction func chooseImageButtonClicked(_ sender: NSButton) {
     }

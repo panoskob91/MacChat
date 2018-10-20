@@ -31,3 +31,18 @@ let USER_INFO_MODAL = "modalUserInfo"
 let NOTIF_PRESENT_MODAL = Notification.Name(rawValue: "presentModal")
 let NOTIF_CLOSE_MODAL = Notification.Name(rawValue: "closeModal")
 let USER_INFO_REMOVE_IMMEDIATELY = "modalRemoveImmediately"
+
+
+//User Defaults
+let TOKEN_KEY = "token"
+let LOGGED_IN_KEY = "loggedIn"
+let USER_EMAIL = "userEmail"
+
+//API Urls
+let BASE_URL = "https://mac-chat-app.herokuapp.com/v1/"
+let REGISTER_URL = "\(BASE_URL)account/register"
+let LOGIN_URL = "\(BASE_URL)account/login"
+
+
+//Networking constants
+let TIMEOUT_TIME: Double = 120.0
