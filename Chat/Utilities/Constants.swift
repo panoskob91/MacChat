@@ -45,6 +45,8 @@ let REGISTER_URL = "\(BASE_URL)account/register"
 let LOCAL_REGISTER_URL = "\(LOCAL_BASE_URL)account/register"
 let LOGIN_URL = "\(BASE_URL)account/login"
 let LOCAL_LOGIN_URL = "\(LOCAL_BASE_URL)account/login"
+let USER_ADD_URL = "\(BASE_URL)user/add"
+let LOCAL_USER_ADD_URL = "\(LOCAL_BASE_URL)user/add"
 
 
 

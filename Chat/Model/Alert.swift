@@ -16,13 +16,14 @@ class Alert: NSAlert
     
     init(messageText text: String,
          buttons btns: [NSButton],
+         alertStyle aStyle: NSAlert.Style = NSAlert.Style.warning,
          icon image: NSImage?)
     {
         self.message = text
         self.alertIcon = image
         self.alertButtons = btns
         super.init()
-        
+        self.alertStyle = aStyle
         
     }
     

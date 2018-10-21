@@ -28,6 +28,8 @@
 		BAB81A59217C7A270093802C /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB81A58217C7A270093802C /* Networking.swift */; };
 		BAB81A5C217CA4F90093802C /* HTTPRequestsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB81A5B217CA4F90093802C /* HTTPRequestsProtocol.swift */; };
 		BAB81A5E217CACB80093802C /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB81A5D217CACB80093802C /* Alert.swift */; };
+		BAB81A60217CD1530093802C /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB81A5F217CD1530093802C /* LoginResponse.swift */; };
+		BAB81A62217CD8260093802C /* UserDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB81A61217CD8260093802C /* UserDataService.swift */; };
 		BAF1728C216D2FAE0002688A /* ClickBlockingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF1728B216D2FAE0002688A /* ClickBlockingView.swift */; };
 		F3AEC09839084AEF8B76F143 /* Pods_Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7F859C3BEB5E9C5CD5DE90A /* Pods_Chat.framework */; };
 /* End PBXBuildFile section */
@@ -59,6 +61,8 @@
 		BAB81A58217C7A270093802C /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		BAB81A5B217CA4F90093802C /* HTTPRequestsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequestsProtocol.swift; sourceTree = "<group>"; };
 		BAB81A5D217CACB80093802C /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		BAB81A5F217CD1530093802C /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		BAB81A61217CD8260093802C /* UserDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataService.swift; sourceTree = "<group>"; };
 		BAF1728B216D2FAE0002688A /* ClickBlockingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickBlockingView.swift; sourceTree = "<group>"; };
 		F7F859C3BEB5E9C5CD5DE90A /* Pods_Chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -154,6 +158,7 @@
 			children = (
 				BAB81A56217C783C0093802C /* RSBaseResponse.swift */,
 				BAB81A5D217CACB80093802C /* Alert.swift */,
+				BAB81A5F217CD1530093802C /* LoginResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -193,6 +198,7 @@
 			children = (
 				BAADCCE5217B5F5300D76BF1 /* AuthService.swift */,
 				BAB81A58217C7A270093802C /* Networking.swift */,
+				BAB81A61217CD8260093802C /* UserDataService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -331,6 +337,8 @@
 				BA183E82216B1B7900DA32ED /* ToolbarVC.swift in Sources */,
 				BAB81A59217C7A270093802C /* Networking.swift in Sources */,
 				BA183E85216B1B8900DA32ED /* ChannelVC.swift in Sources */,
+				BAB81A62217CD8260093802C /* UserDataService.swift in Sources */,
+				BAB81A60217CD1530093802C /* LoginResponse.swift in Sources */,
 				BA39DE0C21734D3A00271CA3 /* ModalLogin.swift in Sources */,
 				BA0D1CFD216489BA00A9BBD7 /* AppDelegate.swift in Sources */,
 				BA183E90216B1DE900DA32ED /* NSColor.swift in Sources */,

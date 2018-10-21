@@ -109,6 +109,9 @@
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <connections>
+                                <action selector="loginButtonClicked:" target="-2" id="uKZ-3Z-J7K"/>
+                            </connections>
                         </button>
                     </subviews>
                     <visibilityPriorities>

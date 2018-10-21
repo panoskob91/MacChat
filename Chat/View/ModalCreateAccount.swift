@@ -93,9 +93,18 @@ class ModalCreateAccount: NSView {
     }
     @IBAction func createAccountButtonClicked(_ sender: NSButton)
     {
-        AuthService.sharedInstance.registerUser(email: "Test2", password: "Test3") {
-            
+        let registerFieldsArePopulated: Bool = (self.nameTextField.stringValue != "") && (self.emailTextField.stringValue != "") && (self.passwordTextField.stringValue != "")
+        if (registerFieldsArePopulated)
+        {
+            AuthService.sharedInstance.registerUser(email: emailTextField.stringValue, password: passwordTextField.stringValue, successBlock: nil, failBlock: nil)
         }
+        else
+        {
+            let button: NSButton = NSButton(title: "OK", target: self, action: nil)
+            let alert: Alert = Alert(messageText: "Please populate above fields before procceding to registration", buttons: [button], alertStyle: NSAlert.Style.critical, icon: nil)
+            alert.showAlert()
+        }
+        
     }
     @IBAction func chooseImageButtonClicked(_ sender: NSButton) {
     }

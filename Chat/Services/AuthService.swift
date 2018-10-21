@@ -44,10 +44,14 @@ class AuthService
         }
     }
     
-    func registerUser(email: String, password: String, completion: @escaping ()->Void)
+    func registerUser(email: String,
+                      password: String,
+                      successBlock: (() -> Void)?,
+                      failBlock: (() -> Void)?)
     {
         Networking.sharedInstance.registerUser(email: email, password: password, success: { (successResponse) in
             print(successResponse)
+            successBlock?()
             
         }) { (failureResponse) in
             guard let messageDictionary = failureResponse.responseObject?["message"] as? [String : String] else {
@@ -62,17 +66,29 @@ class AuthService
                 let alert: Alert = Alert(messageText: alertMessage, buttons: [button], icon: nil)
                 alert.showAlert()
             }
+            failBlock?()
         }
     }
     
-    func loginUser(email: String, password: String,  completionBlock: @escaping() -> Void)
+    func loginUser(email: String, password: String,  completionBlock: (() -> Void)?)
     {
-        let lowerCaseEmail = email.lowercased()
-        let body = ["email" : lowerCaseEmail,
-                    "password" : password]
-        let bodyData = try? JSONSerialization.data(withJSONObject: body)
+        Networking.sharedInstance.loginUser(email: email, password: password, successBlock: { (succesfullResponse) in
+            guard let token = succesfullResponse.userToken else {
+                return
+            }
+            self.authToken = token
+        }) { (failureResponse) in
+            print("Login response status code", failureResponse.statusCode)
+        }
+    }
+    
+    func createUser(name: String,
+                    email: String,
+                    avatarName: String,
+                    avatarColor: String,
+                    completionBlock: @escaping () -> Void)
+    {
         
-//        var request = URLRequest(url: <#T##URL#>, cachePolicy: <#T##URLRequest.CachePolicy#>, timeoutInterval: <#T##TimeInterval#>)
     }
     
 }

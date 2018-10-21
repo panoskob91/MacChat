@@ -86,6 +86,12 @@ class ModalLogin: NSView {
         NotificationCenter.default.post(name: NOTIF_PRESENT_MODAL, object: nil, userInfo: createAccountDictionary)
         
     }
+    @IBAction func loginButtonClicked(_ sender: NSButton)
+    {
+        AuthService.sharedInstance.loginUser(email: self.emailTextField.stringValue,
+                                             password: self.passwordTextField.stringValue,
+                                             completionBlock: nil)
+    }
     
     
 }
