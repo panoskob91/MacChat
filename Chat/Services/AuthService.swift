@@ -6,7 +6,7 @@
 //  Copyright © 2018 Panagiotis  Kompotis. All rights reserved.
 //
 
-import Foundation
+import Cocoa
 
 class AuthService
 {
@@ -48,8 +48,20 @@ class AuthService
     {
         Networking.sharedInstance.registerUser(email: email, password: password, success: { (successResponse) in
             print(successResponse)
+            
         }) { (failureResponse) in
-            print(failureResponse)
+            guard let messageDictionary = failureResponse.responseObject?["message"] as? [String : String] else {
+                return
+            }
+            guard let alertMessage = messageDictionary["message"] else {
+                return
+            }
+            
+            DispatchQueue.main.async {
+                let button: NSButton = NSButton(title: "OK", target: self, action: nil)
+                let alert: Alert = Alert(messageText: alertMessage, buttons: [button], icon: nil)
+                alert.showAlert()
+            }
         }
     }
     
