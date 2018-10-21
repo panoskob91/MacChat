@@ -46,29 +46,11 @@ class AuthService
     
     func registerUser(email: String, password: String, completion: @escaping ()->Void)
     {
-        let lowercasedEmail = email.lowercased()
-        let body: [String : Any] = ["email" : lowercasedEmail,
-                                    "password" : password]
-        let bodyData = try? JSONSerialization.data(withJSONObject: body)
-//        let requestURL: URL = URL(string: REGISTER_URL)!
-//        var request = URLRequest(url: requestURL, timeoutInterval: TIMEOUT_TIME)
-//        request.httpMethod = "POST"
-//        request.allHTTPHeaderFields = DEFAULT_HEADERS
-//        request.httpBody = bodyData
-        
-//        let request = URLRequest.request(withURLString: REGISTER_URL, method: "POST", headers: DEFAULT_HEADERS, cachePolicy: nil, httpBody: bodyData)
-        
-        let request = URLRequest.request(withURLString: LOCAL_REGISTER_URL, method: "POST", headers: DEFAULT_HEADERS, cachePolicy: nil, httpBody: bodyData)
-        
-        let dataTask = URLSession.shared.dataTask(with: request) { (responseData, response, error) in
-            guard let data = responseData else {
-                return
-            }
-            let json = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
-            print(json)
+        Networking.sharedInstance.registerUser(email: email, password: password, success: { (successResponse) in
+            print(successResponse)
+        }) { (failureResponse) in
+            print(failureResponse)
         }
-        dataTask.resume()
-        
     }
     
     func loginUser(email: String, password: String,  completionBlock: @escaping() -> Void)

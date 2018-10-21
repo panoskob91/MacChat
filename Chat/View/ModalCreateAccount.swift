@@ -93,7 +93,7 @@ class ModalCreateAccount: NSView {
     }
     @IBAction func createAccountButtonClicked(_ sender: NSButton)
     {
-        AuthService.sharedInstance.registerUser(email: "Test", password: "Test1") {
+        AuthService.sharedInstance.registerUser(email: "Test2", password: "Test3") {
             
         }
     }

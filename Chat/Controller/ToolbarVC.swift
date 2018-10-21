@@ -127,6 +127,7 @@ class ToolbarVC: NSViewController {
         if (removeImediately)
         {
             self.modalView.removeFromSuperview()
+            self.modalView = nil
         }
         else
         {

@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chat/Services/AuthService.swift"
-            timestampString = "561748056.723159"
+            timestampString = "561817249.1655591"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
             landmarkName = "registerUser(email:password:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,61 +26,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chat/Services/AuthService.swift"
-            timestampString = "561748056.723876"
+            timestampString = "561817249.166805"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
             landmarkName = "registerUser(email:password:completion:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Chat/Services/AuthService.swift"
-            timestampString = "561748056.724293"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "registerUser(email:password:completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Chat.AuthService.registerUser(email: Swift.String, password: Swift.String, completion: () -&gt; ()) -&gt; ()"
-                  moduleName = "Chat"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/Acer/iOS%20MacApps/Chat/Chat/Services/AuthService.swift"
-                  timestampString = "561748057.2425801"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "63"
-                  endingLineNumber = "63"
-                  offsetFromSymbolStart = "1242">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__ObjC.URLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Chat.AuthService.registerUser(email: Swift.String, password: Swift.String, completion: () -&gt; ()) -&gt; ()"
-                  moduleName = "Chat"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/Acer/iOS%20MacApps/Chat/Chat/Services/AuthService.swift"
-                  timestampString = "561748057.245589"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "64"
-                  endingLineNumber = "64"
-                  offsetFromSymbolStart = "31">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
