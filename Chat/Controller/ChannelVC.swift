@@ -11,10 +11,10 @@ import Cocoa
 class ChannelVC: NSViewController {
 
     //MARK:- IBOutlets
-    @IBOutlet var channelsTableView: NSTableView!
-    @IBOutlet var channelsLabel: NSTextField!
-    @IBOutlet var usernameLabel: NSTextField!
-    @IBOutlet var addChannelButton: NSButton!
+    @IBOutlet private var channelsTableView: NSTableView!
+    @IBOutlet private var channelsLabel: NSTextField!
+    @IBOutlet private var usernameLabel: NSTextField!
+    @IBOutlet private var addChannelButton: NSButton!
     
     //MARK:- ViewController lifecycle
     override func viewDidLoad() {
@@ -24,7 +24,7 @@ class ChannelVC: NSViewController {
         
     }
     //MARK:- Helper functions
-    func setupView()
+    private func setupView()
     {
         self.view.wantsLayer = true
         self.view.layer?.backgroundColor = channelColor.cgColor
@@ -39,7 +39,7 @@ class ChannelVC: NSViewController {
         
     }
 
-    @IBAction func addChanelButtonClicked(_ sender: NSButton)
+    @IBAction private func addChanelButtonClicked(_ sender: NSButton)
     {
         
     }

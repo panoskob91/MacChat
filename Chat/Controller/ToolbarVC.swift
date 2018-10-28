@@ -17,13 +17,13 @@ enum ModalType {
 class ToolbarVC: NSViewController {
 
     //MARK:- IBOutlets
-    @IBOutlet var userAvatar: NSImageView!
-    @IBOutlet var loginLabel: NSTextField!
-    @IBOutlet var loginStackView: NSStackView!
+    @IBOutlet private var userAvatar: NSImageView!
+    @IBOutlet private var loginLabel: NSTextField!
+    @IBOutlet private var loginStackView: NSStackView!
     
     //MARK:- Variables
-    var modalBGView: ClickBlockingView!
-    var modalView: NSView!
+    private var modalBGView: ClickBlockingView!
+    private var modalView: NSView!
     
     //MARK:- ViewController lifecycle
     override func viewDidLoad() {
@@ -32,7 +32,7 @@ class ToolbarVC: NSViewController {
         startObservingForNotifications()
     }
 
-    func setupViews()
+    private func setupViews()
     {
         self.view.wantsLayer = true
         self.view.layer?.backgroundColor = toolbarColor.cgColor
@@ -43,20 +43,20 @@ class ToolbarVC: NSViewController {
         self.loginStackView.addGestureRecognizer(profilePage)
     }
     
-    func startObservingForNotifications()
+    private func startObservingForNotifications()
     {
         NotificationCenter.default.addObserver(self, selector: #selector(ToolbarVC.presentModal(_:)), name: NOTIF_PRESENT_MODAL, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ToolbarVC.closeModalNotif(_:)), name: NOTIF_CLOSE_MODAL, object: nil)
     }
     
-    @objc func openProfilePage(_ recogniser: NSClickGestureRecognizer)
+    @objc private func openProfilePage(_ recogniser: NSClickGestureRecognizer)
     {
         let loginDict: [String : ModalType] = [USER_INFO_MODAL : ModalType.login]
         NotificationCenter.default.post(name: NOTIF_PRESENT_MODAL, object: nil, userInfo: loginDict)
         
     }
     
-    @objc func presentModal(_ notif: Notification)
+    @objc private func presentModal(_ notif: Notification)
     {
         var modalWidth = 0
         var modalHeight = 0
@@ -117,12 +117,12 @@ class ToolbarVC: NSViewController {
         
     }
     
-    @objc func closeModalClick(_ recogniser: NSGestureRecognizer)
+    @objc private func closeModalClick(_ recogniser: NSGestureRecognizer)
     {
         closeModal()
     }
     
-    func closeModal(_ removeImediately: Bool = false)
+    private func closeModal(_ removeImediately: Bool = false)
     {
         if (removeImediately)
         {
@@ -152,7 +152,7 @@ class ToolbarVC: NSViewController {
         }
     }
     
-    @objc func closeModalNotif(_ notification: Notification)
+    @objc private func closeModalNotif(_ notification: Notification)
     {
         if let removeImediately = notification.userInfo?[USER_INFO_REMOVE_IMMEDIATELY] as? Bool {
             closeModal(removeImediately)

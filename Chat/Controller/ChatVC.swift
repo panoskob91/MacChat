@@ -11,13 +11,13 @@ import Cocoa
 class ChatVC: NSViewController {
 
     //MARK:- IBOutlets
-    @IBOutlet var chatTableView: NSTableView!
-    @IBOutlet var channelTitle: NSTextField!
-    @IBOutlet var channeDescription: NSTextField!
-    @IBOutlet var userTypingLabel: NSTextField!
-    @IBOutlet var messageOutlineView: NSView!
-    @IBOutlet var messageText: NSTextField!
-    @IBOutlet var sendMessageButton: NSButton!
+    @IBOutlet private var chatTableView: NSTableView!
+    @IBOutlet private var channelTitle: NSTextField!
+    @IBOutlet private var channeDescription: NSTextField!
+    @IBOutlet private var userTypingLabel: NSTextField!
+    @IBOutlet private var messageOutlineView: NSView!
+    @IBOutlet private var messageText: NSTextField!
+    @IBOutlet private var sendMessageButton: NSButton!
     
     //MARK:- ViewController lifecycle
     override func viewDidLoad() {
@@ -30,7 +30,7 @@ class ChatVC: NSViewController {
     }
     
     //MARK:- Helper methods
-    func setupView()
+    private func setupView()
     {
         self.view.wantsLayer = true
         //        self.view.layer?.backgroundColor = chatColor.cgColor
@@ -52,7 +52,7 @@ class ChatVC: NSViewController {
     }
     
     //MARK:- IBActions
-    @IBAction func sendMessageButtonClicked(_ sender: NSButton)
+    @IBAction private func sendMessageButtonClicked(_ sender: NSButton)
     {
         
     }
