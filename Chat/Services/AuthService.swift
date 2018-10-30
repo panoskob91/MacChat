@@ -50,9 +50,7 @@ class AuthService
                       failBlock: (() -> Void)?)
     {
         Networking.sharedInstance.registerUser(email: email, password: password, success: { (successResponse) in
-            print(successResponse)
             successBlock?()
-            
         }) { (failureResponse) in
             guard let messageDictionary = failureResponse.responseObject?["message"] as? [String : String] else {
                 return
@@ -88,7 +86,9 @@ class AuthService
                     avatarColor: String,
                     completionBlock: @escaping () -> Void)
     {
-        
+        Networking.sharedInstance.createNewUser(name: name, email: email, avatarName: avatarName, avatarColor: avatarColor) {
+            completionBlock()
+        }
     }
     
 }

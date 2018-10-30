@@ -96,7 +96,21 @@ class ModalCreateAccount: NSView {
         let registerFieldsArePopulated: Bool = (self.nameTextField.stringValue != "") && (self.emailTextField.stringValue != "") && (self.passwordTextField.stringValue != "")
         if (registerFieldsArePopulated)
         {
-            AuthService.sharedInstance.registerUser(email: emailTextField.stringValue, password: passwordTextField.stringValue, successBlock: nil, failBlock: nil)
+            AuthService.sharedInstance.registerUser(email: emailTextField.stringValue,
+                                                    password: passwordTextField.stringValue, successBlock: {
+                                                        DispatchQueue.main.async {
+                                                            AuthService.sharedInstance.createUser(name: self.nameTextField.stringValue,
+                                                                                                  email: self.emailTextField.stringValue,
+                                                                                                  avatarName: "dark5", avatarColor: "", completionBlock: {
+                                                                                                    DispatchQueue.main.async {
+                                                                                                        NotificationCenter.default.post(name: NOTIF_CLOSE_MODAL, object: nil)
+                                                                                                    }
+                                                            })
+                                                        }
+                                                        
+            }) {
+                debugPrint("Register user failed")
+            }
         }
         else
         {
