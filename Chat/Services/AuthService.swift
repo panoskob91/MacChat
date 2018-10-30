@@ -75,6 +75,9 @@ class AuthService
                 return
             }
             self.authToken = token
+            self.userEmail = email
+            
+            completionBlock?()
         }) { (failureResponse) in
             print("Login response status code", failureResponse.statusCode)
         }

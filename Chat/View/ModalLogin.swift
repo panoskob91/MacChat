@@ -88,9 +88,25 @@ class ModalLogin: NSView {
     }
     @IBAction func loginButtonClicked(_ sender: NSButton)
     {
-        AuthService.sharedInstance.loginUser(email: self.emailTextField.stringValue,
-                                             password: self.passwordTextField.stringValue,
-                                             completionBlock: nil)
+        if (emailTextField.stringValue != "" && passwordTextField.stringValue != "")
+        {
+            AuthService.sharedInstance.loginUser(email: self.emailTextField.stringValue,
+                                                 password: self.passwordTextField.stringValue) {
+                                                    DispatchQueue.main.async {
+                                                        NotificationCenter.default.post(name: NOTIF_CLOSE_MODAL, object: nil)
+                                                        print(AuthService.sharedInstance.authToken)
+                                                        print(AuthService.sharedInstance.userEmail)
+                                                    }
+                                                    
+            }
+        }
+        else
+        {
+            //Show allert
+            let button = NSButton(title: "OK", target: nil, action: nil)
+            let alert = Alert(messageText: "Please populate email and password fields", buttons: [button], icon: nil)
+            alert.showAlert()
+        }
     }
     
     
