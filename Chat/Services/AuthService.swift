@@ -76,6 +76,7 @@ class AuthService
             }
             self.authToken = token
             self.userEmail = email
+            self.isLoggedIn = true
             
             completionBlock?()
         }) { (failureResponse) in
@@ -91,6 +92,13 @@ class AuthService
     {
         Networking.sharedInstance.createNewUser(name: name, email: email, avatarName: avatarName, avatarColor: avatarColor) {
             completionBlock()
+        }
+    }
+    
+    func findUserByEmail(_ email: String, completionBlock: @escaping (_ user: User) -> Void )
+    {
+        Networking.sharedInstance.findUserByEmail(email) { (user) in
+            completionBlock(user)
         }
     }
     

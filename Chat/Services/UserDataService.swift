@@ -67,4 +67,13 @@ class UserDataService: NSObject
             _name = newValue
         }
     }
+    
+    class func initializeUserDataServiceSingletonWith(object userObject: User)
+    {
+        UserDataService.sharedInstance.id = userObject.userID
+        UserDataService.sharedInstance.name = userObject.userName
+        UserDataService.sharedInstance.email = userObject.userEmail
+        UserDataService.sharedInstance.avatarName = userObject.avatarName
+        UserDataService.sharedInstance.avatarColor = userObject.avatarColor
+    }
 }

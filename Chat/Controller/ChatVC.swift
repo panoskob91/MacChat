@@ -22,6 +22,7 @@ class ChatVC: NSViewController {
     //MARK:- ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        startObservingForNotifications()
         
     }
     
@@ -49,6 +50,23 @@ class ChatVC: NSViewController {
         self.sendMessageButton.setTitleColor(color: NSColor.black)
         self.sendMessageButton.setFont(loginFont)
         
+    }
+    
+    private func startObservingForNotifications()
+    {
+        NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.userDataDidChange), name: NOTIF_USER_DATA_CHANGED, object: nil)
+    }
+    
+    @objc private func userDataDidChange(_ notif: Notification)
+    {
+        if (AuthService.sharedInstance.isLoggedIn)
+        {
+            
+        }
+        else
+        {
+            
+        }
     }
     
     //MARK:- IBActions

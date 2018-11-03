@@ -47,6 +47,8 @@ class ToolbarVC: NSViewController {
     {
         NotificationCenter.default.addObserver(self, selector: #selector(ToolbarVC.presentModal(_:)), name: NOTIF_PRESENT_MODAL, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ToolbarVC.closeModalNotif(_:)), name: NOTIF_CLOSE_MODAL, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ToolbarVC.userDataDidChange(_:)), name: NOTIF_USER_DATA_CHANGED, object: nil)
+        
     }
     
     @objc private func openProfilePage(_ recogniser: NSClickGestureRecognizer)
@@ -160,6 +162,28 @@ class ToolbarVC: NSViewController {
         else
         {
             closeModal()
+        }
+    }
+    
+    @objc private func userDataDidChange(_ notif: Notification)
+    {
+        if (AuthService.sharedInstance.isLoggedIn)
+        {
+            loginLabel.stringValue = UserDataService.sharedInstance.name
+            userAvatar.wantsLayer = true
+            userAvatar.layer?.cornerRadius = 5
+            userAvatar.layer?.borderColor = NSColor.white.cgColor
+            userAvatar.layer?.borderWidth = 1
+            userAvatar.image = NSImage(named: NSImage.Name(rawValue: UserDataService.sharedInstance.avatarName))
+            //TODO: Add userAvatar background color
+        }
+        else
+        {
+            loginLabel.stringValue = "Log in"
+            userAvatar.wantsLayer = true
+            userAvatar.layer?.borderWidth = 0
+            userAvatar.image = NSImage(named: NSImage.Name(rawValue: "profileDefault"))
+            userAvatar.layer?.backgroundColor = CGColor.clear
         }
     }
     

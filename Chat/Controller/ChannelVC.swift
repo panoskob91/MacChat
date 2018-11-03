@@ -21,6 +21,7 @@ class ChannelVC: NSViewController {
         super.viewDidLoad()
         self.addChannelButton.isBordered = false
         setupView()
+        startObservingForNotifications()
         
     }
     //MARK:- Helper functions
@@ -31,6 +32,7 @@ class ChannelVC: NSViewController {
         //labels
         self.channelsLabel.setFont(channelFont, textColor: grayTextColor)
         self.usernameLabel.setFont(channelFont, textColor: grayTextColor)
+        self.usernameLabel.stringValue = ""
         //Buttons
         self.addChannelButton.setFont(channelFont)
         self.addChannelButton.setTitleColor(color: grayTextColor)
@@ -39,6 +41,24 @@ class ChannelVC: NSViewController {
         
     }
 
+    private func startObservingForNotifications()
+    {
+        NotificationCenter.default.addObserver(self, selector: #selector(ChannelVC.userDataDidChange(_:)), name: NOTIF_USER_DATA_CHANGED, object: nil)
+    }
+    
+    @objc private func userDataDidChange(_ notif: Notification)
+    {
+        if (AuthService.sharedInstance.isLoggedIn)
+        {
+            usernameLabel.stringValue = UserDataService.sharedInstance.name
+        }
+        else
+        {
+            usernameLabel.stringValue = ""
+        }
+    }
+    
+    //MARK: - IBActions
     @IBAction private func addChanelButtonClicked(_ sender: NSButton)
     {
         

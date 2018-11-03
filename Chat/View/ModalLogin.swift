@@ -93,10 +93,16 @@ class ModalLogin: NSView {
             AuthService.sharedInstance.loginUser(email: self.emailTextField.stringValue,
                                                  password: self.passwordTextField.stringValue) {
                                                     DispatchQueue.main.async {
-                                                        NotificationCenter.default.post(name: NOTIF_CLOSE_MODAL, object: nil)
-                                                        print(AuthService.sharedInstance.authToken)
-                                                        print(AuthService.sharedInstance.userEmail)
+                                                        AuthService.sharedInstance.findUserByEmail(self.emailTextField.stringValue, completionBlock: { (user) in
+                                                            UserDataService.initializeUserDataServiceSingletonWith(object: user)
+                                                            DispatchQueue.main.async {
+                                                                NotificationCenter.default.post(name: NOTIF_CLOSE_MODAL, object: nil)
+                                                                NotificationCenter.default.post(name: NOTIF_USER_DATA_CHANGED, object: nil)
+                                                            }
+                                                        })
                                                     }
+                                                    
+                                                    
                                                     
             }
         }
