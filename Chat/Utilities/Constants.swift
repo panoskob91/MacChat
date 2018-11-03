@@ -47,7 +47,8 @@ let LOGIN_URL = "\(BASE_URL)account/login"
 let LOCAL_LOGIN_URL = "\(LOCAL_BASE_URL)account/login"
 let USER_ADD_URL = "\(BASE_URL)user/add"
 let LOCAL_USER_ADD_URL = "\(LOCAL_BASE_URL)user/add"
-
+let LOCAL_URL_USER_BY_EMAIL = "\(LOCAL_BASE_URL)user/byEmail/"
+let URL_UER_BY_EMAIL = "\(BASE_URL)user/byEmail/"
 
 
 //Networking constants
@@ -56,3 +57,5 @@ let TIMEOUT_TIME: Double = 120.0
 
 //Headers
 let DEFAULT_HEADERS = ["Content-Type" : "application/json; charset=utf-8"]
+let BEARER_HEADER = ["Authorization" : "Bearer \(AuthService.sharedInstance.authToken)",
+    "Content-Type" : "application/json; charset=utf-8"]

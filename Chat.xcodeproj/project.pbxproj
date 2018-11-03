@@ -17,6 +17,7 @@
 		BA183E8D216B1D8400DA32ED /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA183E8C216B1D8400DA32ED /* Constants.swift */; };
 		BA183E90216B1DE900DA32ED /* NSColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA183E8F216B1DE900DA32ED /* NSColor.swift */; };
 		BA2BEB1C217B8DC500DA2C8F /* URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2BEB1B217B8DC500DA2C8F /* URLRequest.swift */; };
+		BA394B8C218DB1B800D94C66 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA394B8B218DB1B800D94C66 /* User.swift */; };
 		BA39DE0A21734CCA00271CA3 /* ModalLogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA39DE0921734CCA00271CA3 /* ModalLogin.xib */; };
 		BA39DE0C21734D3A00271CA3 /* ModalLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA39DE0B21734D3A00271CA3 /* ModalLogin.swift */; };
 		BA52F9BC21738CE7006BD637 /* ModalCreateAccount.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA52F9BB21738CE7006BD637 /* ModalCreateAccount.xib */; };
@@ -51,6 +52,7 @@
 		BA183E8C216B1D8400DA32ED /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BA183E8F216B1DE900DA32ED /* NSColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSColor.swift; sourceTree = "<group>"; };
 		BA2BEB1B217B8DC500DA2C8F /* URLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequest.swift; sourceTree = "<group>"; };
+		BA394B8B218DB1B800D94C66 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BA39DE0921734CCA00271CA3 /* ModalLogin.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModalLogin.xib; sourceTree = "<group>"; };
 		BA39DE0B21734D3A00271CA3 /* ModalLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalLogin.swift; sourceTree = "<group>"; };
 		BA52F9BB21738CE7006BD637 /* ModalCreateAccount.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModalCreateAccount.xib; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				BAB81A56217C783C0093802C /* RSBaseResponse.swift */,
 				BAB81A5D217CACB80093802C /* Alert.swift */,
 				BAB81A5F217CD1530093802C /* LoginResponse.swift */,
+				BA394B8B218DB1B800D94C66 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				BAB81A62217CD8260093802C /* UserDataService.swift in Sources */,
 				BAB81A60217CD1530093802C /* LoginResponse.swift in Sources */,
 				BA39DE0C21734D3A00271CA3 /* ModalLogin.swift in Sources */,
+				BA394B8C218DB1B800D94C66 /* User.swift in Sources */,
 				BA0D1CFD216489BA00A9BBD7 /* AppDelegate.swift in Sources */,
 				BA183E90216B1DE900DA32ED /* NSColor.swift in Sources */,
 				BAADCCE6217B5F5300D76BF1 /* AuthService.swift in Sources */,

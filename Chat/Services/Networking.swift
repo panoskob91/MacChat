@@ -1,4 +1,4 @@
-//
+ //
 //  Networking.swift
 //  Chat
 //
@@ -123,12 +123,10 @@ class Networking: NSObject, HTTPRequestsProtocol
         
         let bodyData = try? JSONSerialization.data(withJSONObject: body)
         
-        let headers = ["Authorization" : "Bearer \(AuthService.sharedInstance.authToken)",
-                       "Content-Type" : "application/json; charset=utf-8"]
         //        let request = URLRequest.request(withURLString: USER_ADD_URL  , method: "POST", headers: DEFAULT_HEADERS, cachePolicy: nil, httpBody: bodyData)
         let request = URLRequest.request(withURLString: LOCAL_USER_ADD_URL,
                                          method: "POST",
-                                         headers: headers,
+                                         headers: BEARER_HEADER,
                                          cachePolicy: nil,
                                          httpBody: bodyData)
         let dataTask = URLSession.shared.dataTask(with: request) { (responseData, response, responseError) in
@@ -141,20 +139,13 @@ class Networking: NSObject, HTTPRequestsProtocol
                 return
             }
             
-            guard let userId = json["_id"] as? String else {
-                return
-            }
-            guard let name = json["name"] as? String else {
-                return
-            }
-            guard let email = json["email"] as? String else {
-                return
-            }
-            guard let avatarName = json["avatarName"] as? String else {
-                return
-            }
-            guard let avatarColor = json["avatarColor"] as? String else {
-                return
+            guard let userId = json["_id"] as? String,
+                let name = json["name"] as? String,
+                let email = json["email"] as? String,
+                let avatarName = json["avatarName"] as? String,
+                let avatarColor = json["avatarColor"] as? String else {
+                
+                    return
             }
             
             UserDataService.sharedInstance.id = userId
@@ -167,6 +158,27 @@ class Networking: NSObject, HTTPRequestsProtocol
         }
         dataTask.resume()
         
+    }
+    private func findUserBy(email eMail: String, completionBlock: @escaping(User) -> Void)
+    {
+        
+        let request = URLRequest.request(withURLString: "\(LOCAL_URL_USER_BY_EMAIL)\(eMail)", method: "GET", headers: BEARER_HEADER, cachePolicy: nil, httpBody: nil)
+        let dataTask = URLSession.shared.dataTask(with: request) { (responseData, response, networkError) in
+            if (networkError == nil) {
+                guard let jsonData = responseData else {
+                    return
+                }
+                let jsonObject = try? JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers)
+                guard let json = jsonObject as? [String : Any],
+                      let userInputJSON = User.createUserInputDictionary(json) else {
+                    return
+                }
+                let user = User(userInputJSON)
+                completionBlock(user)
+            }
+            
+        }
+        dataTask.resume()
     }
     
     //MARK:- Protocol functions
@@ -201,6 +213,11 @@ class Networking: NSObject, HTTPRequestsProtocol
     {
         createUser(name: name, email: email, avatarName: avatarName, avatarColor: avatarColor) {
             completionBlock()
+        }
+    }
+    func findUserByEmail(_ email: String, completionBlock: @escaping(User) -> Void) {
+        findUserBy(email: email) { (userObject) in
+            completionBlock(userObject)
         }
     }
 }
