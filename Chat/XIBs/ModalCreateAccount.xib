@@ -214,6 +214,9 @@
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="chooseImageButtonClicked:" target="-2" id="hc0-JF-nGo"/>
+                                            </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="201-xA-Djq">
                                             <rect key="frame" x="0.0" y="0.0" width="125" height="32"/>

@@ -30,6 +30,7 @@
 		BAB81A5E217CACB80093802C /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB81A5D217CACB80093802C /* Alert.swift */; };
 		BAB81A60217CD1530093802C /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB81A5F217CD1530093802C /* LoginResponse.swift */; };
 		BAB81A62217CD8260093802C /* UserDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB81A61217CD8260093802C /* UserDataService.swift */; };
+		BAD0F1032188F57400B39F03 /* NSImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD0F1022188F57400B39F03 /* NSImageView.swift */; };
 		BAF1728C216D2FAE0002688A /* ClickBlockingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF1728B216D2FAE0002688A /* ClickBlockingView.swift */; };
 		F3AEC09839084AEF8B76F143 /* Pods_Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7F859C3BEB5E9C5CD5DE90A /* Pods_Chat.framework */; };
 /* End PBXBuildFile section */
@@ -63,6 +64,7 @@
 		BAB81A5D217CACB80093802C /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		BAB81A5F217CD1530093802C /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		BAB81A61217CD8260093802C /* UserDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataService.swift; sourceTree = "<group>"; };
+		BAD0F1022188F57400B39F03 /* NSImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImageView.swift; sourceTree = "<group>"; };
 		BAF1728B216D2FAE0002688A /* ClickBlockingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickBlockingView.swift; sourceTree = "<group>"; };
 		F7F859C3BEB5E9C5CD5DE90A /* Pods_Chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -180,6 +182,7 @@
 				BAA83BC9216BE84F00435F32 /* NSButton.swift */,
 				BAA83BCB216BEDA500435F32 /* NSTextField.swift */,
 				BA2BEB1B217B8DC500DA2C8F /* URLRequest.swift */,
+				BAD0F1022188F57400B39F03 /* NSImageView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAB81A5E217CACB80093802C /* Alert.swift in Sources */,
+				BAD0F1032188F57400B39F03 /* NSImageView.swift in Sources */,
 				BA183E88216B1BA000DA32ED /* ChatVC.swift in Sources */,
 				BA2BEB1C217B8DC500DA2C8F /* URLRequest.swift in Sources */,
 				BA183E82216B1B7900DA32ED /* ToolbarVC.swift in Sources */,
