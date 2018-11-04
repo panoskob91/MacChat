@@ -30,9 +30,22 @@ class ToolbarVC: NSViewController {
         super.viewDidLoad()
         setupViews()
         startObservingForNotifications()
-//        AuthService.sharedInstance.isLoggedIn = false
     }
-
+    
+    override func viewWillAppear() {
+        setupViews()
+        if (AuthService.sharedInstance.isLoggedIn)
+        {
+            AuthService.sharedInstance.findUserByEmail(AuthService.sharedInstance.userEmail) { (user) in
+                UserDataService.initializeUserDataServiceSingletonWith(object: user)
+                DispatchQueue.main.async {
+                    NotificationCenter.default.post(name: NOTIF_USER_DATA_CHANGED, object: nil)
+                }
+            }
+        }
+    }
+    
+    
     private func setupViews()
     {
         self.view.wantsLayer = true

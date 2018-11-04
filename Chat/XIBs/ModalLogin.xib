@@ -75,7 +75,7 @@
                                     <constraints>
                                         <constraint firstAttribute="width" constant="200" id="kYX-wC-5cd"/>
                                     </constraints>
-                                    <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" usesSingleLineMode="YES" id="4jS-mO-Z6C">
+                                    <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" id="4jS-mO-Z6C">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -83,6 +83,9 @@
                                             <string>NSAllRomanInputSourcesLocaleIdentifier</string>
                                         </allowedInputSourceLocales>
                                     </secureTextFieldCell>
+                                    <connections>
+                                        <action selector="passwordTextFieldEnterEventDetect:" target="-2" id="Arj-hj-3AM"/>
+                                    </connections>
                                 </secureTextField>
                                 <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="DxZ-sQ-647">
                                     <rect key="frame" x="0.0" y="-2" width="200" height="5"/>

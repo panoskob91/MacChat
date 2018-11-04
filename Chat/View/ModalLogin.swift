@@ -66,6 +66,7 @@ class ModalLogin: NSView {
         self.loginButton.setTitleColor(color: NSColor.white)
         self.loginButton.isBordered = false
         
+        
         self.createAnAccountButton.font = loginFont
         self.createAnAccountButton.title = "Create an account"
         self.createAnAccountButton.setTitleColor(color: modalGreen)
@@ -113,6 +114,10 @@ class ModalLogin: NSView {
             let alert = Alert(messageText: "Please populate email and password fields", buttons: [button], icon: nil)
             alert.showAlert()
         }
+    }
+    @IBAction func passwordTextFieldEnterEventDetect(_ sender: NSSecureTextField)
+    {
+        loginButton.performClick(nil)
     }
     
     

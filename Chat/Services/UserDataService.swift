@@ -76,4 +76,19 @@ class UserDataService: NSObject
         UserDataService.sharedInstance.avatarName = userObject.avatarName
         UserDataService.sharedInstance.avatarColor = userObject.avatarColor
     }
+    
+    private func resetUserData()
+    {
+        self.id = ""
+        self.name = ""
+        self.email = ""
+        self.avatarName = ""
+        self.avatarColor = ""
+    }
+    
+    func logoutUser()
+    {
+        resetUserData()
+        AuthService.sharedInstance.resetData()
+    }
 }

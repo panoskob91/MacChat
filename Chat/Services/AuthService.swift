@@ -102,4 +102,12 @@ class AuthService
         }
     }
     
+    //MARK:- Helpers
+    func resetData()
+    {
+        self.authToken = ""
+        self.userEmail = ""
+        self.isLoggedIn = false
+    }
+    
 }

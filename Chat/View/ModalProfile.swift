@@ -41,7 +41,13 @@ class ModalProfile: NSView {
         self.titleLabel.stringValue = "Profile"
         self.titleLabel.setFont(NSFont(name: AVENIR_BOLD, size: 19)!,
                                 textColor: grayTextColor)
+        //username
+        self.usernameLabel.stringValue = UserDataService.sharedInstance.name
         
+        //email
+        self.emailLabel.stringValue = UserDataService.sharedInstance.email
+        
+        //Profile image
         self.profileImage.layer?.cornerRadius = 10
         self.profileImage.layer?.borderColor = NSColor.gray.cgColor
         self.profileImage.layer?.borderWidth = 3
@@ -60,8 +66,15 @@ class ModalProfile: NSView {
     }
     
     //MARK:- IBActions
-    
     @IBAction private func closeModalClicked(_ sender: NSButton) {
+        NotificationCenter.default.post(name: NOTIF_CLOSE_MODAL, object: nil)
+    }
+    
+    @IBAction func logoutClicked(_ sender: NSButton) {
+        UserDataService.sharedInstance.logoutUser()
+        NotificationCenter.default.post(name: NOTIF_USER_DATA_CHANGED, object: nil)
+        NotificationCenter.default.post(name: NOTIF_CLOSE_MODAL, object: nil)
         
     }
+    
 }
