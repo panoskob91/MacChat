@@ -12,14 +12,15 @@ class ModalCreateAccount: NSView {
 
     //MARK:- IBOutlets
     @IBOutlet var view: NSView!
-    @IBOutlet var createAccountLabel: NSTextField!
-    @IBOutlet var nameTextField: NSTextField!
-    @IBOutlet var emailTextField: NSTextField!
-    @IBOutlet var passwordTextField: NSSecureTextField!
-    @IBOutlet var createAccountButton: NSButton!
-    @IBOutlet var chooseImageButton: NSButton!
-    @IBOutlet var profileImageButton: NSButton!
-    @IBOutlet var progressSpinner: NSProgressIndicator!
+    @IBOutlet private var createAccountLabel: NSTextField!
+    @IBOutlet private var nameTextField: NSTextField!
+    @IBOutlet private var emailTextField: NSTextField!
+    @IBOutlet private var passwordTextField: NSSecureTextField!
+    @IBOutlet private var createAccountButton: NSButton!
+    @IBOutlet private var chooseImageButton: NSButton!
+    @IBOutlet private var profileImageButton: NSButton!
+    @IBOutlet private var progressSpinner: NSProgressIndicator!
+    @IBOutlet private var stackView: NSStackView!
     
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
@@ -93,16 +94,24 @@ class ModalCreateAccount: NSView {
     }
     @IBAction func createAccountButtonClicked(_ sender: NSButton)
     {
+        self.progressSpinner.isHidden = false
+        self.stackView.alphaValue = 0.4
+        self.createAccountButton.isEnabled = false 
+        
         let registerFieldsArePopulated: Bool = (self.nameTextField.stringValue != "") && (self.emailTextField.stringValue != "") && (self.passwordTextField.stringValue != "")
         if (registerFieldsArePopulated)
         {
             AuthService.sharedInstance.registerUser(email: emailTextField.stringValue,
                                                     password: passwordTextField.stringValue, successBlock: {
                                                         DispatchQueue.main.async {
+                                                            self.progressSpinner.startAnimation(nil)
                                                             AuthService.sharedInstance.createUser(name: self.nameTextField.stringValue,
                                                                                                   email: self.emailTextField.stringValue,
                                                                                                   avatarName: "dark5", avatarColor: "", completionBlock: {
                                                                                                     DispatchQueue.main.async {
+                                                                                                        self.progressSpinner.stopAnimation(nil)
+                                                                                                        self.progressSpinner.isHidden = true
+                                                                                                        
                                                                                                         NotificationCenter.default.post(name: NOTIF_CLOSE_MODAL, object: nil)
                                                                                                     }
                                                             })

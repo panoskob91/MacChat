@@ -61,18 +61,28 @@ class ChatVC: NSViewController {
     {
         if (AuthService.sharedInstance.isLoggedIn)
         {
-            
+            channelTitle.stringValue = "#general"
+            channeDescription.stringValue = "This is where we do the chats"
         }
         else
         {
-            
+            channelTitle.stringValue = "Please log in"
+            channeDescription.stringValue = ""
         }
     }
     
     //MARK:- IBActions
     @IBAction private func sendMessageButtonClicked(_ sender: NSButton)
     {
-        
+        if (AuthService.sharedInstance.isLoggedIn)
+        {
+            //Send message
+        }
+        else
+        {
+            let loginDict = [USER_INFO_MODAL: ModalType.login]
+            NotificationCenter.default.post(name: NOTIF_PRESENT_MODAL, object: nil, userInfo: loginDict)
+        }
     }
     
     

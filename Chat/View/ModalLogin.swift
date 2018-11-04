@@ -18,6 +18,8 @@ class ModalLogin: NSView {
     @IBOutlet var loginButton: NSButton!
     @IBOutlet var createAnAccountButton: NSButton!
     @IBOutlet var stackView: NSStackView!
+    @IBOutlet var activityIndicator: NSProgressIndicator!
+    
     
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
@@ -66,11 +68,12 @@ class ModalLogin: NSView {
         self.loginButton.setTitleColor(color: NSColor.white)
         self.loginButton.isBordered = false
         
-        
         self.createAnAccountButton.font = loginFont
         self.createAnAccountButton.title = "Create an account"
         self.createAnAccountButton.setTitleColor(color: modalGreen)
         self.createAnAccountButton.isBordered = false
+        
+        self.activityIndicator.isHidden = true
     }
     
     //MARK:- IBActions
@@ -89,14 +92,21 @@ class ModalLogin: NSView {
     }
     @IBAction func loginButtonClicked(_ sender: NSButton)
     {
+        self.stackView.alphaValue = 0.4
+        self.loginButton.isEnabled = false
         if (emailTextField.stringValue != "" && passwordTextField.stringValue != "")
         {
+            self.activityIndicator.isHidden = false
             AuthService.sharedInstance.loginUser(email: self.emailTextField.stringValue,
                                                  password: self.passwordTextField.stringValue) {
                                                     DispatchQueue.main.async {
+                                                        self.activityIndicator.startAnimation(nil)
                                                         AuthService.sharedInstance.findUserByEmail(self.emailTextField.stringValue, completionBlock: { (user) in
                                                             UserDataService.initializeUserDataServiceSingletonWith(object: user)
                                                             DispatchQueue.main.async {
+                                                                self.activityIndicator.stopAnimation(nil)
+                                                                self.activityIndicator.isHidden = true
+                                                                
                                                                 NotificationCenter.default.post(name: NOTIF_CLOSE_MODAL, object: nil)
                                                                 NotificationCenter.default.post(name: NOTIF_USER_DATA_CHANGED, object: nil)
                                                             }

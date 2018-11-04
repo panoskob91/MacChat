@@ -8,6 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ModalLogin" customModule="Chat" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicator" destination="LBF-24-kc8" id="97A-X0-Rhl"/>
                 <outlet property="createAnAccountButton" destination="qXK-lX-SzP" id="r0E-rR-PKO"/>
                 <outlet property="emailTextField" destination="XBz-h9-nCL" id="eRM-Yz-o5n"/>
                 <outlet property="loginButton" destination="xcf-Z8-ehg" id="cOq-L6-hFq"/>
@@ -154,10 +155,19 @@
                         <action selector="closeModalClicked:" target="-2" id="gav-cy-uHs"/>
                     </connections>
                 </button>
+                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="LBF-24-kc8">
+                    <rect key="frame" x="228" y="140" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="0bO-Oo-t05"/>
+                        <constraint firstAttribute="width" constant="20" id="zL9-hW-PSo"/>
+                    </constraints>
+                </progressIndicator>
             </subviews>
             <constraints>
                 <constraint firstItem="qXK-lX-SzP" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="2mL-ZP-wKC"/>
+                <constraint firstItem="LBF-24-kc8" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="4Ne-Jv-gg9"/>
                 <constraint firstItem="kQY-vq-MRv" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="5RH-Hq-xxw"/>
+                <constraint firstItem="LBF-24-kc8" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="7fv-yx-jmS"/>
                 <constraint firstAttribute="bottom" secondItem="qXK-lX-SzP" secondAttribute="bottom" constant="20" id="Upf-hq-ZLl"/>
                 <constraint firstAttribute="trailing" secondItem="1QI-KK-PG5" secondAttribute="trailing" constant="8" id="XHs-Ou-7rm"/>
                 <constraint firstItem="1QI-KK-PG5" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="8" id="i7c-ab-aoP"/>

@@ -16,6 +16,7 @@
                 <outlet property="passwordTextField" destination="vMv-tW-NPz" id="mWM-YB-qdx"/>
                 <outlet property="profileImageButton" destination="Wap-d8-nU5" id="poM-Yp-KAz"/>
                 <outlet property="progressSpinner" destination="yLs-Fr-hrM" id="QS3-WJ-caz"/>
+                <outlet property="stackView" destination="Y4q-s6-Zdr" id="KUo-TD-TJa"/>
                 <outlet property="view" destination="c22-O7-iKe" id="NhM-Id-3Xo"/>
             </connections>
         </customObject>
