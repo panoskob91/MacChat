@@ -11,7 +11,7 @@ import Cocoa
 enum ModalType {
     case login
     case CreateAccount
-    
+    case Profile
 }
 
 class ToolbarVC: NSViewController {
@@ -30,6 +30,7 @@ class ToolbarVC: NSViewController {
         super.viewDidLoad()
         setupViews()
         startObservingForNotifications()
+//        AuthService.sharedInstance.isLoggedIn = false
     }
 
     private func setupViews()
@@ -53,9 +54,16 @@ class ToolbarVC: NSViewController {
     
     @objc private func openProfilePage(_ recogniser: NSClickGestureRecognizer)
     {
-        let loginDict: [String : ModalType] = [USER_INFO_MODAL : ModalType.login]
-        NotificationCenter.default.post(name: NOTIF_PRESENT_MODAL, object: nil, userInfo: loginDict)
-        
+        if (AuthService.sharedInstance.isLoggedIn)
+        {
+            let profileDict: [String: ModalType] = [USER_INFO_MODAL: ModalType.Profile]
+            NotificationCenter.default.post(name: NOTIF_PRESENT_MODAL, object: nil, userInfo: profileDict)
+        }
+        else
+        {
+            let loginDict: [String : ModalType] = [USER_INFO_MODAL : ModalType.login]
+            NotificationCenter.default.post(name: NOTIF_PRESENT_MODAL, object: nil, userInfo: loginDict)
+        }
     }
     
     @objc private func presentModal(_ notif: Notification)
@@ -95,6 +103,10 @@ class ToolbarVC: NSViewController {
             modalHeight = 300
         case ModalType.CreateAccount:
             self.modalView = ModalCreateAccount()
+            modalWidth = 475
+            modalHeight = 300
+        case ModalType.Profile:
+            modalView = ModalProfile()
             modalWidth = 475
             modalHeight = 300
         }
@@ -175,7 +187,7 @@ class ToolbarVC: NSViewController {
             userAvatar.layer?.borderColor = NSColor.white.cgColor
             userAvatar.layer?.borderWidth = 1
             userAvatar.image = NSImage(named: NSImage.Name(rawValue: UserDataService.sharedInstance.avatarName))
-            //TODO: Add userAvatar background color
+            //TODO: Add userAvatar background color  
         }
         else
         {
