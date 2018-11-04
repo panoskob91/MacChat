@@ -77,6 +77,17 @@ class UserDataService: NSObject
         UserDataService.sharedInstance.avatarColor = userObject.avatarColor
     }
     
+    func jsonify() -> [String: String] {
+        var json: [String: String] = [:]
+        json["_id"] = self.id
+        json["name"] = self.name
+        json["email"] = self.email
+        json["avatarName"] = self.avatarName
+        json["avatarColor"] = self.avatarColor
+        
+        return json
+    }
+    
     private func resetUserData()
     {
         self.id = ""
