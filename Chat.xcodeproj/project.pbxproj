@@ -37,6 +37,8 @@
 		BAD0F1032188F57400B39F03 /* NSImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD0F1022188F57400B39F03 /* NSImageView.swift */; };
 		BAF1728C216D2FAE0002688A /* ClickBlockingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF1728B216D2FAE0002688A /* ClickBlockingView.swift */; };
 		BAF6C56A218F31DF0097E927 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF6C569218F31DF0097E927 /* Channel.swift */; };
+		BAF6C56C218F47BA0097E927 /* ModalAddChannel.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAF6C56B218F47BA0097E927 /* ModalAddChannel.xib */; };
+		BAF6C56E218F47FB0097E927 /* ModalAddChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF6C56D218F47FB0097E927 /* ModalAddChannel.swift */; };
 		F3AEC09839084AEF8B76F143 /* Pods_Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7F859C3BEB5E9C5CD5DE90A /* Pods_Chat.framework */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +78,8 @@
 		BAD0F1022188F57400B39F03 /* NSImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImageView.swift; sourceTree = "<group>"; };
 		BAF1728B216D2FAE0002688A /* ClickBlockingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickBlockingView.swift; sourceTree = "<group>"; };
 		BAF6C569218F31DF0097E927 /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		BAF6C56B218F47BA0097E927 /* ModalAddChannel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModalAddChannel.xib; sourceTree = "<group>"; };
+		BAF6C56D218F47FB0097E927 /* ModalAddChannel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalAddChannel.swift; sourceTree = "<group>"; };
 		F7F859C3BEB5E9C5CD5DE90A /* Pods_Chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -162,6 +166,7 @@
 				BA39DE0B21734D3A00271CA3 /* ModalLogin.swift */,
 				BA52F9BD21738D05006BD637 /* ModalCreateAccount.swift */,
 				BA3E1B95218E3FFF0075462E /* ModalProfile.swift */,
+				BAF6C56D218F47FB0097E927 /* ModalAddChannel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -206,6 +211,7 @@
 				BA39DE0921734CCA00271CA3 /* ModalLogin.xib */,
 				BA52F9BB21738CE7006BD637 /* ModalCreateAccount.xib */,
 				BA3E1B93218E3FC40075462E /* ModalProfile.xib */,
+				BAF6C56B218F47BA0097E927 /* ModalAddChannel.xib */,
 			);
 			path = XIBs;
 			sourceTree = "<group>";
@@ -297,6 +303,7 @@
 				BA0D1D01216489BB00A9BBD7 /* Assets.xcassets in Resources */,
 				BA52F9BC21738CE7006BD637 /* ModalCreateAccount.xib in Resources */,
 				BA39DE0A21734CCA00271CA3 /* ModalLogin.xib in Resources */,
+				BAF6C56C218F47BA0097E927 /* ModalAddChannel.xib in Resources */,
 				BA3E1B94218E3FC40075462E /* ModalProfile.xib in Resources */,
 				BA0D1D04216489BB00A9BBD7 /* Main.storyboard in Resources */,
 			);
@@ -369,6 +376,7 @@
 				BAF6C56A218F31DF0097E927 /* Channel.swift in Sources */,
 				BA183E8A216B1C9000DA32ED /* MainWindowController.swift in Sources */,
 				BAB81A57217C783C0093802C /* RSBaseResponse.swift in Sources */,
+				BAF6C56E218F47FB0097E927 /* ModalAddChannel.swift in Sources */,
 				BAA83BCC216BEDA500435F32 /* NSTextField.swift in Sources */,
 				BAA83BCA216BE84F00435F32 /* NSButton.swift in Sources */,
 				BA52F9BE21738D05006BD637 /* ModalCreateAccount.swift in Sources */,

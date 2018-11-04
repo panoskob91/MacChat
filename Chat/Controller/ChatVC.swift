@@ -78,7 +78,7 @@ class ChatVC: NSViewController {
         {
             let userDataDictionary = UserDataService.sharedInstance.jsonify()
             let user: User = User(userDataDictionary)
-            let channel: Channel = Channel(channelName: "general", channelId: "592cd40e39179c0023f3531f")
+            let channel: Channel = Channel(channelName: "general", channelId: "592cd40e39179c0023f3531f", description: "")
             SocketService.sharedInstance.addMessage(messageText.stringValue, user: user, channel: channel) {
                 self.messageText.stringValue = ""
             }

@@ -1,4 +1,4 @@
-//
+ //
 //  ChannelVC.swift
 //  Chat
 //
@@ -64,6 +64,8 @@ class ChannelVC: NSViewController {
         if (AuthService.sharedInstance.isLoggedIn)
         {
             //Add channel
+            let addChannelDict: [String: ModalType] = [USER_INFO_MODAL: ModalType.AddChannel]
+            NotificationCenter.default.post(name: NOTIF_PRESENT_MODAL, object: nil, userInfo: addChannelDict)
         }
         else
         {
