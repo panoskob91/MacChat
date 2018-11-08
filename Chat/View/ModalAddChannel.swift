@@ -11,11 +11,11 @@ import Cocoa
 class ModalAddChannel: NSView {
 
     @IBOutlet weak var view: NSView!
-    @IBOutlet var addChannel: NSTextField!
-    @IBOutlet var stackView: NSView!
-    @IBOutlet var addChannelButton: NSButton!
-    @IBOutlet var channelName: NSTextField!
-    @IBOutlet var channelDescription: NSTextField!
+    @IBOutlet private var addChannel: NSTextField!
+    @IBOutlet private var stackView: NSView!
+    @IBOutlet private var addChannelButton: NSButton!
+    @IBOutlet private var channelName: NSTextField!
+    @IBOutlet private var channelDescription: NSTextField!
     
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
@@ -32,11 +32,17 @@ class ModalAddChannel: NSView {
         setupView()
     }
     
-    func setupView()
+    private func setupView()
     {
         self.view.frame = NSRect(x: 0, y: 0, width: 475, height: 300)
         self.view.layer?.backgroundColor = CGColor.white
         self.view.layer?.cornerRadius = 7
+        setupUI()
+        
+    }
+    
+    private func setupUI()
+    {
         //Add channel label setup
         self.addChannel.font = NSFont(name: AVENIR_BOLD, size: 19)
         self.addChannel.textColor = grayTextColor
@@ -54,22 +60,36 @@ class ModalAddChannel: NSView {
         self.channelName.font = NSFont(name: AVENIR_REGULAR, size: 12)
         self.channelName.textColor = NSColor.black
         self.channelName.nextKeyView = self.channelDescription
+        self.channelName.isBordered = false
+        self.channelName.focusRingType = NSFocusRingType.none
         //Channel description
         self.channelDescription.placeholderString = "Channel description"
         self.channelDescription.font = NSFont(name: AVENIR_REGULAR, size: 12)
         self.channelDescription.textColor = NSColor.black
         self.channelDescription.nextKeyView = channelName
-        
+        self.channelDescription.isBordered = false
+        self.channelDescription.focusRingType = NSFocusRingType.none
     }
+    
     //MARK:- IBActions
-    @IBAction func descriptionFieldEnterPressed(_ sender: NSTextField)
+    @IBAction private func descriptionFieldEnterPressed(_ sender: NSTextField)
     {
         addChannelButton.performClick(nil)
     }
     
-    @IBAction func addNewChannelButtonPressed(_ sender: NSButton)
+    @IBAction private func closeModal(_ sender: NSButton)
     {
-        
+        NotificationCenter.default.post(name: NOTIF_CLOSE_MODAL, object: nil)
+    }
+    
+    @IBAction private func addNewChannelButtonPressed(_ sender: NSButton)
+    {
+        let channel = Channel(channelName: self.channelName.stringValue,
+                              channelId: "12345",//Dummy id
+                              description: self.channelDescription.stringValue)
+        SocketService.sharedInstance.addChannel(channel: channel) {
+            NotificationCenter.default.post(name: NOTIF_CLOSE_MODAL, object: nil)
+        }
     }
     
 }
