@@ -24,6 +24,30 @@ class User: NSObject
         self.avatarColor = userDictionary["avatarColor"]
         super.init()
     }
+    init(id: String,
+         name: String,
+         email: String,
+         avatarName: String,
+         avatarColor: String)
+    {
+        self.userID = id
+        self.userName = name
+        self.userEmail = email
+        self.avatarName = avatarName
+        self.avatarColor = avatarColor
+        super.init()
+    }
+    
+    override var description: String {
+        get {
+            let returnedString = "userId: \(self.userID)\n"
+                + "userName: \(self.userName)\n"
+                + "userEmail:\(self.userEmail)\n"
+                + "avatarName: \(self.avatarName)\n"
+                + "avatarColor: \(self.avatarColor)"
+            return returnedString
+        }
+    }
     
     class func createUserInputDictionary(_ input: [String: Any]) -> [String: String]?
     {

@@ -1,4 +1,4 @@
- //
+//
 //  Networking.swift
 //  Chat
 //
@@ -10,7 +10,6 @@ import Cocoa
 
 class Networking: NSObject, HTTPRequestsProtocol
 {
- 
     static let sharedInstance: Networking = Networking()
     
     private func requestRegisterUser(email eMail: String,
@@ -112,7 +111,8 @@ class Networking: NSObject, HTTPRequestsProtocol
                             email: String,
                             avatarName: String,
                             avatarColor: String,
-                            completionBlock: @escaping () -> Void)
+                            successBlock: @escaping () -> Void,
+                            failureBlock: @escaping (RSBaseResponse) -> Void)
     {
      
         let lowerCaseEmail = email.lowercased()
@@ -130,13 +130,25 @@ class Networking: NSObject, HTTPRequestsProtocol
                                          cachePolicy: nil,
                                          httpBody: bodyData)
         let dataTask = URLSession.shared.dataTask(with: request) { (responseData, response, responseError) in
-       
+            guard let serverResponse = response as? HTTPURLResponse else {
+                return
+            }
+            
             guard let jsonData = responseData else {
                 return
             }
+            
             let jsonObject = try? JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers)
             guard let json = jsonObject as? [String : Any] else {
                 return
+            }
+       
+            let rsResponse = RSBaseResponse(responseObject: serverResponse, jsonResponse: json, networkError: responseError)
+            
+            //Catch fail server response
+            if (rsResponse.networkError != nil || rsResponse.statusCode != 200)
+            {
+                failureBlock(rsResponse)
             }
             
             guard let userId = json["_id"] as? String,
@@ -144,16 +156,18 @@ class Networking: NSObject, HTTPRequestsProtocol
                 let email = json["email"] as? String,
                 let avatarName = json["avatarName"] as? String,
                 let avatarColor = json["avatarColor"] as? String else {
-                
+                    failureBlock(rsResponse)
                     return
             }
             
-            UserDataService.sharedInstance.id = userId
-            UserDataService.sharedInstance.name = name
-            UserDataService.sharedInstance.email = email
-            UserDataService.sharedInstance.avatarName = avatarName
-            UserDataService.sharedInstance.avatarColor = avatarColor
-            completionBlock()
+            let newUser = User(id: userId,
+                               name: name,
+                               email: email,
+                               avatarName: avatarName,
+                               avatarColor: avatarColor)
+            
+            UserDataService.initializeUserDataServiceSingletonWith(object: newUser)
+            successBlock()
             
         }
         dataTask.resume()
@@ -209,10 +223,13 @@ class Networking: NSObject, HTTPRequestsProtocol
                        email: String,
                        avatarName: String,
                        avatarColor: String,
-                       completionBlock: @escaping () -> Void)
+                       sucessBlock: @escaping () -> Void,
+                       failureBlock: @escaping (RSBaseResponse) -> Void)
     {
-        createUser(name: name, email: email, avatarName: avatarName, avatarColor: avatarColor) {
-            completionBlock()
+        createUser(name: name, email: email, avatarName: avatarName, avatarColor: avatarColor, successBlock: {
+            sucessBlock()
+        }) { (failResponse) in
+            failureBlock(failResponse)
         }
     }
     func findUserByEmail(_ email: String, completionBlock: @escaping(User) -> Void) {

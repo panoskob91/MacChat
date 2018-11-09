@@ -68,6 +68,17 @@ class UserDataService: NSObject
         }
     }
     
+    override var description: String {
+        get {
+            let returnedString = "id : \(self.id) \n"
+                + "name: \(self.name) \n"
+                + "email: \(self.email) \n"
+                + "avatarName: \(self.avatarName) \n"
+                + "avatarColor: \(self.avatarColor)"
+            return returnedString
+        }
+    }
+    
     class func initializeUserDataServiceSingletonWith(object userObject: User)
     {
         UserDataService.sharedInstance.id = userObject.userID

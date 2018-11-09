@@ -105,20 +105,31 @@ class ModalCreateAccount: NSView {
                                                     password: passwordTextField.stringValue, successBlock: {
                                                         DispatchQueue.main.async {
                                                             self.progressSpinner.startAnimation(nil)
-                                                            AuthService.sharedInstance.createUser(name: self.nameTextField.stringValue,
-                                                                                                  email: self.emailTextField.stringValue,
-                                                                                                  avatarName: "dark5", avatarColor: "", completionBlock: {
-                                                                                                    DispatchQueue.main.async {
-                                                                                                        self.progressSpinner.stopAnimation(nil)
-                                                                                                        self.progressSpinner.isHidden = true
-                                                                                                        
-                                                                                                        NotificationCenter.default.post(name: NOTIF_CLOSE_MODAL, object: nil)
-                                                                                                    }
+                                                            let name = self.nameTextField.stringValue
+                                                            let email = self.emailTextField.stringValue
+                                                            //TODO: add color and avatar selection
+                                                            AuthService.sharedInstance.createUser(name: name,
+                                                                                                  email: email,
+                                                                                                  avatarName: "dark5",
+                                                                                                  avatarColor: "",
+                                                                                                  successBlock: {
+                                                                DispatchQueue.main.async {
+                                                                    self.progressSpinner.stopAnimation(nil)
+                                                                    self.progressSpinner.isHidden = true
+                                                                    
+                                                                    NotificationCenter.default.post(name: NOTIF_CLOSE_MODAL, object: nil)
+                                                                }
+                                                            }, failBlock: { (failureResponse) in
+                                                                debugPrint("Creating User failed with base response: \(failureResponse)")
+                                                                self.progressSpinner.stopAnimation(nil)
+                                                                self.progressSpinner.isHidden = true
                                                             })
                                                         }
                                                         
-            }) {
-                debugPrint("Register user failed")
+            }) { (failureResponse) in
+                debugPrint("Register user failed with response: \(failureResponse)")
+                self.progressSpinner.stopAnimation(nil)
+                self.progressSpinner.isHidden = true
             }
         }
         else

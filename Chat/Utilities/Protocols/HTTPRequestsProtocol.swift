@@ -22,7 +22,8 @@ protocol HTTPRequestsProtocol {
                     email: String,
                     avatarName: String,
                     avatarColor: String,
-                    completionBlock: @escaping () -> Void)
+                    sucessBlock: @escaping () -> Void,
+                    failureBlock: @escaping (RSBaseResponse) -> Void)
     func findUserByEmail(_ email: String, completionBlock: @escaping(_ userObject: User) -> Void)
     
 }

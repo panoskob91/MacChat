@@ -15,6 +15,19 @@ class RSBaseResponse: NSObject
     let responseObject: [String : Any]?
     let networkError: Error?
     
+    override var description: String {
+        get {
+            let dResponseObject = self.responseObject ?? nil
+            let dNetworkError = self.networkError ?? nil
+            let returnedString = "status code: \(self.statusCode)"
+                + "response headers: \(self.responseHeaders)"
+                + "response object: \(String(describing: dResponseObject))"
+                + "network error: \(String(describing: dNetworkError))"
+            
+            return returnedString
+        }
+    }
+    
     init(statusCode code: Int, responseHeaders headers: [String : Any], responseObject json: [String : Any]?, error: Error?) {
         self.statusCode = code
         self.responseHeaders = headers

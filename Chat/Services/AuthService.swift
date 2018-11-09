@@ -47,15 +47,21 @@ class AuthService
     func registerUser(email: String,
                       password: String,
                       successBlock: (() -> Void)?,
-                      failBlock: (() -> Void)?)
+                      failBlock: (@escaping(RSBaseResponse) -> Void))
     {
         Networking.sharedInstance.registerUser(email: email, password: password, success: { (successResponse) in
             successBlock?()
         }) { (failureResponse) in
-            guard let messageDictionary = failureResponse.responseObject?["message"] as? [String : String] else {
+            guard let messageDictionary = failureResponse.responseObject as? [String : String] else {
+                DispatchQueue.main.async {
+                    failBlock(failureResponse)
+                }
                 return
             }
             guard let alertMessage = messageDictionary["message"] else {
+                DispatchQueue.main.async {
+                    failBlock(failureResponse)
+                }
                 return
             }
             
@@ -63,8 +69,8 @@ class AuthService
                 let button: NSButton = NSButton(title: "OK", target: self, action: nil)
                 let alert: Alert = Alert(messageText: alertMessage, buttons: [button], icon: nil)
                 alert.showAlert()
+                failBlock(failureResponse)
             }
-            failBlock?()
         }
     }
     
@@ -88,10 +94,13 @@ class AuthService
                     email: String,
                     avatarName: String,
                     avatarColor: String,
-                    completionBlock: @escaping () -> Void)
+                    successBlock: @escaping () -> Void,
+                    failBlock: @escaping (RSBaseResponse) -> Void)
     {
-        Networking.sharedInstance.createNewUser(name: name, email: email, avatarName: avatarName, avatarColor: avatarColor) {
-            completionBlock()
+        Networking.sharedInstance.createNewUser(name: name, email: email, avatarName: avatarName, avatarColor: avatarColor, sucessBlock: {
+            successBlock()
+        }) { (failureResponse) in
+            failBlock(failureResponse)
         }
     }
     
