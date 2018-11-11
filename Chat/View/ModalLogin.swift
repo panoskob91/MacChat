@@ -97,8 +97,11 @@ class ModalLogin: NSView {
         if (emailTextField.stringValue != "" && passwordTextField.stringValue != "")
         {
             self.activityIndicator.isHidden = false
-            AuthService.sharedInstance.loginUser(email: self.emailTextField.stringValue,
-                                                 password: self.passwordTextField.stringValue) {
+            let email = self.emailTextField.stringValue
+            let password = self.passwordTextField.stringValue
+            AuthService.sharedInstance.loginUser(email: email,
+                                                 password: password,
+                                                 successBlock: {
                                                     DispatchQueue.main.async {
                                                         self.activityIndicator.startAnimation(nil)
                                                         AuthService.sharedInstance.findUserByEmail(self.emailTextField.stringValue, completionBlock: { (user) in
@@ -112,9 +115,25 @@ class ModalLogin: NSView {
                                                             }
                                                         })
                                                     }
-                                                    
-                                                    
-                                                    
+                                                    })
+            { (failResponse) in
+                DispatchQueue.main.async {
+                    let button = NSButton(title: "OK", target: self, action: nil)
+                    guard let responseObject = failResponse.responseObject,
+                        let message = responseObject["message"] as? String else {
+                            return
+                    }
+                    let alert = Alert(messageText: message, buttons: [button], icon: nil)
+                    alert.showAlert()
+                    
+                    self.activityIndicator.stopAnimation(nil)
+                    self.activityIndicator.isHidden = true
+                    
+                    self.view.removeFromSuperview()
+                    let loginDict: [String: ModalType] = [USER_INFO_MODAL: ModalType.login]
+                    NotificationCenter.default.post(name: NOTIF_PRESENT_MODAL, object: nil, userInfo: loginDict)
+                    
+                }
             }
         }
         else
@@ -129,6 +148,4 @@ class ModalLogin: NSView {
     {
         loginButton.performClick(nil)
     }
-    
-    
 }

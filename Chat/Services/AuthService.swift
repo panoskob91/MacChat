@@ -74,7 +74,10 @@ class AuthService
         }
     }
     
-    func loginUser(email: String, password: String,  completionBlock: (() -> Void)?)
+    func loginUser(email: String,
+                   password: String,
+                   successBlock: (() -> Void)?,
+                   failureBlock: @escaping(RSBaseResponse) -> Void)
     {
         Networking.sharedInstance.loginUser(email: email, password: password, successBlock: { (succesfullResponse) in
             guard let token = succesfullResponse.userToken else {
@@ -84,9 +87,9 @@ class AuthService
             self.userEmail = email
             self.isLoggedIn = true
             
-            completionBlock?()
+            successBlock?()
         }) { (failureResponse) in
-            print("Login response status code", failureResponse.statusCode)
+            failureBlock(failureResponse)
         }
     }
     
