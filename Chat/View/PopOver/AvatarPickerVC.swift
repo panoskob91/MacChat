@@ -42,8 +42,11 @@ NSCollectionViewDelegateFlowLayout
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         let cell = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: AnimalCell.getCellIdentifier()), for: indexPath)
-        
-        return cell
+        guard let animalCell = cell as? AnimalCell else {
+            return NSCollectionViewItem()
+        }
+        animalCell.configureCell(index: indexPath.item, type: AnimalType.Dark)
+        return animalCell
     }
     
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
