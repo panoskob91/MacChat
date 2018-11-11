@@ -22,6 +22,12 @@ class ModalCreateAccount: NSView {
     @IBOutlet private var progressSpinner: NSProgressIndicator!
     @IBOutlet private var stackView: NSStackView!
     
+    //Variables
+    var avaterName = "profileDefault"
+    var avatarColor = "[0.5, 0.5, 0.5, 1]"
+    let popover = NSPopover()
+    var isPressed = true
+    
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
         Bundle.main.loadNibNamed(NSNib.Name(rawValue: "ModalCreateAccount"), owner: self, topLevelObjects: nil)
@@ -140,7 +146,20 @@ class ModalCreateAccount: NSView {
         }
         
     }
-    @IBAction func chooseImageButtonClicked(_ sender: NSButton) {
+    @IBAction func chooseImageButtonClicked(_ sender: NSButton)
+    {
+        if (self.isPressed)
+        {
+            popover.contentViewController = AvatarPickerVC(nibName: NSNib.Name(rawValue: "AvatarPickerVC"), bundle: nil)
+            popover.show(relativeTo: self.chooseImageButton.bounds, of: self.chooseImageButton, preferredEdge: .minX)
+            popover.behavior = NSPopover.Behavior.transient
+            self.isPressed = false
+        }
+        else
+        {
+            self.isPressed = true
+        }
+        
     }
     
     

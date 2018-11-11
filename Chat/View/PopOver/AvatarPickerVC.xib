@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="AvatarPickerVC" customModule="Chat" customModuleProvider="target">
+            <connections>
+                <outlet property="collectionView" destination="j4M-dj-hXX" id="dVU-hi-eCZ"/>
+                <outlet property="segmentControl" destination="fOb-GY-JLr" id="yWQ-jn-Bgw"/>
+                <outlet property="view" destination="c22-O7-iKe" id="fJv-1y-k04"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="c22-O7-iKe">
+            <rect key="frame" x="0.0" y="0.0" width="420" height="525"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fOb-GY-JLr">
+                    <rect key="frame" x="151" y="482" width="119" height="24"/>
+                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="XB4-Qf-qCU">
+                        <font key="font" metaFont="system"/>
+                        <segments>
+                            <segment label="Dark" width="57"/>
+                            <segment label="Light" width="56" selected="YES" tag="1"/>
+                        </segments>
+                    </segmentedCell>
+                </segmentedControl>
+                <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yop-90-zmd">
+                    <rect key="frame" x="0.0" y="0.0" width="420" height="475"/>
+                    <clipView key="contentView" drawsBackground="NO" id="AyZ-kz-RMY">
+                        <rect key="frame" x="0.0" y="0.0" width="420" height="475"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView id="j4M-dj-hXX">
+                                <rect key="frame" x="0.0" y="0.0" width="420" height="158"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="nMZ-mB-b4t">
+                                    <size key="itemSize" width="50" height="50"/>
+                                </collectionViewFlowLayout>
+                                <color key="primaryBackgroundColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="0.0" colorSpace="calibratedRGB"/>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </clipView>
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="u2E-9g-TGs">
+                        <rect key="frame" x="1" y="144" width="233" height="15"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="oL3-zW-DlX">
+                        <rect key="frame" x="234" y="1" width="15" height="143"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                </scrollView>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="yop-90-zmd" secondAttribute="bottom" id="17p-ER-fdb"/>
+                <constraint firstAttribute="trailing" secondItem="yop-90-zmd" secondAttribute="trailing" id="45i-kd-b1P"/>
+                <constraint firstItem="yop-90-zmd" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="50" id="SlF-GB-97p"/>
+                <constraint firstItem="yop-90-zmd" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="oT1-bZ-kkB"/>
+                <constraint firstItem="fOb-GY-JLr" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="20" id="r1y-8R-NgW"/>
+                <constraint firstItem="fOb-GY-JLr" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="vsT-YY-Pir"/>
+            </constraints>
+            <point key="canvasLocation" x="220" y="314.5"/>
+        </customView>
+    </objects>
+</document>

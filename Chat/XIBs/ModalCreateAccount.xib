@@ -243,9 +243,6 @@
                                     </customSpacing>
                                 </stackView>
                             </subviews>
-                            <constraints>
-                                <constraint firstItem="1FX-g2-sfA" firstAttribute="top" secondItem="fUR-dK-ak8" secondAttribute="top" id="T4j-g1-npA"/>
-                            </constraints>
                             <visibilityPriorities>
                                 <integer value="1000"/>
                                 <integer value="1000"/>
