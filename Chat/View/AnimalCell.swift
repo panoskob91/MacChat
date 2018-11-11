@@ -15,6 +15,7 @@ class AnimalCell: NSCollectionViewItem {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.wantsLayer = true
     }
     
     override func viewDidAppear() {
@@ -24,7 +25,6 @@ class AnimalCell: NSCollectionViewItem {
     
     private func setupView()
     {
-        self.view.wantsLayer = true
         self.view.layer?.backgroundColor = NSColor.lightGray.cgColor
         self.view.layer?.cornerRadius = 10
         self.view.layer?.borderWidth = 2

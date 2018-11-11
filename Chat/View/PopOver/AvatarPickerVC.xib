@@ -27,6 +27,9 @@
                             <segment label="Light" width="56" selected="YES" tag="1"/>
                         </segments>
                     </segmentedCell>
+                    <connections>
+                        <action selector="segmentedControlPressed:" target="-2" id="7ac-gJ-tBf"/>
+                    </connections>
                 </segmentedControl>
                 <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yop-90-zmd">
                     <rect key="frame" x="0.0" y="0.0" width="420" height="475"/>

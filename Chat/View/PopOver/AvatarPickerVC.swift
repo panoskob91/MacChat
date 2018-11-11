@@ -32,6 +32,7 @@ NSCollectionViewDelegateFlowLayout
         self.collectionView.delegate = self
     }
     
+    //MARK:- Delegate functions
     func numberOfSections(in collectionView: NSCollectionView) -> Int {
         return 1
     }
@@ -45,11 +46,36 @@ NSCollectionViewDelegateFlowLayout
         guard let animalCell = cell as? AnimalCell else {
             return NSCollectionViewItem()
         }
-        animalCell.configureCell(index: indexPath.item, type: AnimalType.Dark)
+        let type = getAnimalTypeFromSegmentedControlSelection(self.segmentControl.selectedSegment)
+        animalCell.configureCell(index: indexPath.item, type: type)
         return animalCell
     }
     
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
         return NSMakeSize(85.0, 85.0)
     }
+    
+    //MARK:- Helper functions
+    private func getAnimalTypeFromSegmentedControlSelection(_ selectionIndex: Int) -> AnimalType
+    {
+        if (selectionIndex == 0)
+        {
+            return AnimalType.Dark
+        }
+        
+        return AnimalType.Light
+    }
+    
+    private func updateContent()
+    {
+        self.collectionView.reloadData()
+    }
+    
+    //MARK:- IBActions
+    @IBAction func segmentedControlPressed(_ sender: NSSegmentedControl)
+    {
+        updateContent()
+    }
+    
+    
 }
