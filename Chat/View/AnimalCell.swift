@@ -22,7 +22,6 @@ class AnimalCell: NSCollectionViewItem {
         setupView()
     }
     
-    
     private func setupView()
     {
         self.view.layer?.backgroundColor = NSColor.lightGray.cgColor

@@ -55,6 +55,22 @@ NSCollectionViewDelegateFlowLayout
         return NSMakeSize(85.0, 85.0)
     }
     
+    func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
+        guard let selectedIndexPath = collectionView.selectionIndexPaths.first else {
+            return
+        }
+        let type = getAnimalTypeFromSegmentedControlSelection(self.segmentControl.selectedSegment)
+        if (type == AnimalType.Dark)
+        {
+            UserDataService.sharedInstance.avatarName = "dark\(selectedIndexPath.item)"
+        }
+        else
+        {
+            UserDataService.sharedInstance.avatarName = "light\(selectedIndexPath.item)"
+        }
+        self.view.window?.cancelOperation(nil)
+    }
+    
     //MARK:- Helper functions
     private func getAnimalTypeFromSegmentedControlSelection(_ selectionIndex: Int) -> AnimalType
     {

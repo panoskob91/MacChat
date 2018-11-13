@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class ModalCreateAccount: NSView {
+class ModalCreateAccount: NSView, NSPopoverDelegate {
 
     //MARK:- IBOutlets
     @IBOutlet var view: NSView!
@@ -32,6 +32,7 @@ class ModalCreateAccount: NSView {
         super.init(frame: frameRect)
         Bundle.main.loadNibNamed(NSNib.Name(rawValue: "ModalCreateAccount"), owner: self, topLevelObjects: nil)
         self.addSubview(self.view)
+        popover.delegate = self
     }
     
     required init?(coder decoder: NSCoder) {
@@ -93,6 +94,15 @@ class ModalCreateAccount: NSView {
         
     }
     
+    //MARK:- Delegate methods
+    func popoverDidClose(_ notification: Notification) {
+        if (UserDataService.sharedInstance.avatarName != "")
+        {
+            self.profileImageButton.image = NSImage(named: NSImage.Name(rawValue: UserDataService.sharedInstance.avatarName))
+            self.avaterName = UserDataService.sharedInstance.avatarName
+        }
+    }
+    
     //MARK:- IBActions
     @IBAction func closeModalButtonClicked(_ sender: NSButton)
     {
@@ -116,7 +126,7 @@ class ModalCreateAccount: NSView {
                                                             //TODO: add color and avatar selection
                                                             AuthService.sharedInstance.createUser(name: name,
                                                                                                   email: email,
-                                                                                                  avatarName: "dark5",
+                                                                                                  avatarName: self.avaterName,
                                                                                                   avatarColor: "",
                                                                                                   successBlock: {
                                                                 DispatchQueue.main.async {
@@ -143,6 +153,13 @@ class ModalCreateAccount: NSView {
             let button: NSButton = NSButton(title: "OK", target: self, action: nil)
             let alert: Alert = Alert(messageText: "Please populate above fields before procceding to registration", buttons: [button], alertStyle: NSAlert.Style.critical, icon: nil)
             alert.showAlert()
+            
+            self.progressSpinner.stopAnimation(nil)
+            self.progressSpinner.isHidden = true
+            
+            self.view.removeFromSuperview()
+            let createAccount: [String: ModalType] = [USER_INFO_MODAL: ModalType.CreateAccount]
+            NotificationCenter.default.post(name: NOTIF_PRESENT_MODAL, object: nil, userInfo: createAccount)
         }
         
     }

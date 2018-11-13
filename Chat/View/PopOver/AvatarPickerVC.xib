@@ -37,11 +37,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="420" height="475"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView id="j4M-dj-hXX">
+                            <collectionView selectable="YES" id="j4M-dj-hXX">
                                 <rect key="frame" x="0.0" y="0.0" width="420" height="158"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="nMZ-mB-b4t">
                                     <size key="itemSize" width="50" height="50"/>
+                                    <edgeInsets key="sectionInset" left="10" right="10" top="0.0" bottom="10"/>
                                 </collectionViewFlowLayout>
                                 <color key="primaryBackgroundColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="0.0" colorSpace="calibratedRGB"/>
                             </collectionView>
