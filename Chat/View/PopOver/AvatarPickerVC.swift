@@ -26,10 +26,23 @@ NSCollectionViewDelegateFlowLayout
     //Constants
     let collectionViewCell = "collectionViewCell"
     
+    //MARK:- ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
+        
+        let layout: NSCollectionViewFlowLayout = NSCollectionViewFlowLayout()
+        layout.sectionInset = NSEdgeInsets(top: 0, left: 10, bottom: 10, right: 10)
+        layout.itemSize = CGSize(width: 100, height: 100)
+        layout.minimumInteritemSpacing = 10
+        layout.minimumLineSpacing = 10
+        collectionView!.collectionViewLayout = layout
+    }
+    
+    override func viewDidAppear() {
+        super.viewDidAppear()
+//        updateContent()
     }
     
     //MARK:- Delegate functions
@@ -48,6 +61,7 @@ NSCollectionViewDelegateFlowLayout
         }
         let type = getAnimalTypeFromSegmentedControlSelection(self.segmentControl.selectedSegment)
         animalCell.configureCell(index: indexPath.item, type: type)
+        
         return animalCell
     }
     
@@ -59,6 +73,7 @@ NSCollectionViewDelegateFlowLayout
         guard let selectedIndexPath = collectionView.selectionIndexPaths.first else {
             return
         }
+        
         let type = getAnimalTypeFromSegmentedControlSelection(self.segmentControl.selectedSegment)
         if (type == AnimalType.Dark)
         {
@@ -82,6 +97,7 @@ NSCollectionViewDelegateFlowLayout
         return AnimalType.Light
     }
     
+    /// Reloads and updates collection view content
     private func updateContent()
     {
         self.collectionView.reloadData()
