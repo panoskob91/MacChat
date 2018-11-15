@@ -23,7 +23,7 @@ class ModalCreateAccount: NSView, NSPopoverDelegate {
     @IBOutlet private var stackView: NSStackView!
     
     //Variables
-    var avaterName = "profileDefault"
+    var avatarName = "profileDefault"
     var avatarColor = "[0.5, 0.5, 0.5, 1]"
     let popover = NSPopover()
     var isPressed = true
@@ -99,7 +99,7 @@ class ModalCreateAccount: NSView, NSPopoverDelegate {
         if (UserDataService.sharedInstance.avatarName != "")
         {
             self.profileImageButton.image = NSImage(named: NSImage.Name(rawValue: UserDataService.sharedInstance.avatarName))
-            self.avaterName = UserDataService.sharedInstance.avatarName
+            self.avatarName = UserDataService.sharedInstance.avatarName
         }
     }
     
@@ -126,8 +126,8 @@ class ModalCreateAccount: NSView, NSPopoverDelegate {
                                                             //TODO: add color and avatar selection
                                                             AuthService.sharedInstance.createUser(name: name,
                                                                                                   email: email,
-                                                                                                  avatarName: self.avaterName,
-                                                                                                  avatarColor: "",
+                                                                                                  avatarName: self.avatarName,
+                                                                                                  avatarColor: self.avatarColor,
                                                                                                   successBlock: {
                                                                 DispatchQueue.main.async {
                                                                     self.progressSpinner.stopAnimation(nil)
@@ -143,9 +143,24 @@ class ModalCreateAccount: NSView, NSPopoverDelegate {
                                                         }
                                                         
             }) { (failureResponse) in
-                debugPrint("Register user failed with response: \(failureResponse)")
+                //Get data from response to show it as the alert message
+                guard let jsonResponse = failureResponse.responseObject,
+                      let messageDictionary = jsonResponse["message"] as? [String: Any],
+                      let message = messageDictionary["message"] as? String else {
+                        
+                        return
+                }
+                //Setup and show alert
+                let button = NSButton(title: "OK", target: self, action: nil)
+                let alert = Alert(messageText: message, buttons: [button], icon: nil)
+                alert.showAlert()
+                //Remove spinner
                 self.progressSpinner.stopAnimation(nil)
                 self.progressSpinner.isHidden = true
+                //Refresh modal create account
+                self.view.removeFromSuperview()
+                let createAccountModalDictionary: [String: ModalType] = [USER_INFO_MODAL: ModalType.CreateAccount]
+                NotificationCenter.default.post(name: NOTIF_PRESENT_MODAL, object: nil, userInfo: createAccountModalDictionary)
             }
         }
         else
