@@ -21,6 +21,7 @@ class ModalCreateAccount: NSView, NSPopoverDelegate {
     @IBOutlet private var profileImageButton: NSButton!
     @IBOutlet private var progressSpinner: NSProgressIndicator!
     @IBOutlet private var stackView: NSStackView!
+    @IBOutlet private var colorWell: NSColorWell!
     
     //Variables
     private var avatarName = "profileDefault"
@@ -199,4 +200,10 @@ class ModalCreateAccount: NSView, NSPopoverDelegate {
         self.createAccountButton.performClick(nil)
     }
     
+    @IBAction func colorWellPressed(_ sender: NSColorWell)
+    {
+        let nscolorStringRepresentation = sender.color.string()
+        let color = nscolorStringRepresentation.color()
+        debugPrint("TEST")
+    }
 }

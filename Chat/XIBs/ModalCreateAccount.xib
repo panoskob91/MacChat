@@ -9,6 +9,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="ModalCreateAccount" customModule="Chat" customModuleProvider="target">
             <connections>
                 <outlet property="chooseImageButton" destination="201-xA-Djq" id="Yjr-Ij-eQU"/>
+                <outlet property="colorWell" destination="mAr-Tp-roy" id="BC1-4M-Wiq"/>
                 <outlet property="createAccountButton" destination="bxG-Oo-BmH" id="kCV-hL-FNZ"/>
                 <outlet property="createAccountLabel" destination="duX-ac-tze" id="nNm-gR-4fM"/>
                 <outlet property="emailTextField" destination="ose-j9-T1H" id="Wc5-g2-T1t"/>
@@ -50,6 +51,9 @@
                         <constraint firstAttribute="width" constant="50" id="yYm-Up-uaF"/>
                     </constraints>
                     <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <action selector="colorWellPressed:" target="-2" id="4qT-F6-Jyb"/>
+                    </connections>
                 </colorWell>
                 <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y4q-s6-Zdr">
                     <rect key="frame" x="107" y="36" width="345" height="202"/>
