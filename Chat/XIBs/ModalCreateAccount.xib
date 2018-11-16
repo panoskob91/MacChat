@@ -145,11 +145,14 @@
                                                                 <constraint firstAttribute="width" constant="200" id="YkB-0g-uVR"/>
                                                                 <constraint firstAttribute="height" constant="22" id="chZ-9d-rS1"/>
                                                             </constraints>
-                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="border" placeholderString="Password" id="uHM-Ev-OHv">
+                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" state="on" borderStyle="border" placeholderString="Password" id="uHM-Ev-OHv">
                                                                 <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
+                                                            <connections>
+                                                                <action selector="enterPressed:" target="-2" id="F5s-as-KHV"/>
+                                                            </connections>
                                                         </textField>
                                                         <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="T4Q-hX-vTp">
                                                             <rect key="frame" x="0.0" y="-2" width="200" height="5"/>

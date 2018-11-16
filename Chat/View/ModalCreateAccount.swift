@@ -23,10 +23,10 @@ class ModalCreateAccount: NSView, NSPopoverDelegate {
     @IBOutlet private var stackView: NSStackView!
     
     //Variables
-    var avatarName = "profileDefault"
-    var avatarColor = "[0.5, 0.5, 0.5, 1]"
-    let popover = NSPopover()
-    var isPressed = true
+    private var avatarName = "profileDefault"
+    private var avatarColor = "[0.5, 0.5, 0.5, 1]"
+    private let popover = NSPopover()
+    private var isPressed = true
     
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
@@ -43,7 +43,7 @@ class ModalCreateAccount: NSView, NSPopoverDelegate {
         super.draw(dirtyRect)
         setupView()
     }
-    func setupView()
+    private func setupView()
     {
         self.view.frame = NSRect(x: 0, y: 0, width: 475, height: 300)
         self.view.layer?.backgroundColor = CGColor.white
@@ -52,7 +52,7 @@ class ModalCreateAccount: NSView, NSPopoverDelegate {
     }
     
  
-    func setupSubViews()
+    private func setupSubViews()
     {
         self.createAccountLabel.font = NSFont(name: AVENIR_BOLD, size: 15.0)
         self.createAccountLabel.textColor = lightGrayColor
@@ -104,11 +104,11 @@ class ModalCreateAccount: NSView, NSPopoverDelegate {
     }
     
     //MARK:- IBActions
-    @IBAction func closeModalButtonClicked(_ sender: NSButton)
+    @IBAction private func closeModalButtonClicked(_ sender: NSButton)
     {
         NotificationCenter.default.post(name: NOTIF_CLOSE_MODAL, object: nil)
     }
-    @IBAction func createAccountButtonClicked(_ sender: NSButton)
+    @IBAction private func createAccountButtonClicked(_ sender: NSButton)
     {
         self.progressSpinner.isHidden = false
         self.stackView.alphaValue = 0.4
@@ -178,7 +178,7 @@ class ModalCreateAccount: NSView, NSPopoverDelegate {
         }
         
     }
-    @IBAction func chooseImageButtonClicked(_ sender: NSButton)
+    @IBAction private func chooseImageButtonClicked(_ sender: NSButton)
     {
         if (self.isPressed)
         {
@@ -194,5 +194,9 @@ class ModalCreateAccount: NSView, NSPopoverDelegate {
         
     }
     
+    @IBAction func enterPressed(_ sender: NSSecureTextField)
+    {
+        self.createAccountButton.performClick(nil)
+    }
     
 }
