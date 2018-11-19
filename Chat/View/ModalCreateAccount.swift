@@ -135,11 +135,31 @@ class ModalCreateAccount: NSView, NSPopoverDelegate {
                                                                     self.progressSpinner.isHidden = true
                                                                     
                                                                     NotificationCenter.default.post(name: NOTIF_CLOSE_MODAL, object: nil)
+                                                                    NotificationCenter.default.post(name: NOTIF_USER_DATA_CHANGED, object: nil)
                                                                 }
                                                             }, failBlock: { (failureResponse) in
-                                                                debugPrint("Creating User failed with base response: \(failureResponse)")
-                                                                self.progressSpinner.stopAnimation(nil)
-                                                                self.progressSpinner.isHidden = true
+                                                                DispatchQueue.main.async {
+                                                                    if let fResponse = failureResponse
+                                                                    {
+                                                                        guard let jsonResponse = fResponse.responseObject,
+                                                                            let messageDictionary = jsonResponse["message"] as? [String: Any],
+                                                                            let message = messageDictionary["message"] as? String else {
+                                                                                
+                                                                                return
+                                                                        }
+                                                                        //Setup and show alert
+                                                                        let button = NSButton(title: "OK", target: self, action: nil)
+                                                                        let alert = Alert(messageText: message, buttons: [button], icon: nil)
+                                                                        alert.showAlert()
+                                                                    }
+                                                                    //TODO: Consider adding a message
+                                                                    //Remove spinner
+                                                                    self.progressSpinner.stopAnimation(nil)
+                                                                    self.progressSpinner.isHidden = true
+                                                                    //Show view
+                                                                    self.view.refreshModal(ModalType.CreateAccount)
+                                                                }
+                                                                
                                                             })
                                                         }
                                                         
@@ -159,9 +179,7 @@ class ModalCreateAccount: NSView, NSPopoverDelegate {
                 self.progressSpinner.stopAnimation(nil)
                 self.progressSpinner.isHidden = true
                 //Refresh modal create account
-                self.view.removeFromSuperview()
-                let createAccountModalDictionary: [String: ModalType] = [USER_INFO_MODAL: ModalType.CreateAccount]
-                NotificationCenter.default.post(name: NOTIF_PRESENT_MODAL, object: nil, userInfo: createAccountModalDictionary)
+                self.view.refreshModal(ModalType.CreateAccount)
             }
         }
         else
@@ -173,9 +191,7 @@ class ModalCreateAccount: NSView, NSPopoverDelegate {
             self.progressSpinner.stopAnimation(nil)
             self.progressSpinner.isHidden = true
             
-            self.view.removeFromSuperview()
-            let createAccount: [String: ModalType] = [USER_INFO_MODAL: ModalType.CreateAccount]
-            NotificationCenter.default.post(name: NOTIF_PRESENT_MODAL, object: nil, userInfo: createAccount)
+            self.view.refreshModal(ModalType.CreateAccount)
         }
         
     }
@@ -202,8 +218,9 @@ class ModalCreateAccount: NSView, NSPopoverDelegate {
     
     @IBAction func colorWellPressed(_ sender: NSColorWell)
     {
-        let nscolorStringRepresentation = sender.color.string()
-        let color = nscolorStringRepresentation.color()
-        debugPrint("TEST")
+        self.profileImageButton.layer?.backgroundColor = sender.color.cgColor
+        let color = sender.color
+        let colorStringRepresentation = color.string()
+        self.avatarColor = colorStringRepresentation
     }
 }

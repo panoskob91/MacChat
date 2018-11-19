@@ -98,16 +98,20 @@ class AuthService
                     avatarName: String,
                     avatarColor: String,
                     successBlock: @escaping () -> Void,
-                    failBlock: @escaping (RSBaseResponse) -> Void)
+                    failBlock: @escaping (RSBaseResponse?) -> Void)
     {
-        Networking.sharedInstance.createNewUser(name: name, email: email, avatarName: avatarName, avatarColor: avatarColor, sucessBlock: {
+        Networking.sharedInstance.createNewUser(name: name,
+                                                email: email,
+                                                avatarName: avatarName,
+                                                avatarColor: avatarColor,
+                                                sucessBlock: {
             successBlock()
         }) { (failureResponse) in
             failBlock(failureResponse)
         }
     }
     
-    func findUserByEmail(_ email: String, completionBlock: @escaping (_ user: User) -> Void )
+    func findUserByEmail(_ email: String, completionBlock: @escaping (_ user: User?) -> Void )
     {
         Networking.sharedInstance.findUserByEmail(email) { (user) in
             completionBlock(user)

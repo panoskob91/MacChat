@@ -104,15 +104,35 @@ class ModalLogin: NSView {
                                                  successBlock: {
                                                     DispatchQueue.main.async {
                                                         self.activityIndicator.startAnimation(nil)
-                                                        AuthService.sharedInstance.findUserByEmail(self.emailTextField.stringValue, completionBlock: { (user) in
-                                                            UserDataService.initializeUserDataServiceSingletonWith(object: user)
-                                                            DispatchQueue.main.async {
-                                                                self.activityIndicator.stopAnimation(nil)
-                                                                self.activityIndicator.isHidden = true
-                                                                
-                                                                NotificationCenter.default.post(name: NOTIF_CLOSE_MODAL, object: nil)
-                                                                NotificationCenter.default.post(name: NOTIF_USER_DATA_CHANGED, object: nil)
-                                                            }
+                                                        AuthService.sharedInstance.findUserByEmail(self.emailTextField.stringValue,
+                                                                                                   completionBlock: { (user) in
+                                                                                                    guard let loggedUser = user else {
+                                                                                                        
+                                                                                                        AuthService.sharedInstance.isLoggedIn = false
+                                                                                                        DispatchQueue.main.async {
+                                                                                                            let button = NSButton(title: "OK", target: self, action: nil)
+                                                                                                            let alert = Alert(messageText: "User does not exist", buttons: [button], icon: nil)
+                                                                                                            alert.showAlert()
+                                                                                                            
+                                                                                                            self.activityIndicator.stopAnimation(nil)
+                                                                                                            self.activityIndicator.isHidden = true
+                                                                                                            
+                                                                                                            self.view.refreshModal(ModalType.login)
+                                                                                                            
+                                                                                                        }
+                                                                                                        
+                                                                                                       
+                                                                                                        
+                                                                                                        return
+                                                                                                    }
+                                                                                                    UserDataService.initializeUserDataServiceSingletonWith(object: loggedUser)
+                                                                                                    DispatchQueue.main.async {
+                                                                                                        self.activityIndicator.stopAnimation(nil)
+                                                                                                        self.activityIndicator.isHidden = true
+                                                                                                        
+                                                                                                        NotificationCenter.default.post(name: NOTIF_CLOSE_MODAL, object: nil)
+                                                                                                        NotificationCenter.default.post(name: NOTIF_USER_DATA_CHANGED, object: nil)
+                                                                                                    }
                                                         })
                                                     }
                                                     })
@@ -129,9 +149,7 @@ class ModalLogin: NSView {
                     self.activityIndicator.stopAnimation(nil)
                     self.activityIndicator.isHidden = true
                     
-                    self.view.removeFromSuperview()
-                    let loginDict: [String: ModalType] = [USER_INFO_MODAL: ModalType.login]
-                    NotificationCenter.default.post(name: NOTIF_PRESENT_MODAL, object: nil, userInfo: loginDict)
+                    self.view.refreshModal(ModalType.login)
                     
                 }
             }

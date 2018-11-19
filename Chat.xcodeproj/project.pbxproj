@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA0A7AC121A34EAC000CD0EC /* NSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0A7AC021A34EAC000CD0EC /* NSView.swift */; };
 		BA0D1CFD216489BA00A9BBD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0D1CFC216489BA00A9BBD7 /* AppDelegate.swift */; };
 		BA0D1D01216489BB00A9BBD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA0D1D00216489BB00A9BBD7 /* Assets.xcassets */; };
 		BA0D1D04216489BB00A9BBD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA0D1D02216489BB00A9BBD7 /* Main.storyboard */; };
@@ -50,6 +51,7 @@
 /* Begin PBXFileReference section */
 		4392F36D80A0CFA76179AD0E /* Pods-Chat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chat.release.xcconfig"; path = "Pods/Target Support Files/Pods-Chat/Pods-Chat.release.xcconfig"; sourceTree = "<group>"; };
 		AF4D6AE5FCFDEDAD3EF421B7 /* Pods-Chat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Chat/Pods-Chat.debug.xcconfig"; sourceTree = "<group>"; };
+		BA0A7AC021A34EAC000CD0EC /* NSView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSView.swift; sourceTree = "<group>"; };
 		BA0D1CF9216489BA00A9BBD7 /* Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA0D1CFC216489BA00A9BBD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA0D1D00216489BB00A9BBD7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 				BA2BEB1B217B8DC500DA2C8F /* URLRequest.swift */,
 				BAD0F1022188F57400B39F03 /* NSImageView.swift */,
 				BA4185B8219F5660005B54AB /* String.swift */,
+				BA0A7AC021A34EAC000CD0EC /* NSView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				BA39DE0C21734D3A00271CA3 /* ModalLogin.swift in Sources */,
 				BA394B8C218DB1B800D94C66 /* User.swift in Sources */,
 				BA0D1CFD216489BA00A9BBD7 /* AppDelegate.swift in Sources */,
+				BA0A7AC121A34EAC000CD0EC /* NSView.swift in Sources */,
 				BA3957DD2198996A0080ED14 /* AnimalCell.swift in Sources */,
 				BA183E90216B1DE900DA32ED /* NSColor.swift in Sources */,
 				BAADCCE6217B5F5300D76BF1 /* AuthService.swift in Sources */,

@@ -112,7 +112,7 @@ class Networking: NSObject, HTTPRequestsProtocol
                             avatarName: String,
                             avatarColor: String,
                             successBlock: @escaping () -> Void,
-                            failureBlock: @escaping (RSBaseResponse) -> Void)
+                            failureBlock: @escaping (RSBaseResponse?) -> Void)
     {
      
         let lowerCaseEmail = email.lowercased()
@@ -131,18 +131,22 @@ class Networking: NSObject, HTTPRequestsProtocol
                                          httpBody: bodyData)
         let dataTask = URLSession.shared.dataTask(with: request) { (responseData, response, responseError) in
             guard let serverResponse = response as? HTTPURLResponse else {
+                failureBlock(nil)
                 return
             }
             
             guard let jsonData = responseData else {
+                failureBlock(nil)
                 return
             }
             
             let jsonObject = try? JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers)
+            
             guard let json = jsonObject as? [String : Any] else {
+                failureBlock(nil)
                 return
             }
-       
+            
             let rsResponse = RSBaseResponse(responseObject: serverResponse, jsonResponse: json, networkError: responseError)
             
             //Catch fail server response
@@ -173,24 +177,37 @@ class Networking: NSObject, HTTPRequestsProtocol
         dataTask.resume()
         
     }
-    private func findUserBy(email eMail: String, completionBlock: @escaping(User) -> Void)
+    private func findUserBy(email eMail: String, completionBlock: @escaping(User?) -> Void)
     {
         
-        let request = URLRequest.request(withURLString: "\(LOCAL_URL_USER_BY_EMAIL)\(eMail)", method: "GET", headers: BEARER_HEADER, cachePolicy: nil, httpBody: nil)
+        let request = URLRequest.request(withURLString: "\(LOCAL_URL_USER_BY_EMAIL)\(eMail)",
+            method: "GET",
+            headers: BEARER_HEADER,
+            cachePolicy: nil,
+            httpBody: nil)
+        
         let dataTask = URLSession.shared.dataTask(with: request) { (responseData, response, networkError) in
             if (networkError == nil) {
                 guard let jsonData = responseData else {
                     return
                 }
-                let jsonObject = try? JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers)
-                guard let json = jsonObject as? [String : Any],
-                      let userInputJSON = User.createUserInputDictionary(json) else {
-                    return
+                
+                do {
+                    
+                    let jsonObject = try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.allowFragments)
+                    guard let json = jsonObject as? [String : Any],
+                        let userInputJSON = User.createUserInputDictionary(json) else {
+                            
+                            completionBlock(nil)
+                            
+                            return
+                    }
+                    let user = User(userInputJSON)
+                    completionBlock(user)
+                }catch let error {
+                    debugPrint(error)
                 }
-                let user = User(userInputJSON)
-                completionBlock(user)
             }
-            
         }
         dataTask.resume()
     }
@@ -224,7 +241,7 @@ class Networking: NSObject, HTTPRequestsProtocol
                        avatarName: String,
                        avatarColor: String,
                        sucessBlock: @escaping () -> Void,
-                       failureBlock: @escaping (RSBaseResponse) -> Void)
+                       failureBlock: @escaping (RSBaseResponse?) -> Void)
     {
         createUser(name: name, email: email, avatarName: avatarName, avatarColor: avatarColor, successBlock: {
             sucessBlock()
@@ -232,7 +249,7 @@ class Networking: NSObject, HTTPRequestsProtocol
             failureBlock(failResponse)
         }
     }
-    func findUserByEmail(_ email: String, completionBlock: @escaping(User) -> Void) {
+    func findUserByEmail(_ email: String, completionBlock: @escaping(User?) -> Void) {
         findUserBy(email: email) { (userObject) in
             completionBlock(userObject)
         }

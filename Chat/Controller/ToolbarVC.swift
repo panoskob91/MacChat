@@ -38,7 +38,9 @@ class ToolbarVC: NSViewController {
         if (AuthService.sharedInstance.isLoggedIn)
         {
             AuthService.sharedInstance.findUserByEmail(AuthService.sharedInstance.userEmail) { (user) in
-                UserDataService.initializeUserDataServiceSingletonWith(object: user)
+                if let loggedUser = user {
+                    UserDataService.initializeUserDataServiceSingletonWith(object: loggedUser)
+                }
                 DispatchQueue.main.async {
                     NotificationCenter.default.post(name: NOTIF_USER_DATA_CHANGED, object: nil)
                 }
