@@ -52,7 +52,8 @@ class ModalProfile: NSView {
         self.profileImage.layer?.borderColor = NSColor.gray.cgColor
         self.profileImage.layer?.borderWidth = 3
         self.profileImage.image = NSImage(named: NSImage.Name(UserDataService.sharedInstance.avatarName))
-        //TODO: Add avatar bg color
+        let profileBackgroundColor = UserDataService.sharedInstance.avatarColor.color()
+        self.profileImage.layer?.backgroundColor = profileBackgroundColor?.cgColor
         
         let modalGreen = NSColor.createColor(red: 0,
                                              green: 153,

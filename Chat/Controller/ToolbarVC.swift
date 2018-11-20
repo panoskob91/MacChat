@@ -207,7 +207,9 @@ class ToolbarVC: NSViewController {
             userAvatar.layer?.borderColor = NSColor.white.cgColor
             userAvatar.layer?.borderWidth = 1
             userAvatar.image = NSImage(named: NSImage.Name(rawValue: UserDataService.sharedInstance.avatarName))
-            //TODO: Add userAvatar background color  
+            //TODO: Add userAvatar background color
+            let avatarColor = UserDataService.sharedInstance.avatarColor.color()
+            userAvatar.layer?.backgroundColor = avatarColor?.cgColor
         }
         else
         {
