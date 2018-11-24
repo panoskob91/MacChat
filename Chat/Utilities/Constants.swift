@@ -50,8 +50,8 @@ let USER_ADD_URL = "\(BASE_URL)user/add"
 let LOCAL_USER_ADD_URL = "\(LOCAL_BASE_URL)user/add"
 let LOCAL_URL_USER_BY_EMAIL = "\(LOCAL_BASE_URL)user/byEmail/"
 let URL_UER_BY_EMAIL = "\(BASE_URL)user/byEmail/"
-
-
+let URL_GET_CHANNELS = "\(BASE_URL)channel/"
+let LOCAL_URL_GET_CHANNELS = "\(LOCAL_BASE_URL)channel/"
 //Networking constants
 let TIMEOUT_TIME: Double = 120.0
 

@@ -212,6 +212,56 @@ class Networking: NSObject, HTTPRequestsProtocol
         dataTask.resume()
     }
     
+    private func requestFindAllChannels(sBlock: @escaping([Channel]) -> Void, fBlock: @escaping(RSBaseResponse?) -> Void)
+    {
+        let request = URLRequest.request(withURLString: LOCAL_URL_GET_CHANNELS,
+                                         method: "GET",
+                                         headers: BEARER_HEADER,
+                                         cachePolicy: nil,
+                                         httpBody: nil)
+        let dataTask = URLSession.shared.dataTask(with: request) { (responseData, response, networkError) in
+            guard let serverResponse = response as? HTTPURLResponse else {
+                fBlock(nil)
+                return
+            }
+            
+            guard let responseData = responseData else {
+                fBlock(nil)
+                return
+            }
+            let jsonObject = try? JSONSerialization.jsonObject(with: responseData, options: JSONSerialization.ReadingOptions.mutableContainers)
+            guard let json = jsonObject as? [[String: Any]] else{
+                fBlock(nil)
+                return
+            }
+            
+            var channels: [Channel] = []
+            
+            for item in json {
+                let id  = item["_id"] as? String
+                let name = item["name"] as? String
+                let description = item["description"] as? String
+                
+                guard let channelId = id,
+                    let channelName = name,
+                    let channelDescription = description else {
+                        
+                        let rsResponse = RSBaseResponse(responseObject: serverResponse,
+                                                        jsonResponse: item,
+                                                        networkError: networkError)
+                        fBlock(rsResponse)
+                        return
+                }
+                
+                let channel = Channel(channelName: channelName, channelId: channelId, description: channelDescription)
+                channels.append(channel)
+            }
+            
+            sBlock(channels)
+        }
+        dataTask.resume()
+    }
+    
     //MARK:- Protocol functions
     func registerUser(email eMail: String,
                       password passWord: String,
@@ -252,6 +302,14 @@ class Networking: NSObject, HTTPRequestsProtocol
     func findUserByEmail(_ email: String, completionBlock: @escaping(User?) -> Void) {
         findUserBy(email: email) { (userObject) in
             completionBlock(userObject)
+        }
+    }
+    
+    func findAllChannels(succesBlock: @escaping ([Channel]) -> Void, failureBlock: @escaping (RSBaseResponse?) -> Void) {
+        requestFindAllChannels(sBlock: { (channels) in
+            succesBlock(channels)
+        }) { (rsFailBaseResponse) in
+            failureBlock(rsFailBaseResponse)
         }
     }
 }

@@ -9,7 +9,7 @@
 import Cocoa
 
 extension String {
-    
+  
     func color() -> NSColor? {
         assert(self.hasPrefix("[") && self.hasSuffix("]") && self.isSeparetedBy(" ,"),
                "String provided does not have the correct format, it should be formated as [<red>, <green>, <blue>, <alpha>]")

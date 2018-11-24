@@ -22,8 +22,8 @@ class ChannelVC: NSViewController {
         self.addChannelButton.isBordered = false
         setupView()
         startObservingForNotifications()
-        
     }
+    
     //MARK:- Helper functions
     private func setupView()
     {
@@ -38,7 +38,6 @@ class ChannelVC: NSViewController {
         self.addChannelButton.setTitleColor(color: grayTextColor)
         //TableView
         self.channelsTableView.backgroundColor = channelColor
-        
     }
 
     private func startObservingForNotifications()

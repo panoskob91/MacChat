@@ -17,6 +17,7 @@
 		BA183E8A216B1C9000DA32ED /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA183E89216B1C9000DA32ED /* MainWindowController.swift */; };
 		BA183E8D216B1D8400DA32ED /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA183E8C216B1D8400DA32ED /* Constants.swift */; };
 		BA183E90216B1DE900DA32ED /* NSColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA183E8F216B1DE900DA32ED /* NSColor.swift */; };
+		BA27680E21A3DDEA00C979ED /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA27680D21A3DDEA00C979ED /* MessageService.swift */; };
 		BA2BEB1C217B8DC500DA2C8F /* URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2BEB1B217B8DC500DA2C8F /* URLRequest.swift */; };
 		BA394B8C218DB1B800D94C66 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA394B8B218DB1B800D94C66 /* User.swift */; };
 		BA3957D9219893B10080ED14 /* AvatarPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3957D8219893B10080ED14 /* AvatarPickerVC.swift */; };
@@ -64,6 +65,7 @@
 		BA183E89216B1C9000DA32ED /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		BA183E8C216B1D8400DA32ED /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BA183E8F216B1DE900DA32ED /* NSColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSColor.swift; sourceTree = "<group>"; };
+		BA27680D21A3DDEA00C979ED /* MessageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
 		BA2BEB1B217B8DC500DA2C8F /* URLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequest.swift; sourceTree = "<group>"; };
 		BA394B8B218DB1B800D94C66 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BA3957D8219893B10080ED14 /* AvatarPickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarPickerVC.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				BAB81A58217C7A270093802C /* Networking.swift */,
 				BAB81A61217CD8260093802C /* UserDataService.swift */,
 				BA3E1B97218F1FB10075462E /* SocketService.swift */,
+				BA27680D21A3DDEA00C979ED /* MessageService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 				BA0A7AC121A34EAC000CD0EC /* NSView.swift in Sources */,
 				BA3957DD2198996A0080ED14 /* AnimalCell.swift in Sources */,
 				BA183E90216B1DE900DA32ED /* NSColor.swift in Sources */,
+				BA27680E21A3DDEA00C979ED /* MessageService.swift in Sources */,
 				BAADCCE6217B5F5300D76BF1 /* AuthService.swift in Sources */,
 				BAB81A5C217CA4F90093802C /* HTTPRequestsProtocol.swift in Sources */,
 				BAF6C56A218F31DF0097E927 /* Channel.swift in Sources */,
