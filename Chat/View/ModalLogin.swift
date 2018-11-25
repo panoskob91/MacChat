@@ -121,8 +121,6 @@ class ModalLogin: NSView {
                                                                                                             
                                                                                                         }
                                                                                                         
-                                                                                                       
-                                                                                                        
                                                                                                         return
                                                                                                     }
                                                                                                     UserDataService.initializeUserDataServiceSingletonWith(object: loggedUser)

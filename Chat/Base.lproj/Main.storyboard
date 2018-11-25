@@ -827,13 +827,13 @@
                                     <action selector="addChanelButtonClicked:" target="Xbl-ZI-08Q" id="bFA-Kz-87J"/>
                                 </connections>
                             </button>
-                            <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pea-Ui-BPb">
+                            <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="32" horizontalPageScroll="10" verticalLineScroll="32" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pea-Ui-BPb">
                                 <rect key="frame" x="0.0" y="0.0" width="200" height="198"/>
                                 <clipView key="contentView" id="6Rk-iC-m4y">
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="198"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="q4p-T7-etJ">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="30" rowSizeStyle="automatic" viewBased="YES" id="q4p-T7-etJ">
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="198"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
@@ -853,21 +853,26 @@
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView id="DgI-50-Vms">
-                                                            <rect key="frame" x="1" y="1" width="197" height="17"/>
+                                                        <tableCellView identifier="channelCell" id="DgI-50-Vms" customClass="ChannelCell" customModule="Chat" customModuleProvider="target">
+                                                            <rect key="frame" x="1" y="1" width="197" height="30"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I9l-hy-6bu">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="197" height="17"/>
-                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="NrM-1M-mPc">
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="I9l-hy-6bu" userLabel="channelName">
+                                                                    <rect key="frame" x="0.0" y="7" width="197" height="17"/>
+                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="#channel" id="NrM-1M-mPc">
                                                                         <font key="font" metaFont="system"/>
-                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="textColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                 </textField>
                                                             </subviews>
+                                                            <constraints>
+                                                                <constraint firstAttribute="trailing" secondItem="I9l-hy-6bu" secondAttribute="trailing" constant="2" id="3Vq-i9-VKj"/>
+                                                                <constraint firstItem="I9l-hy-6bu" firstAttribute="leading" secondItem="DgI-50-Vms" secondAttribute="leading" constant="2" id="Vf3-AG-7bz"/>
+                                                                <constraint firstItem="I9l-hy-6bu" firstAttribute="centerY" secondItem="DgI-50-Vms" secondAttribute="centerY" id="gms-wc-0nP"/>
+                                                            </constraints>
                                                             <connections>
+                                                                <outlet property="channelName" destination="I9l-hy-6bu" id="Fba-nj-eyE"/>
                                                                 <outlet property="textField" destination="I9l-hy-6bu" id="NxO-9C-INZ"/>
                                                             </connections>
                                                         </tableCellView>

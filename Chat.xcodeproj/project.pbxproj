@@ -29,6 +29,8 @@
 		BA3E1B94218E3FC40075462E /* ModalProfile.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA3E1B93218E3FC40075462E /* ModalProfile.xib */; };
 		BA3E1B96218E3FFF0075462E /* ModalProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3E1B95218E3FFF0075462E /* ModalProfile.swift */; };
 		BA3E1B98218F1FB10075462E /* SocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3E1B97218F1FB10075462E /* SocketService.swift */; };
+		BA3F036521AAA0A100878048 /* ChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3F036421AAA0A100878048 /* ChannelCell.swift */; };
+		BA3F036721AAA30700878048 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3F036621AAA30700878048 /* Utilities.swift */; };
 		BA4185B9219F5660005B54AB /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4185B8219F5660005B54AB /* String.swift */; };
 		BA52F9BC21738CE7006BD637 /* ModalCreateAccount.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA52F9BB21738CE7006BD637 /* ModalCreateAccount.xib */; };
 		BA52F9BE21738D05006BD637 /* ModalCreateAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA52F9BD21738D05006BD637 /* ModalCreateAccount.swift */; };
@@ -77,6 +79,8 @@
 		BA3E1B93218E3FC40075462E /* ModalProfile.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModalProfile.xib; sourceTree = "<group>"; };
 		BA3E1B95218E3FFF0075462E /* ModalProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalProfile.swift; sourceTree = "<group>"; };
 		BA3E1B97218F1FB10075462E /* SocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketService.swift; sourceTree = "<group>"; };
+		BA3F036421AAA0A100878048 /* ChannelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCell.swift; sourceTree = "<group>"; };
+		BA3F036621AAA30700878048 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		BA4185B8219F5660005B54AB /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		BA52F9BB21738CE7006BD637 /* ModalCreateAccount.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModalCreateAccount.xib; sourceTree = "<group>"; };
 		BA52F9BD21738D05006BD637 /* ModalCreateAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalCreateAccount.swift; sourceTree = "<group>"; };
@@ -183,6 +187,7 @@
 				BA52F9BD21738D05006BD637 /* ModalCreateAccount.swift */,
 				BA3E1B95218E3FFF0075462E /* ModalProfile.swift */,
 				BAF6C56D218F47FB0097E927 /* ModalAddChannel.swift */,
+				BA3F036421AAA0A100878048 /* ChannelCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -205,6 +210,7 @@
 				BAB81A5A217CA46E0093802C /* Protocols */,
 				BA183E8E216B1DD600DA32ED /* Extensions */,
 				BA183E8C216B1D8400DA32ED /* Constants.swift */,
+				BA3F036621AAA30700878048 /* Utilities.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -393,6 +399,7 @@
 				BA183E88216B1BA000DA32ED /* ChatVC.swift in Sources */,
 				BA2BEB1C217B8DC500DA2C8F /* URLRequest.swift in Sources */,
 				BA183E82216B1B7900DA32ED /* ToolbarVC.swift in Sources */,
+				BA3F036521AAA0A100878048 /* ChannelCell.swift in Sources */,
 				BAB81A59217C7A270093802C /* Networking.swift in Sources */,
 				BA183E85216B1B8900DA32ED /* ChannelVC.swift in Sources */,
 				BAB81A62217CD8260093802C /* UserDataService.swift in Sources */,
@@ -411,6 +418,7 @@
 				BA183E8A216B1C9000DA32ED /* MainWindowController.swift in Sources */,
 				BAB81A57217C783C0093802C /* RSBaseResponse.swift in Sources */,
 				BAF6C56E218F47FB0097E927 /* ModalAddChannel.swift in Sources */,
+				BA3F036721AAA30700878048 /* Utilities.swift in Sources */,
 				BA4185B9219F5660005B54AB /* String.swift in Sources */,
 				BAA83BCC216BEDA500435F32 /* NSTextField.swift in Sources */,
 				BAA83BCA216BE84F00435F32 /* NSButton.swift in Sources */,

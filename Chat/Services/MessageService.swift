@@ -13,7 +13,7 @@ class MessageService: NSObject {
     static let sharedInstance: MessageService = MessageService()
     var channels: [Channel] = []
     
-    func findAllChannels(sBlock: @escaping([Channel]) -> Void,
+    func findAllChannels(sBlock: @escaping([Channel]?) -> Void,
                          fBlock: @escaping(RSBaseResponse?) -> Void)
     {
         Networking.sharedInstance.findAllChannels(succesBlock: { (channels) in
@@ -24,4 +24,8 @@ class MessageService: NSObject {
         }
     }
     
+    func emptyChannels()
+    {
+        self.channels = []
+    }
 }
