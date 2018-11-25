@@ -90,5 +90,29 @@ class ChatVC: NSViewController {
         }
     }
     
+    //MARK:- Getters
+    func getChannelTitleValue() -> String {
+        return self.channelTitle.stringValue
+    }
     
+    func getChannelDescriptionValue() -> String {
+        return self.channeDescription.stringValue
+    }
+    
+    func getUserTypingLabelValue() -> String {
+        return self.userTypingLabel.stringValue
+    }
+    
+    //MARK: - Setters
+    func setChannelTitleValue(_ channelTitle: String) {
+        self.channelTitle.stringValue = channelTitle
+    }
+    
+    func setChannelDescriptionValue(_ channelDescription: String) {
+        self.channeDescription.stringValue = channelDescription
+    }
+    
+    func setUserTypingLabelValue(_ userTypingLabelValue: String) {
+        self.userTypingLabel.stringValue = userTypingLabelValue
+    }
 }

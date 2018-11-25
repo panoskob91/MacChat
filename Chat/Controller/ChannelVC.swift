@@ -17,7 +17,11 @@ class ChannelVC: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
     @IBOutlet private var addChannelButton: NSButton!
     
     //MARK: - properties
-    let tableViewCellId = NSUserInterfaceItemIdentifier(rawValue: "channelCell")
+    private let tableViewCellId = NSUserInterfaceItemIdentifier(rawValue: "channelCell")
+    private var selectedChannelIndex = 0
+    private var selectedChannel: Channel?
+    var chatVC: ChatVC?
+    private var channel: Channel?
     
     //MARK: - ViewController lifecycle
     override func viewDidLoad() {
@@ -31,11 +35,13 @@ class ChannelVC: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
     
     override func viewDidAppear() {
         
-            MessageService.sharedInstance.findAllChannels(sBlock: { (channels) in
-                Utilities.updateTableView(self.channelsTableView)
-            }) { (failResponse) in
-                print("SHIT")
-            }
+        self.chatVC = self.view.window?.contentViewController?.childViewControllers[0].childViewControllers[1] as? ChatVC
+        
+        MessageService.sharedInstance.findAllChannels(sBlock: { (channels) in
+            Utilities.updateTableView(self.channelsTableView)
+        }) { (failResponse) in
+            print("SHIT")
+        }
     }
     
     //MARK:- Helper functions
@@ -72,6 +78,20 @@ class ChannelVC: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
         }
     }
     
+    private func updateWithChannel(channel: Channel)
+    {
+        self.channel = channel
+        let channelTitle = channel.channelName ?? ""
+        let title = "#\(channelTitle)"
+        let channelDescription = channel.channelDescription ?? ""
+        let userTypingLabelValue = UserDataService.sharedInstance.name
+        
+        self.chatVC?.setChannelTitleValue(title)
+        self.chatVC?.setChannelDescriptionValue(channelDescription)
+        self.chatVC?.setUserTypingLabelValue(userTypingLabelValue)
+        
+    }
+    
     //MARK: - IBActions
     @IBAction private func addChanelButtonClicked(_ sender: NSButton)
     {
@@ -98,8 +118,16 @@ class ChannelVC: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
         guard let cell = tableView.makeView(withIdentifier: tableViewCellId, owner: nil) as? ChannelCell else {
             return NSTableCellView()
         }
-        cell.configureCell(channel: channel)
+        cell.configureCell(channel: channel, selectedChannelIndex: self.selectedChannelIndex, row: row)
         return cell
+    }
+    
+    func tableViewSelectionDidChange(_ notification: Notification) {
+        self.selectedChannelIndex = self.channelsTableView.selectedRow
+        let channel = MessageService.sharedInstance.channels[self.selectedChannelIndex]
+        self.selectedChannel = channel
+        updateWithChannel(channel: channel)
+        Utilities.updateTableView(self.channelsTableView)
     }
     
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
