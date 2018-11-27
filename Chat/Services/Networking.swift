@@ -262,6 +262,35 @@ class Networking: NSObject, HTTPRequestsProtocol
         dataTask.resume()
     }
     
+    private func requestFindMessagesForChannel(_ channel: Channel,
+                                               successBlock: @escaping([MessageService]?) -> Void,
+                                               failureBlock: @escaping(RSBaseResponse?) -> Void)
+    {
+        let urlString = "\(LOCAL_URL_GET_MESSAGES)\(channel.channelId)"
+        let request = URLRequest.request(withURLString: urlString,
+                                         method: "GET",
+                                         headers: BEARER_HEADER,
+                                         cachePolicy: nil,
+                                         httpBody: nil)
+        let dataTask = URLSession.shared.dataTask(with: request) { (responseData, response, responseError) in
+            guard let serverResponse = response as? HTTPURLResponse else {
+                failureBlock(nil)
+                return
+            }
+            
+            guard let responseData = responseData else {
+                failureBlock(nil)
+                return
+            }
+            let jsonObject = try? JSONSerialization.jsonObject(with: responseData, options: JSONSerialization.ReadingOptions.mutableContainers)
+            guard let json = jsonObject as? [[String: Any]] else{
+                failureBlock(nil)
+                return
+            }
+        }
+        dataTask.resume()
+    }
+    
     //MARK:- Protocol functions
     func registerUser(email eMail: String,
                       password passWord: String,
@@ -311,5 +340,12 @@ class Networking: NSObject, HTTPRequestsProtocol
         }) { (rsFailBaseResponse) in
             failureBlock(rsFailBaseResponse)
         }
+    }
+    
+    func findAllMessagesForChannel(_ channel: Channel,
+                                   successBlock: @escaping([MessageService]?) -> Void,
+                                   failureBlock: @escaping(RSBaseResponse?) -> Void)
+    {
+        
     }
 }
