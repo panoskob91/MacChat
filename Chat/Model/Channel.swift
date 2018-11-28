@@ -10,11 +10,11 @@ import Cocoa
 
 class Channel: NSObject {
 
-    var channelName: String!
+    var channelName: String?
     var channelId: String!
-    var channelDescription: String!
+    var channelDescription: String?
     
-    init(channelName: String, channelId: String, description: String) {
+    init(channelName: String?, channelId: String, description: String?) {
         self.channelName = channelName
         self.channelId = channelId
         self.channelDescription = description

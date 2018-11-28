@@ -263,7 +263,7 @@ class Networking: NSObject, HTTPRequestsProtocol
     }
     
     private func requestFindMessagesForChannel(_ channel: Channel,
-                                               successBlock: @escaping([MessageService]?) -> Void,
+                                               successBlock: @escaping([Message]?) -> Void,
                                                failureBlock: @escaping(RSBaseResponse?) -> Void)
     {
         let urlString = "\(LOCAL_URL_GET_MESSAGES)\(channel.channelId)"
@@ -279,14 +279,52 @@ class Networking: NSObject, HTTPRequestsProtocol
             }
             
             guard let responseData = responseData else {
-                failureBlock(nil)
+                let rsFailResponse = RSBaseResponse(responseObject: serverResponse,
+                                                    jsonResponse: nil,
+                                                    networkError: responseError)
+                failureBlock(rsFailResponse)
                 return
             }
-            let jsonObject = try? JSONSerialization.jsonObject(with: responseData, options: JSONSerialization.ReadingOptions.mutableContainers)
+            let jsonObject = try? JSONSerialization.jsonObject(with: responseData,
+                                                               options: JSONSerialization.ReadingOptions.mutableContainers)
             guard let json = jsonObject as? [[String: Any]] else{
-                failureBlock(nil)
+                let rsFailResponse = RSBaseResponse(responseObject: serverResponse,
+                                                    jsonResponse: nil,
+                                                    networkError: responseError)
+                failureBlock(rsFailResponse)
                 return
             }
+            
+            //Start working with server response
+            MessageService.sharedInstance.clearMessages()
+            var messages: [Message] = []
+            for item in json {
+                guard let id = item["_id"] as? String,
+                    let messageBody = item["messageBody"] as? String,
+                    let userId = item["userId"] as? String,
+                    let channelId = item["channelId"] as? String,
+                    let userName = item["userName"] as? String,
+                    let userAvatar = item["userAvatar"] as? String,
+                    let userAvatarColor = item["userAvatarColor"] as? String,
+                    let timeStamp = item["timeStamp"] as? String else {
+                        
+                        let rsFailResponse = RSBaseResponse(responseObject: serverResponse,
+                                                            jsonResponse: item,
+                                                            networkError: responseError)
+                        failureBlock(rsFailResponse)
+                        continue
+                }
+                let user = User(id: userId, name: userName, email: nil, avatarName: userAvatar, avatarColor: userAvatarColor)
+                let channel = Channel(channelName: nil, channelId: channelId, description: nil)
+                let timeStampDate = timeStamp.date()
+                guard let tStampDate = timeStampDate else {
+                    continue
+                }
+                let message = Message(messageBody: messageBody, user: user, channel: channel, stamp: tStampDate, messageId: id)
+                messages.append(message)
+            }
+            successBlock(messages)
+            
         }
         dataTask.resume()
     }
@@ -343,9 +381,13 @@ class Networking: NSObject, HTTPRequestsProtocol
     }
     
     func findAllMessagesForChannel(_ channel: Channel,
-                                   successBlock: @escaping([MessageService]?) -> Void,
+                                   successBlock: @escaping([Message]?) -> Void,
                                    failureBlock: @escaping(RSBaseResponse?) -> Void)
     {
-        
+        requestFindMessagesForChannel(channel, successBlock: { (messages) in
+            successBlock(messages)
+        }) { (failResponse) in
+            failureBlock(failResponse)
+        }
     }
 }

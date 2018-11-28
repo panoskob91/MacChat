@@ -12,7 +12,7 @@ class User: NSObject
 {
     let userID: String!
     let userName: String!
-    let userEmail: String!
+    let userEmail: String?
     let avatarName: String!
     let avatarColor: String!
     
@@ -26,7 +26,7 @@ class User: NSObject
     }
     init(id: String,
          name: String,
-         email: String,
+         email: String?,
          avatarName: String,
          avatarColor: String)
     {
@@ -42,7 +42,7 @@ class User: NSObject
         get {
             let returnedString = "userId: \(self.userID)\n"
                 + "userName: \(self.userName)\n"
-                + "userEmail:\(self.userEmail)\n"
+                + "userEmail:\(self.userEmail ?? "")\n"
                 + "avatarName: \(self.avatarName)\n"
                 + "avatarColor: \(self.avatarColor)"
             return returnedString

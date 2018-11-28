@@ -26,6 +26,7 @@
 		BA3957DF2198999A0080ED14 /* AnimalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA3957DE2198999A0080ED14 /* AnimalCell.xib */; };
 		BA39DE0A21734CCA00271CA3 /* ModalLogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA39DE0921734CCA00271CA3 /* ModalLogin.xib */; };
 		BA39DE0C21734D3A00271CA3 /* ModalLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA39DE0B21734D3A00271CA3 /* ModalLogin.swift */; };
+		BA39E12921ADCB8E00F3D0E1 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA39E12821ADCB8E00F3D0E1 /* Message.swift */; };
 		BA3E1B94218E3FC40075462E /* ModalProfile.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA3E1B93218E3FC40075462E /* ModalProfile.xib */; };
 		BA3E1B96218E3FFF0075462E /* ModalProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3E1B95218E3FFF0075462E /* ModalProfile.swift */; };
 		BA3E1B98218F1FB10075462E /* SocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3E1B97218F1FB10075462E /* SocketService.swift */; };
@@ -76,6 +77,7 @@
 		BA3957DE2198999A0080ED14 /* AnimalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnimalCell.xib; sourceTree = "<group>"; };
 		BA39DE0921734CCA00271CA3 /* ModalLogin.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModalLogin.xib; sourceTree = "<group>"; };
 		BA39DE0B21734D3A00271CA3 /* ModalLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalLogin.swift; sourceTree = "<group>"; };
+		BA39E12821ADCB8E00F3D0E1 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		BA3E1B93218E3FC40075462E /* ModalProfile.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModalProfile.xib; sourceTree = "<group>"; };
 		BA3E1B95218E3FFF0075462E /* ModalProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalProfile.swift; sourceTree = "<group>"; };
 		BA3E1B97218F1FB10075462E /* SocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketService.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				BAB81A5F217CD1530093802C /* LoginResponse.swift */,
 				BA394B8B218DB1B800D94C66 /* User.swift */,
 				BAF6C569218F31DF0097E927 /* Channel.swift */,
+				BA39E12821ADCB8E00F3D0E1 /* Message.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 				BAB81A5E217CACB80093802C /* Alert.swift in Sources */,
 				BAD0F1032188F57400B39F03 /* NSImageView.swift in Sources */,
 				BA183E88216B1BA000DA32ED /* ChatVC.swift in Sources */,
+				BA39E12921ADCB8E00F3D0E1 /* Message.swift in Sources */,
 				BA2BEB1C217B8DC500DA2C8F /* URLRequest.swift in Sources */,
 				BA183E82216B1B7900DA32ED /* ToolbarVC.swift in Sources */,
 				BA3F036521AAA0A100878048 /* ChannelCell.swift in Sources */,

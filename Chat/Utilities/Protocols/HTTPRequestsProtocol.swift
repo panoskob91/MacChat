@@ -30,7 +30,7 @@ protocol HTTPRequestsProtocol {
     func findAllChannels(succesBlock: @escaping([Channel]) -> Void, failureBlock: @escaping(RSBaseResponse?) -> Void)
     
     func findAllMessagesForChannel(_ channel: Channel,
-                                   successBlock: @escaping([MessageService]?) -> Void,
+                                   successBlock: @escaping([Message]?) -> Void,
                                    failureBlock: @escaping(RSBaseResponse?) -> Void)
     
 }

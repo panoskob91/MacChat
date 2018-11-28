@@ -57,4 +57,10 @@ extension String {
         return number
     }
     
+    func date() -> Date? {
+        let dateFormater = DateFormatter()
+        dateFormater.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        let date = dateFormater.date(from: self)
+        return date
+    }
 }

@@ -71,6 +71,11 @@ class ChatVC: NSViewController {
         }
     }
     
+    private func getChats()
+    {
+        
+    }
+    
     //MARK:- IBActions
     @IBAction private func sendMessageButtonClicked(_ sender: NSButton)
     {
