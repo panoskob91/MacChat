@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class ChatVC: NSViewController {
+class ChatVC: NSViewController, SelectionDelegate {
 
     //MARK:- IBOutlets
     @IBOutlet private var chatTableView: NSTableView!
@@ -18,6 +18,9 @@ class ChatVC: NSViewController {
     @IBOutlet private var messageOutlineView: NSView!
     @IBOutlet private var messageText: NSTextField!
     @IBOutlet private var sendMessageButton: NSButton!
+    
+    //MARK: - Variables
+    private var messages: [Message] = []
     
     //MARK:- ViewController lifecycle
     override func viewDidLoad() {
@@ -92,6 +95,22 @@ class ChatVC: NSViewController {
         {
             let loginDict = [USER_INFO_MODAL: ModalType.login]
             NotificationCenter.default.post(name: NOTIF_PRESENT_MODAL, object: nil, userInfo: loginDict)
+        }
+    }
+    
+    //MARK: - Delegate methods
+    func tableView(_tableView: NSTableView, didSelectObject object: NSObject) {
+        guard let channel = object as? Channel else {
+            return
+        }
+        
+        MessageService.sharedInstance.findAllMessages(channel, successBlock: { (messages) in
+            guard let chatMessages = messages  else {
+                return
+            }
+            self.messages = chatMessages
+        }) { (failureResponse) in
+            print(failureResponse ?? "")
         }
     }
     

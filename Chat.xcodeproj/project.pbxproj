@@ -27,6 +27,7 @@
 		BA39DE0A21734CCA00271CA3 /* ModalLogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA39DE0921734CCA00271CA3 /* ModalLogin.xib */; };
 		BA39DE0C21734D3A00271CA3 /* ModalLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA39DE0B21734D3A00271CA3 /* ModalLogin.swift */; };
 		BA39E12921ADCB8E00F3D0E1 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA39E12821ADCB8E00F3D0E1 /* Message.swift */; };
+		BA3C1A0021AFB0B100C9866A /* SelectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C19FF21AFB0B100C9866A /* SelectionDelegate.swift */; };
 		BA3E1B94218E3FC40075462E /* ModalProfile.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA3E1B93218E3FC40075462E /* ModalProfile.xib */; };
 		BA3E1B96218E3FFF0075462E /* ModalProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3E1B95218E3FFF0075462E /* ModalProfile.swift */; };
 		BA3E1B98218F1FB10075462E /* SocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3E1B97218F1FB10075462E /* SocketService.swift */; };
@@ -78,6 +79,7 @@
 		BA39DE0921734CCA00271CA3 /* ModalLogin.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModalLogin.xib; sourceTree = "<group>"; };
 		BA39DE0B21734D3A00271CA3 /* ModalLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalLogin.swift; sourceTree = "<group>"; };
 		BA39E12821ADCB8E00F3D0E1 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		BA3C19FF21AFB0B100C9866A /* SelectionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionDelegate.swift; sourceTree = "<group>"; };
 		BA3E1B93218E3FC40075462E /* ModalProfile.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModalProfile.xib; sourceTree = "<group>"; };
 		BA3E1B95218E3FFF0075462E /* ModalProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalProfile.swift; sourceTree = "<group>"; };
 		BA3E1B97218F1FB10075462E /* SocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketService.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 		BA183E8B216B1D6100DA32ED /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				BA3C19FE21AFB04500C9866A /* Delegates */,
 				BAB81A5A217CA46E0093802C /* Protocols */,
 				BA183E8E216B1DD600DA32ED /* Extensions */,
 				BA183E8C216B1D8400DA32ED /* Constants.swift */,
@@ -251,6 +254,14 @@
 				BA3957DE2198999A0080ED14 /* AnimalCell.xib */,
 			);
 			path = XIBs;
+			sourceTree = "<group>";
+		};
+		BA3C19FE21AFB04500C9866A /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				BA3C19FF21AFB0B100C9866A /* SelectionDelegate.swift */,
+			);
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 		BAADCCE4217B5F2600D76BF1 /* Services */ = {
@@ -416,6 +427,7 @@
 				BA3957DD2198996A0080ED14 /* AnimalCell.swift in Sources */,
 				BA183E90216B1DE900DA32ED /* NSColor.swift in Sources */,
 				BA27680E21A3DDEA00C979ED /* MessageService.swift in Sources */,
+				BA3C1A0021AFB0B100C9866A /* SelectionDelegate.swift in Sources */,
 				BAADCCE6217B5F5300D76BF1 /* AuthService.swift in Sources */,
 				BAB81A5C217CA4F90093802C /* HTTPRequestsProtocol.swift in Sources */,
 				BAF6C56A218F31DF0097E927 /* Channel.swift in Sources */,

@@ -266,7 +266,11 @@ class Networking: NSObject, HTTPRequestsProtocol
                                                successBlock: @escaping([Message]?) -> Void,
                                                failureBlock: @escaping(RSBaseResponse?) -> Void)
     {
-        let urlString = "\(LOCAL_URL_GET_MESSAGES)\(channel.channelId)"
+        guard let channelId = channel.channelId else {
+            failureBlock(nil)
+            return
+        }
+        let urlString = "\(LOCAL_URL_GET_MESSAGES)\(channelId)"
         let request = URLRequest.request(withURLString: urlString,
                                          method: "GET",
                                          headers: BEARER_HEADER,

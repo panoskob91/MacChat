@@ -22,6 +22,8 @@ class ChannelVC: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
     private var selectedChannel: Channel?
     var chatVC: ChatVC?
     private var channel: Channel?
+    weak var selectionDelegate: SelectionDelegate?
+    
     
     //MARK: - ViewController lifecycle
     override func viewDidLoad() {
@@ -127,6 +129,9 @@ class ChannelVC: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
         let channel = MessageService.sharedInstance.channels[self.selectedChannelIndex]
         self.selectedChannel = channel
         updateWithChannel(channel: channel)
+        //Delegate
+        self.selectionDelegate = self.chatVC
+        self.selectionDelegate?.tableView(_tableView: self.channelsTableView, didSelectObject: channel)
         Utilities.updateTableView(self.channelsTableView)
     }
     
