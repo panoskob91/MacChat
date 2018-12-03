@@ -28,6 +28,8 @@
 		BA39DE0C21734D3A00271CA3 /* ModalLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA39DE0B21734D3A00271CA3 /* ModalLogin.swift */; };
 		BA39E12921ADCB8E00F3D0E1 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA39E12821ADCB8E00F3D0E1 /* Message.swift */; };
 		BA3C1A0021AFB0B100C9866A /* SelectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C19FF21AFB0B100C9866A /* SelectionDelegate.swift */; };
+		BA3C1A0221AFB75400C9866A /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C1A0121AFB75400C9866A /* ChatCell.swift */; };
+		BA3C1A0421AFBA7000C9866A /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C1A0321AFBA7000C9866A /* Date.swift */; };
 		BA3E1B94218E3FC40075462E /* ModalProfile.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA3E1B93218E3FC40075462E /* ModalProfile.xib */; };
 		BA3E1B96218E3FFF0075462E /* ModalProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3E1B95218E3FFF0075462E /* ModalProfile.swift */; };
 		BA3E1B98218F1FB10075462E /* SocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3E1B97218F1FB10075462E /* SocketService.swift */; };
@@ -80,6 +82,8 @@
 		BA39DE0B21734D3A00271CA3 /* ModalLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalLogin.swift; sourceTree = "<group>"; };
 		BA39E12821ADCB8E00F3D0E1 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		BA3C19FF21AFB0B100C9866A /* SelectionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionDelegate.swift; sourceTree = "<group>"; };
+		BA3C1A0121AFB75400C9866A /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
+		BA3C1A0321AFBA7000C9866A /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		BA3E1B93218E3FC40075462E /* ModalProfile.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModalProfile.xib; sourceTree = "<group>"; };
 		BA3E1B95218E3FFF0075462E /* ModalProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalProfile.swift; sourceTree = "<group>"; };
 		BA3E1B97218F1FB10075462E /* SocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketService.swift; sourceTree = "<group>"; };
@@ -192,6 +196,7 @@
 				BA3E1B95218E3FFF0075462E /* ModalProfile.swift */,
 				BAF6C56D218F47FB0097E927 /* ModalAddChannel.swift */,
 				BA3F036421AAA0A100878048 /* ChannelCell.swift */,
+				BA3C1A0121AFB75400C9866A /* ChatCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -231,6 +236,7 @@
 				BAD0F1022188F57400B39F03 /* NSImageView.swift */,
 				BA4185B8219F5660005B54AB /* String.swift */,
 				BA0A7AC021A34EAC000CD0EC /* NSView.swift */,
+				BA3C1A0321AFBA7000C9866A /* Date.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -437,7 +443,9 @@
 				BA3F036721AAA30700878048 /* Utilities.swift in Sources */,
 				BA4185B9219F5660005B54AB /* String.swift in Sources */,
 				BAA83BCC216BEDA500435F32 /* NSTextField.swift in Sources */,
+				BA3C1A0221AFB75400C9866A /* ChatCell.swift in Sources */,
 				BAA83BCA216BE84F00435F32 /* NSButton.swift in Sources */,
+				BA3C1A0421AFBA7000C9866A /* Date.swift in Sources */,
 				BA3957D9219893B10080ED14 /* AvatarPickerVC.swift in Sources */,
 				BA52F9BE21738D05006BD637 /* ModalCreateAccount.swift in Sources */,
 				BA3E1B96218E3FFF0075462E /* ModalProfile.swift in Sources */,

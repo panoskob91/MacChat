@@ -310,7 +310,8 @@ class Networking: NSObject, HTTPRequestsProtocol
                     let userName = item["userName"] as? String,
                     let userAvatar = item["userAvatar"] as? String,
                     let userAvatarColor = item["userAvatarColor"] as? String,
-                    let timeStamp = item["timeStamp"] as? String else {
+                    let timeStamp = item["timeStamp"] as? String
+                else {
                         
                         let rsFailResponse = RSBaseResponse(responseObject: serverResponse,
                                                             jsonResponse: item,
@@ -327,6 +328,7 @@ class Networking: NSObject, HTTPRequestsProtocol
                 let message = Message(messageBody: messageBody, user: user, channel: channel, stamp: tStampDate, messageId: id)
                 messages.append(message)
             }
+            MessageService.sharedInstance.messages = messages
             successBlock(messages)
             
         }

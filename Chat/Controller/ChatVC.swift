@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class ChatVC: NSViewController, SelectionDelegate {
+class ChatVC: NSViewController, SelectionDelegate, NSTableViewDataSource, NSTableViewDelegate {
 
     //MARK:- IBOutlets
     @IBOutlet private var chatTableView: NSTableView!
@@ -21,10 +21,13 @@ class ChatVC: NSViewController, SelectionDelegate {
     
     //MARK: - Variables
     private var messages: [Message] = []
+    private var selectedChannel: Channel?
     
     //MARK:- ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.chatTableView.dataSource = self
+        self.chatTableView.delegate = self
         startObservingForNotifications()
         
     }
@@ -74,11 +77,6 @@ class ChatVC: NSViewController, SelectionDelegate {
         }
     }
     
-    private func getChats()
-    {
-        
-    }
-    
     //MARK:- IBActions
     @IBAction private func sendMessageButtonClicked(_ sender: NSButton)
     {
@@ -86,7 +84,15 @@ class ChatVC: NSViewController, SelectionDelegate {
         {
             let userDataDictionary = UserDataService.sharedInstance.jsonify()
             let user: User = User(userDataDictionary)
-            let channel: Channel = Channel(channelName: "general", channelId: "592cd40e39179c0023f3531f", description: "")
+            
+            guard let channelName = self.selectedChannel?.channelName,
+                let channelId = self.selectedChannel?.channelId,
+                let channelDescription = self.selectedChannel?.channelDescription
+            else {
+                return
+            }
+            
+            let channel: Channel = Channel(channelName: channelName, channelId: channelId, description: channelDescription)
             SocketService.sharedInstance.addMessage(messageText.stringValue, user: user, channel: channel) {
                 self.messageText.stringValue = ""
             }
@@ -103,16 +109,37 @@ class ChatVC: NSViewController, SelectionDelegate {
         guard let channel = object as? Channel else {
             return
         }
-        
+        self.selectedChannel = channel
         MessageService.sharedInstance.findAllMessages(channel, successBlock: { (messages) in
             guard let chatMessages = messages  else {
                 return
             }
             self.messages = chatMessages
+            Utilities.updateTableView(self.chatTableView)
         }) { (failureResponse) in
             print(failureResponse ?? "")
         }
     }
+    
+    //MARK: - TableView delegate/protocols methods
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        return self.messages.count
+    }
+    
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        guard let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: ChatCell.getCellIdentifier()), owner: nil) as? ChatCell else {
+            return NSTableCellView()
+        }
+        let message = self.messages[row]
+        cell.configureCell(message)
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+        return 100.0
+    }
+    
     
     //MARK:- Getters
     func getChannelTitleValue() -> String {

@@ -27,7 +27,8 @@ extension String {
         guard let redComponent = red,
               let greenComponent = green,
               let blueComponent = blue,
-              let alphaComponent = alpha else {
+              let alphaComponent = alpha
+        else {
               
                 return nil
         }
@@ -59,7 +60,7 @@ extension String {
     
     func date() -> Date? {
         let dateFormater = DateFormatter()
-        dateFormater.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        dateFormater.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         let date = dateFormater.date(from: self)
         return date
     }
