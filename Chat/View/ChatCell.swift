@@ -40,7 +40,7 @@ class ChatCell: NSTableCellView {
             }
         }
         self.profileImageView.layer?.backgroundColor = backgroundColor.cgColor
-        self.timeStampLabel.stringValue = message.timeStamp.string()
+        self.timeStampLabel.stringValue = message.timeStamp.string("dd MMMM yyyy")
     }
     
     class func getCellIdentifier() -> String {

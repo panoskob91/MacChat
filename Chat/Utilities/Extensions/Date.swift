@@ -8,11 +8,11 @@
 
 import Cocoa
 extension Date {
-    func string() -> String
+    func string(_ dateFormat: String) -> String
     {
         let dateFormater = DateFormatter()
-        dateFormater.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        
+//        dateFormater.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        dateFormater.dateFormat = dateFormat
         let dateString = dateFormater.string(from: self)
         
         return dateString

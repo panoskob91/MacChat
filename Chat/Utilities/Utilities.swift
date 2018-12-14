@@ -24,4 +24,10 @@ class Utilities: NSObject {
         alert.showAlert()
     }
     
+    class func scrollRowToVisible(ForTableView tableView: NSTableView, row rowIndex: Int)
+    {
+        DispatchQueue.main.async {
+            tableView.scrollRowToVisible(rowIndex)
+        }
+    }
 }

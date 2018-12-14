@@ -43,7 +43,7 @@ class MessageService: NSObject {
         }
     }
     
-    func emptyChannels()
+    func clearChannels()
     {
         self.channels = []
     }

@@ -42,7 +42,7 @@ class ChannelVC: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
         MessageService.sharedInstance.findAllChannels(sBlock: { (channels) in
             Utilities.updateTableView(self.channelsTableView)
         }) { (failResponse) in
-            print("SHIT")
+            debugPrint(failResponse ?? "")
         }
     }
     
@@ -76,6 +76,7 @@ class ChannelVC: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
         }
         else
         {
+            Utilities.updateTableView(self.channelsTableView)
             usernameLabel.stringValue = ""
         }
     }
@@ -86,7 +87,7 @@ class ChannelVC: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
         let channelTitle = channel.channelName ?? ""
         let title = "#\(channelTitle)"
         let channelDescription = channel.channelDescription ?? ""
-        let userTypingLabelValue = UserDataService.sharedInstance.name
+        let userTypingLabelValue = UserDataService.sharedInstance.name + " is typing..."
         
         self.chatVC?.setChannelTitleValue(title)
         self.chatVC?.setChannelDescriptionValue(channelDescription)

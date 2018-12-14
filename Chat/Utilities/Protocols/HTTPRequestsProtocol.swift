@@ -33,4 +33,6 @@ protocol HTTPRequestsProtocol {
                                    successBlock: @escaping([Message]?) -> Void,
                                    failureBlock: @escaping(RSBaseResponse?) -> Void)
     
+    
+    
 }

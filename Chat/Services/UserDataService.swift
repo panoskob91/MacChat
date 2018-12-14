@@ -116,10 +116,7 @@ class UserDataService: NSObject
     {
         resetUserData()
         AuthService.sharedInstance.resetData()
-        MessageService.sharedInstance.emptyChannels()
-//        let mainStoryBoard = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil)
-//        let channelVC = mainStoryBoard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "ChannelVC"))
-        print("TEST")
-        
+        MessageService.sharedInstance.clearChannels()
+        MessageService.sharedInstance.clearMessages()        
     }
 }

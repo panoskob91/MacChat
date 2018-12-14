@@ -321,11 +321,10 @@ class Networking: NSObject, HTTPRequestsProtocol
                 }
                 let user = User(id: userId, name: userName, email: nil, avatarName: userAvatar, avatarColor: userAvatarColor)
                 let channel = Channel(channelName: nil, channelId: channelId, description: nil)
-                let timeStampDate = timeStamp.date()
-                guard let tStampDate = timeStampDate else {
+                guard let timeStampDate = timeStamp.date() else {
                     continue
                 }
-                let message = Message(messageBody: messageBody, user: user, channel: channel, stamp: tStampDate, messageId: id)
+                let message = Message(messageBody: messageBody, user: user, channel: channel, stamp: timeStampDate, messageId: id)
                 messages.append(message)
             }
             MessageService.sharedInstance.messages = messages

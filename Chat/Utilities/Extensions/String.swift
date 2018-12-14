@@ -60,7 +60,9 @@ extension String {
     
     func date() -> Date? {
         let dateFormater = DateFormatter()
-        dateFormater.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        dateFormater.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        dateFormater.timeZone = TimeZone(abbreviation: "UTC")
+        dateFormater.locale = Locale(identifier: "en_US_POSIX")
         let date = dateFormater.date(from: self)
         return date
     }

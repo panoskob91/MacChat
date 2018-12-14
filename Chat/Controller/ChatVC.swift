@@ -34,13 +34,22 @@ class ChatVC: NSViewController, SelectionDelegate, NSTableViewDataSource, NSTabl
     
     override func viewWillAppear() {
         setupView()
+        SocketService.sharedInstance.getChatMessage { (newMessage) in
+            //Check if we are at the correct channel
+            if (newMessage.channel.channelId == self.selectedChannel?.channelId
+                && AuthService.sharedInstance.isLoggedIn) {
+                MessageService.sharedInstance.messages.append(newMessage)
+                Utilities.updateTableView(self.chatTableView)
+                let rowIndex = MessageService.sharedInstance.messages.count - 1
+                Utilities.scrollRowToVisible(ForTableView: self.chatTableView, row: rowIndex)
+            }
+        }
     }
     
     //MARK:- Helper methods
     private func setupView()
     {
         self.view.wantsLayer = true
-        //        self.view.layer?.backgroundColor = chatColor.cgColor
         self.view.layer?.backgroundColor = nearlyWhiteColor.cgColor
         self.chatTableView.backgroundColor = nearlyWhiteColor
         
@@ -52,6 +61,11 @@ class ChatVC: NSViewController, SelectionDelegate, NSTableViewDataSource, NSTabl
         
         self.messageText.isBordered = false
         self.messageText.placeholderString = "Message"
+        
+        //Default to Please login
+        self.channelTitle.stringValue = "Please Login"
+        self.channeDescription.stringValue = ""
+        self.userTypingLabel.stringValue = ""
         
         self.sendMessageButton.setTitleColor(color: NSColor.black)
         self.sendMessageButton.setFont(loginFont)
@@ -67,13 +81,23 @@ class ChatVC: NSViewController, SelectionDelegate, NSTableViewDataSource, NSTabl
     {
         if (AuthService.sharedInstance.isLoggedIn)
         {
-            channelTitle.stringValue = "#general"
-            channeDescription.stringValue = "This is where we do the chats"
+            self.channelTitle.stringValue = ""
+            self.channeDescription.stringValue = ""
+
+            if (MessageService.sharedInstance.channels.count == 0)
+            {
+                self.channelTitle.stringValue = "Create a channel"
+            }
         }
         else
         {
             channelTitle.stringValue = "Please log in"
             channeDescription.stringValue = ""
+            self.userTypingLabel.stringValue = ""
+            
+            //Empty self.messages to update UI
+            self.messages = MessageService.sharedInstance.messages
+            Utilities.updateTableView(self.chatTableView)
         }
     }
     
@@ -96,6 +120,7 @@ class ChatVC: NSViewController, SelectionDelegate, NSTableViewDataSource, NSTabl
             SocketService.sharedInstance.addMessage(messageText.stringValue, user: user, channel: channel) {
                 self.messageText.stringValue = ""
             }
+            Utilities.updateTableView(self.chatTableView)
         }
         else
         {
@@ -103,7 +128,7 @@ class ChatVC: NSViewController, SelectionDelegate, NSTableViewDataSource, NSTabl
             NotificationCenter.default.post(name: NOTIF_PRESENT_MODAL, object: nil, userInfo: loginDict)
         }
     }
-    
+
     //MARK: - Delegate methods
     func tableView(_tableView: NSTableView, didSelectObject object: NSObject) {
         guard let channel = object as? Channel else {
@@ -116,6 +141,8 @@ class ChatVC: NSViewController, SelectionDelegate, NSTableViewDataSource, NSTabl
             }
             self.messages = chatMessages
             Utilities.updateTableView(self.chatTableView)
+            let rowIndex = MessageService.sharedInstance.messages.count - 1
+            Utilities.scrollRowToVisible(ForTableView: self.chatTableView, row: rowIndex)
         }) { (failureResponse) in
             print(failureResponse ?? "")
         }
