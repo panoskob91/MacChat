@@ -129,8 +129,31 @@ class ModalLogin: NSView {
                                                                                                         self.activityIndicator.isHidden = true
                                                                                                         
                                                                                                         NotificationCenter.default.post(name: NOTIF_CLOSE_MODAL, object: nil)
-                                                                                                        NotificationCenter.default.post(name: NOTIF_USER_DATA_CHANGED, object: nil)
                                                                                                     }
+                                                                                                    
+                                                                                                    MessageService.sharedInstance.findAllChannels(sBlock: { (channels) in
+                                                                                                        guard let userChannels = channels else {
+                                                                                                            DispatchQueue.main.async {
+                                                                                                                let button = NSButton(title: "OK", target: self, action: nil)
+                                                                                                                let alert = Alert(messageText: "Channels do not exist (nil)", buttons: [button], icon: nil)
+                                                                                                                alert.showAlert()
+                                                                                                                
+                                                                                                                self.activityIndicator.stopAnimation(nil)
+                                                                                                                self.activityIndicator.isHidden = true
+                                                                                                                
+                                                                                                                self.view.refreshModal(ModalType.login)
+                                                                                                                
+                                                                                                            }
+                                                                                                            return
+                                                                                                        }
+                                                                                                        MessageService.sharedInstance.channels = userChannels
+                                                                                                        DispatchQueue.main.async {
+                                                                                                            NotificationCenter.default.post(name: NOTIF_USER_DATA_CHANGED, object: nil)
+                                                                                                        }
+                                                                                                    }, fBlock: { (failResponse) in
+                                                                                                        debugPrint(failResponse?.description ?? "fail description is nil (class ModalLoogin func loginClickd )")
+                                                                                                    })
+                                                                                                    
                                                         })
                                                     }
                                                     })

@@ -73,6 +73,7 @@ class ChannelVC: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
         if (AuthService.sharedInstance.isLoggedIn)
         {
             usernameLabel.stringValue = UserDataService.sharedInstance.name
+            Utilities.updateTableView(self.channelsTableView)
         }
         else
         {
