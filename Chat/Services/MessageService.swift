@@ -13,6 +13,7 @@ class MessageService: NSObject {
     static let sharedInstance: MessageService = MessageService()
     var channels: [Channel] = []
     var messages: [Message] = []
+    var unreadChannels: [String] = []
     
     //MARK: -  Networking methods
     

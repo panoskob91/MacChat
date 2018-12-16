@@ -24,6 +24,8 @@ class ChannelCell: NSTableCellView {
         self.channelName.stringValue = "#\(userChannelName)"
         self.channelName.font = NSFont(name: AVENIR_BOLD, size: 13.0)
         
+        boldChannelNameOnUnreadMessages(channel)
+        
         self.wantsLayer = true
         if row == selectedChannelIndex {
             self.layer?.backgroundColor = toolbarColor.cgColor
@@ -31,6 +33,15 @@ class ChannelCell: NSTableCellView {
         }else {
             self.layer?.backgroundColor = CGColor.clear
             self.channelName.textColor = NSColor.controlColor
+        }
+    }
+    
+    private func boldChannelNameOnUnreadMessages(_ renderingChannel: Channel)
+    {
+        for channelId in MessageService.sharedInstance.unreadChannels {
+            if (channelId == renderingChannel.channelId) {
+                self.channelName.font = NSFont(name: AVENIR_REGULAR, size: 13.0)
+            }
         }
     }
 }

@@ -44,6 +44,13 @@ class ChannelVC: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
         }) { (failResponse) in
             debugPrint(failResponse ?? "")
         }
+        getChatMessage { (newMessage) in
+            if (newMessage.channel.channelId != self.selectedChannel?.channelId
+                        && AuthService.sharedInstance.isLoggedIn) {
+                MessageService.sharedInstance.unreadChannels.append(newMessage.channel.channelId)
+                Utilities.updateTableView(self.channelsTableView)
+            }
+        }
     }
     
     //MARK:- Helper functions
@@ -61,6 +68,25 @@ class ChannelVC: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
         //TableView
         self.channelsTableView.backgroundColor = channelColor
         
+    }
+    
+    private func getChatMessage(_ completionBlock: @escaping (Message) -> Void) {
+        SocketService.sharedInstance.getChatMessage { (newMessage) in
+            if (newMessage.channel.channelId != self.selectedChannel?.channelId
+                        && AuthService.sharedInstance.isLoggedIn) {
+                MessageService.sharedInstance.unreadChannels.append(newMessage.channel.channelId)
+                Utilities.updateTableView(self.channelsTableView)
+            }
+            completionBlock(newMessage)
+        }
+    }
+    
+    private func hasUnreadChannels() -> Bool
+    {
+        if (MessageService.sharedInstance.unreadChannels.count > 0) {
+            return true
+        }
+        return false
     }
 
     private func startObservingForNotifications()
@@ -131,6 +157,12 @@ class ChannelVC: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
         let channel = MessageService.sharedInstance.channels[self.selectedChannelIndex]
         self.selectedChannel = channel
         updateWithChannel(channel: channel)
+        
+        if (hasUnreadChannels()) {
+            MessageService.sharedInstance.unreadChannels =
+                    MessageService.sharedInstance.unreadChannels.filter({$0 != channel.channelId})
+        }
+        
         //Delegate
         self.selectionDelegate = self.chatVC
         self.selectionDelegate?.tableView(_tableView: self.channelsTableView, didSelectObject: channel)

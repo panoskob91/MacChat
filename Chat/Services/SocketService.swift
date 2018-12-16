@@ -46,6 +46,7 @@ class SocketService: NSObject {
         socket?.emit("newChannel", cName, cDescription)
         completionBlock?()
     }
+    
     func getChatMessage(_ completionBlock: @escaping (_ newMessage: Message) -> Void) {
         socket?.on("messageCreated", callback: { (dataArray, socketAck) in
             guard let messageBody = dataArray[0] as? String,

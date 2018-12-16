@@ -92,6 +92,7 @@ class ModalLogin: NSView {
     }
     @IBAction func loginButtonClicked(_ sender: NSButton)
     {
+        //TODO: This function is too long refactoring needded
         self.stackView.alphaValue = 0.4
         self.loginButton.isEnabled = false
         if (emailTextField.stringValue != "" && passwordTextField.stringValue != "")
