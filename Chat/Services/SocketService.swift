@@ -77,4 +77,19 @@ class SocketService: NSObject {
             completionBlock(newMessage)
         })
     }
+    
+    func getTypingUsers(_ completionBlock: @escaping (_ typingUsers: [UserTyping]) -> Void) {
+        socket?.on("userTypingUpdate", callback: { (dataArray, socketAck) in
+            guard let typingUsers = dataArray[0] as? [String: String] else {
+                return
+            }
+            
+            var usersTyping = [UserTyping]()
+            for (userName, channelId) in typingUsers {
+                let userTyping = UserTyping(channelId: channelId, userName: userName)
+                usersTyping.append(userTyping)
+            }
+            completionBlock(usersTyping)
+        })
+    }
 }

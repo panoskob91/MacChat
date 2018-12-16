@@ -24,6 +24,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to tear down your application
         SocketService.sharedInstance.closeConnection()
     }
+    
+    func applicationWillHide(_ notification: Notification) {
+        UserDataService.sharedInstance.isHiding = true
+    }
 
+    func applicationWillUnhide(_ notification: Notification) {
+        UserDataService.sharedInstance.isHiding = false
+    }
+    
+    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+        return true
+    }
 }
 

@@ -69,3 +69,8 @@ class User: NSObject
         return jsonUserInputDictionary
     }
 }
+
+struct UserTyping {
+    let channelId: String!
+    let userName: String!
+}

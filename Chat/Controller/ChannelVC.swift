@@ -37,6 +37,10 @@ class ChannelVC: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
     
     override func viewDidAppear() {
         
+        if (UserDataService.sharedInstance.isMinimizing) {
+            return
+        }
+        
         self.chatVC = self.view.window?.contentViewController?.childViewControllers[0].childViewControllers[1] as? ChatVC
         
         MessageService.sharedInstance.findAllChannels(sBlock: { (channels) in

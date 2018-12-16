@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class ChatVC: NSViewController, SelectionDelegate, NSTableViewDataSource, NSTableViewDelegate {
+class ChatVC: NSViewController, SelectionDelegate, NSTableViewDataSource, NSTableViewDelegate, NSTextFieldDelegate {
 
     //MARK:- IBOutlets
     @IBOutlet private var chatTableView: NSTableView!
@@ -22,28 +22,66 @@ class ChatVC: NSViewController, SelectionDelegate, NSTableViewDataSource, NSTabl
     //MARK: - Variables
     private var messages: [Message] = []
     private var selectedChannel: Channel?
+    private var isTyping = false
+    
     
     //MARK:- ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.chatTableView.dataSource = self
         self.chatTableView.delegate = self
+        self.messageText.delegate = self 
         startObservingForNotifications()
         
     }
     
     override func viewWillAppear() {
+        if (UserDataService.sharedInstance.isMinimizing) {
+            return
+        }
         setupView()
-        SocketService.sharedInstance.getChatMessage { (newMessage) in
+        getChatMessage { (newMessage) in
             //Check if we are at the correct channel
-            if (newMessage.channel.channelId == self.selectedChannel?.channelId
-                && AuthService.sharedInstance.isLoggedIn) {
-                MessageService.sharedInstance.messages.append(newMessage)
+            if (self.isMessageWritterToCurrentChannel(newMessage)
+                        && self.userIsLoggedIn()) {
+                self.addNewMessage(newMessage)
                 Utilities.updateTableView(self.chatTableView)
-                let rowIndex = MessageService.sharedInstance.messages.count - 1
+                let rowIndex = self.numberOfMessages() - 1
                 Utilities.scrollRowToVisible(ForTableView: self.chatTableView, row: rowIndex)
             }
         }
+        
+        getTypingUsers { (typingUsers) in
+            var names = ""
+            var numberOfTypers = 0
+            
+            for userTyping in typingUsers {
+                if (userTyping.userName != UserDataService.sharedInstance.name
+                    && self.selectedChannel?.channelId == userTyping.channelId) {
+                    
+                    if (names == "") {
+                        names = userTyping.userName
+                    } else {
+                        names = "\(names), \(userTyping)"
+                    }
+                    numberOfTypers += 1
+                }
+            }
+            
+            if (numberOfTypers > 0 && self.userIsLoggedIn())
+            {
+                var verb = "is"
+                if numberOfTypers > 1 {
+                    verb = "are"
+                }
+                self.userTypingLabel.stringValue = "\(names) \(verb) tying a message..."
+                
+            } else {
+                self.userTypingLabel.stringValue = ""
+            }
+            
+        }
+        
     }
     
     //MARK:- Helper methods
@@ -100,6 +138,43 @@ class ChatVC: NSViewController, SelectionDelegate, NSTableViewDataSource, NSTabl
             Utilities.updateTableView(self.chatTableView)
         }
     }
+    private func getTypingUsers(_ completionBlock: @escaping ([UserTyping]) ->Void)
+    {
+        SocketService.sharedInstance.getTypingUsers { (typingUsers) in
+            completionBlock(typingUsers)
+        }
+    }
+    
+    //Messages
+    private func getChatMessage(_ completionBlock: @escaping (Message) -> Void)
+    {
+        SocketService.sharedInstance.getChatMessage { (newMessage) in
+            completionBlock(newMessage)
+        }
+    }
+    
+    private func addNewMessage(_ message: Message)
+    {
+        MessageService.sharedInstance.messages.append(message)
+    }
+
+    private func isMessageWritterToCurrentChannel(_ message: Message) -> Bool
+    {
+        if (message.channel.channelId == self.selectedChannel?.channelId) {
+            return true
+        }
+        return false
+    }
+    
+    private func userIsLoggedIn() -> Bool
+    {
+        return AuthService.sharedInstance.isLoggedIn
+    }
+    
+    private func numberOfMessages() -> Int
+    {
+        return MessageService.sharedInstance.messages.count
+    }
     
     //MARK:- IBActions
     @IBAction private func sendMessageButtonClicked(_ sender: NSButton)
@@ -119,6 +194,7 @@ class ChatVC: NSViewController, SelectionDelegate, NSTableViewDataSource, NSTabl
             let channel: Channel = Channel(channelName: channelName, channelId: channelId, description: channelDescription)
             SocketService.sharedInstance.addMessage(messageText.stringValue, user: user, channel: channel) {
                 self.messageText.stringValue = ""
+                SocketService.sharedInstance.socket?.emit("stopType", user.userName, channelId)
             }
             Utilities.updateTableView(self.chatTableView)
         }
@@ -145,6 +221,24 @@ class ChatVC: NSViewController, SelectionDelegate, NSTableViewDataSource, NSTabl
             Utilities.scrollRowToVisible(ForTableView: self.chatTableView, row: rowIndex)
         }) { (failureResponse) in
             print(failureResponse ?? "")
+        }
+    }
+    
+    //Catch typing event
+    override func controlTextDidChange(_ obj: Notification) {
+        guard let channelId = self.selectedChannel?.channelId else {
+            return
+        }
+        if (messageText.stringValue == "") {
+            self.isTyping = false
+            //Send a stopType event
+            SocketService.sharedInstance.socket?.emit("stopType", UserDataService.sharedInstance.name, channelId)
+        } else {
+            if (self.isTyping == false) {
+                //send a startType event
+                SocketService.sharedInstance.socket?.emit("startType", UserDataService.sharedInstance.name, channelId)
+            }
+            self.isTyping = true
         }
     }
     

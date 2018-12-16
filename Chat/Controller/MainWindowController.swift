@@ -9,12 +9,21 @@
 
 import Cocoa
 
-class MainWindowController: NSWindowController {
+class MainWindowController: NSWindowController, NSWindowDelegate {
 
     override func windowDidLoad() {
         super.windowDidLoad()
+        self.window?.minSize = NSSize(width: 950, height: 600)
         self.window?.titlebarAppearsTransparent = true
         self.window?.titleVisibility = .hidden
+        self.window?.delegate = self
     }
-
+    
+    func windowWillMiniaturize(_ notification: Notification) {
+        UserDataService.sharedInstance.isMinimizing = true
+    }
+    
+    func windowDidDeminiaturize(_ notification: Notification) {
+        UserDataService.sharedInstance.isMinimizing = false
+    }
 }

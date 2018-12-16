@@ -18,6 +18,9 @@ class UserDataService: NSObject
     fileprivate var _email = ""
     fileprivate var _name = ""
     
+    fileprivate var _isMinimizing = false
+    fileprivate var _isHiding = false
+    
     var id: String
     {
         get {
@@ -65,6 +68,26 @@ class UserDataService: NSObject
         }
         set {
             _name = newValue
+        }
+    }
+    
+    var isMinimizing: Bool
+    {
+        get {
+            return _isMinimizing
+        }
+        set {
+            _isMinimizing = newValue
+        }
+    }
+    
+    var isHiding: Bool
+    {
+        get {
+            return _isHiding
+        }
+        set {
+            _isHiding = newValue
         }
     }
     

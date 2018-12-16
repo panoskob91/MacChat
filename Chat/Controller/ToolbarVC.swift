@@ -29,11 +29,15 @@ class ToolbarVC: NSViewController {
     //MARK:- ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.setFrameSize(NSSize(width: 950, height: 600))
         setupViews()
         startObservingForNotifications()
     }
     
     override func viewWillAppear() {
+        if (UserDataService.sharedInstance.isMinimizing) {
+            return
+        }
         setupViews()
         if (AuthService.sharedInstance.isLoggedIn)
         {
