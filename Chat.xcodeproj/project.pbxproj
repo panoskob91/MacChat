@@ -38,6 +38,7 @@
 		BA4185B9219F5660005B54AB /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4185B8219F5660005B54AB /* String.swift */; };
 		BA52F9BC21738CE7006BD637 /* ModalCreateAccount.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA52F9BB21738CE7006BD637 /* ModalCreateAccount.xib */; };
 		BA52F9BE21738D05006BD637 /* ModalCreateAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA52F9BD21738D05006BD637 /* ModalCreateAccount.swift */; };
+		BA68D57921C6A4CC008E44E8 /* SplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA68D57821C6A4CC008E44E8 /* SplitView.swift */; };
 		BAA83BCA216BE84F00435F32 /* NSButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA83BC9216BE84F00435F32 /* NSButton.swift */; };
 		BAA83BCC216BEDA500435F32 /* NSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA83BCB216BEDA500435F32 /* NSTextField.swift */; };
 		BAADCCE6217B5F5300D76BF1 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAADCCE5217B5F5300D76BF1 /* AuthService.swift */; };
@@ -92,6 +93,7 @@
 		BA4185B8219F5660005B54AB /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		BA52F9BB21738CE7006BD637 /* ModalCreateAccount.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModalCreateAccount.xib; sourceTree = "<group>"; };
 		BA52F9BD21738D05006BD637 /* ModalCreateAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalCreateAccount.swift; sourceTree = "<group>"; };
+		BA68D57821C6A4CC008E44E8 /* SplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitView.swift; sourceTree = "<group>"; };
 		BAA83BC9216BE84F00435F32 /* NSButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSButton.swift; sourceTree = "<group>"; };
 		BAA83BCB216BEDA500435F32 /* NSTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTextField.swift; sourceTree = "<group>"; };
 		BAADCCE5217B5F5300D76BF1 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				BAF6C56D218F47FB0097E927 /* ModalAddChannel.swift */,
 				BA3F036421AAA0A100878048 /* ChannelCell.swift */,
 				BA3C1A0121AFB75400C9866A /* ChatCell.swift */,
+				BA68D57821C6A4CC008E44E8 /* SplitView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -429,6 +432,7 @@
 				BA39DE0C21734D3A00271CA3 /* ModalLogin.swift in Sources */,
 				BA394B8C218DB1B800D94C66 /* User.swift in Sources */,
 				BA0D1CFD216489BA00A9BBD7 /* AppDelegate.swift in Sources */,
+				BA68D57921C6A4CC008E44E8 /* SplitView.swift in Sources */,
 				BA0A7AC121A34EAC000CD0EC /* NSView.swift in Sources */,
 				BA3957DD2198996A0080ED14 /* AnimalCell.swift in Sources */,
 				BA183E90216B1DE900DA32ED /* NSColor.swift in Sources */,
