@@ -40,6 +40,8 @@ let LOGGED_IN_KEY = "loggedIn"
 let USER_EMAIL = "userEmail"
 
 //API Urls
+let TEST_BASE_URL = Bundle.main.object(forInfoDictionaryKey: "BASE_URL") as! String
+
 let BASE_URL = "https://mac-chat-app.herokuapp.com/v1/"
 let LOCAL_BASE_URL = "http://localhost:3005/v1/"
 let REGISTER_URL = "\(BASE_URL)account/register"
